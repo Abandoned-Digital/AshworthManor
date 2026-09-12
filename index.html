@@ -138,7 +138,7 @@
   .slabel{font-family:var(--mono);font-size:13px;fill:var(--ink-faint);text-anchor:middle;
     dominant-baseline:central;pointer-events:none;display:none}
   body.showlabels .slabel{display:block}
-  .legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;
+  .legend{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;
     background:var(--line-soft);border:1px solid var(--line);margin-top:14px}
   .lg{background:var(--panel);padding:13px 15px;display:flex;gap:11px;align-items:flex-start}
   .lg i{width:16px;height:16px;flex:none;margin-top:4px;border:2px solid var(--sw);background:var(--bg,transparent)}
@@ -148,7 +148,7 @@
   .lg .fx{font-size:13px;color:var(--ink-dim);line-height:1.45;display:block}
 
   /* ---- notes ---- */
-  .notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1px;
+  .notes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;
     background:var(--line-soft);border:1px solid var(--line)}
   .note{background:var(--panel);padding:18px 20px}
   .note h3{font-family:var(--display);font-weight:400;font-size:20px;margin:0 0 8px}
@@ -156,6 +156,9 @@
   .note p + p{margin-top:9px}
   .note em{color:var(--ink);font-style:normal;font-weight:500}
   .note.open h3{color:var(--warn)}
+  @media (max-width:1000px){.notes{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (max-width:900px){.legend{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (max-width:600px){.notes,.legend{grid-template-columns:1fr}}
 
   /* ---- room lines ---- */
   .line{display:grid;grid-template-columns:172px minmax(0,1fr);gap:18px;
@@ -317,6 +320,7 @@
   .pcard .foot b{color:var(--ink);font-weight:700}
   .pboard{border:1px solid var(--line);background:var(--panel);padding:18px 20px;display:grid;
     grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px 26px}
+  .pboard .wide{grid-column:1/-1}
   .pboard h3{font-family:var(--mono);font-weight:400;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
     color:var(--ink-faint);margin:0 0 8px}
   .track{display:flex;gap:3px;flex-wrap:wrap}
@@ -853,20 +857,7 @@
     </div>
   </section>
 
-  <section>
-    <h2>What the layout settles</h2>
-    <div class="notes">
-      <div class="note"><h3>Two mirrored wings</h3><p>The house splits down its spine into a <em>west wing</em> and an <em>east wing</em> of 21 slots each, with the grounds as a third area. Each wing gets 3 of the Foyer's doors, one of the Vigil's house doors, one lawn and one end of the back path. Neither direction from the start is the right one. A wing's character comes from what's in its deck: the west is the family wing (Chamber, Sacred), the east the service wing (Storage, Utility), and Passage and Commerce rooms are dealt to both.</p></div>
-      <div class="note"><h3>One tile size</h3><p>Small, Medium and Large rooms are gone. Every drawn room fills exactly one slot, so there's no footprint maths and only one sorting axis to plan for: <em>wing</em>.</p></div>
-      <div class="note"><h3>Printed rooms break the rules</h3><p>The Foyer and the Last Vigil aren't drawn, so they aren't bound by the 1&ndash;4-doors, one-per-side cap. The Foyer carries six, two on each open side. The Vigil carries three, so one bad draw beside it can't shut the ending off.</p></div>
-      <div class="note"><h3>Garden paths</h3><p>Six printed paths carry the 10 travel markers. <em>Every marker is a step, and every step is an action</em>: a lawn costs 3, a side path 2. The grounds are a real detour, not a free shortcut. The lawns start beside the Foyer, so the garden opens early. The back path is the long way round to the Vigil's third door.</p></div>
-      <div class="note"><h3>Close quarters</h3><p>The start and the end are no longer at opposite ends of a rectangle: two rows of slots separate the Foyer from the Vigil. That's fine now that arriving no longer wins by itself. The keys are the real distance.</p></div>
-      <div class="note"><h3>Board edges</h3><p>A door that ends up flush against the outer edge of the house doesn't work, exactly like a door facing an unmatched neighbour. The irregular silhouette makes that edge long.</p></div>
-      <div class="note open"><h3>Deck versus slots</h3><p>42 interior slots, and 30 interior rooms drawn so far. Filling the house needs duplicates (the Passage connectors are the natural ones), more lines, or both. Not every slot has to fill, though: a sealed-off wing is part of the game.</p></div>
-      <div class="note open"><h3>Still open</h3><p>How many copies go into each wing's deck, whether the slot above the Vigil is drawn or printed, how many copies of each outside room there are, and how the board shrinks for fewer players.</p></div>
-    </div>
-  </section>
-  <footer>Slot names (A&ndash;J across, 1&ndash;7 down) are only used here, to talk about the board. They are not printed on it.</footer>
+ <footer>Slot names (A&ndash;J across, 1&ndash;7 down) are only used here, to talk about the board. They are not printed on it.</footer>
 </div>
 
 <!-- ============ ROOMS ============ -->
@@ -988,7 +979,7 @@
   <section>
     <h2>Player board</h2>
     <div class="pboard">
-      <div><h3>Sanity</h3><div class="track" id="strack"></div><p>Start and max at 10. At 0 you're lost to the house.</p></div>
+      <div class="wide"><h3>Sanity</h3><div class="track" id="strack"></div><p>Start and max at 10. At 0 you're lost to the house.</p></div>
       <div><h3>Actions today</h3><div class="track" id="atrack"></div><p>Six a day, one per turn. Moving counts. Reset at dawn.</p></div>
       <div><h3>Has Prayed</h3><div class="track"><i style="width:44px">No</i><i style="width:44px" class="s">Yes</i></div><p>Flips once, never back.</p></div>
       <div><h3>Shielded</h3><div class="track" id="shtrack"></div><p>+1 per Prayer, +2 at the Chapel or from the Bell Tower. &minus;1 per blocked loss. Caps at 5; anything over is lost.</p></div>
