@@ -1,0 +1,1483 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>:root{color-scheme:dark}body{margin:0;padding:0;background:#110e12;color:#e9e1d3}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Ashworth Manor Rulebook</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Courier+Prime:wght@400;700&display=swap">
+<style>
+  :root{
+    color-scheme:dark;
+    /* mourning-crape black: a violet bias, not the warm soot of Arcworld */
+    --ground:#110e12; --panel:#1a161b; --panel-2:#231e24;
+    --line:#352d36; --line-soft:#2a232b;
+    --ink:#e9e1d3; --ink-dim:#aa9e99; --ink-faint:#766a70;
+    /* candle brass: the flame, the Golden Key, the one warm thing in the house */
+    --accent:#c9a14e; --warn:#c46a4c;
+    /* room lines, taken from the printed tile borders and lifted for a dark ground */
+    --r-passage:#948e8b; --r-storage:#a8853c; --r-utility:#4f9d96; --r-chamber:#a35fbb;
+    --r-sacred:#d04d3e; --r-commerce:#5aa46a; --r-exterior:#9cba5c;
+    /* the two wings, red and blue, as printed on the board */
+    --w-west:#b5564b; --w-east:#5577c2;
+    /* door requirements */
+    --q-key:#d9d0c1; --q-gold:#dcb458; --q-water:#5ea9cc; --q-lamp:#d9924a;
+    /* item tiers: green, blue, purple, orange */
+    --t-common:#5fa368; --t-uncommon:#5b8ed4; --t-rare:#a55fc0; --t-vrare:#e08a3c;
+    /* night event categories */
+    --n-sanity:#d04d3e; --n-resource:#a8853c; --n-tempo:#6b93d0; --n-environmental:#4f9d96;
+    --n-choice:#c9a14e; --n-omen:#7d7178; --n-mixed:#a35fbb;
+    --display:"IM Fell English","Iowan Old Style","Palatino Linotype",Georgia,serif;
+    --caps:"IM Fell English SC","IM Fell English",Georgia,serif;
+    --body:"Spectral",Georgia,"Times New Roman",serif;
+    --mono:"Courier Prime","Courier New",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);
+       font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px 96px;overflow-x:clip}
+
+  header{padding:46px 0 36px;border-bottom:1px solid var(--line);position:relative}
+  header::after{content:"";position:absolute;left:-10%;right:-10%;bottom:-1px;height:1px;
+    background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.55;
+    animation:flicker 7s ease-in-out infinite}
+  @keyframes flicker{0%,100%{opacity:.55}8%{opacity:.35}11%{opacity:.62}46%{opacity:.5}49%{opacity:.28}52%{opacity:.58}}
+  .eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--accent);margin:0 0 14px}
+  h1{font-family:var(--display);font-weight:400;font-size:clamp(42px,7vw,72px);line-height:1;
+     letter-spacing:-.005em;margin:0 0 18px;text-wrap:balance}
+  .lede{font-size:17.5px;color:var(--ink-dim);max-width:64ch;margin:0}
+  .lede strong{color:var(--ink);font-weight:600}
+  .stats{display:flex;flex-wrap:wrap;margin-top:32px;border:1px solid var(--line);background:var(--panel)}
+  .stat{flex:1 1 130px;padding:13px 18px;border-right:1px solid var(--line-soft)}
+  .stat:last-child{border-right:0}
+  .stat b{display:block;font-family:var(--display);font-size:28px;font-weight:400;line-height:1.1;
+     font-variant-numeric:tabular-nums lining-nums}
+  .stat span{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint)}
+
+  section{padding-top:52px}
+  h2{font-family:var(--caps);font-weight:400;font-size:17px;letter-spacing:.14em;
+     color:var(--ink-dim);margin:0 0 6px;display:flex;align-items:center;gap:12px}
+  h2::after{content:"";flex:1;height:1px;background:var(--line)}
+  .sub{margin:0 0 22px;color:var(--ink-dim);max-width:70ch}
+  .sub em{color:var(--ink);font-style:normal;font-weight:500}
+
+  /* ---- view rail ---- */
+  .rail{position:sticky;top:0;z-index:20;background:rgba(17,14,18,.94);
+    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .railin{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;
+    gap:8px 26px;min-height:52px;flex-wrap:wrap}
+  .mark{font-family:var(--caps);font-size:19px;letter-spacing:.08em;white-space:nowrap}
+  .mark i{color:var(--accent);font-style:normal}
+  .vnav{display:flex;gap:2px;flex-wrap:wrap;margin-left:auto}
+  .vtab{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    background:none;border:0;border-bottom:2px solid transparent;color:var(--ink-faint);
+    padding:15px 11px 13px;cursor:pointer;transition:color .15s ease}
+  .vtab:hover{color:var(--ink-dim)}
+  .vtab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+  .vtab:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+  .vtab u{text-decoration:none;font-size:9px;letter-spacing:.04em;color:var(--ink-faint);
+    border:1px solid var(--line);padding:0 3px;margin-left:5px;vertical-align:1px}
+
+  /* ---- shared controls ---- */
+  .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:10px}
+  .toggle{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    background:var(--panel);color:var(--ink-dim);border:1px solid var(--line);padding:6px 11px;cursor:pointer}
+  .toggle[aria-pressed="true"]{color:var(--ground);background:var(--ink-dim);border-color:var(--ink-dim)}
+  .toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .readout{font-family:var(--mono);font-size:12px;color:var(--ink-faint);margin-left:auto;
+    letter-spacing:.04em;min-height:1.2em}
+  .readout b{color:var(--ink);font-weight:700}
+  .filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+  .filters .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-faint);margin-right:2px;min-width:74px}
+  .tg{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+    background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--tc,var(--line));
+    color:var(--ink-dim);padding:6px 10px;cursor:pointer;display:inline-flex;gap:7px;align-items:center;
+    transition:background .15s ease,color .15s ease}
+  .tg:hover{background:var(--panel-2)}
+  .tg b{font-weight:400;color:var(--ink-faint);font-variant-numeric:tabular-nums}
+  .tg svg{width:13px;height:13px}
+  .tg[aria-pressed="true"]{background:var(--tc,var(--ink-dim));border-color:var(--tc,var(--ink-dim));color:var(--ground)}
+  .tg[aria-pressed="true"] b{color:var(--ground);opacity:.7}
+  .tg:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .srch{font-family:var(--mono);font-size:12px;background:var(--panel);border:1px solid var(--line);
+    color:var(--ink);padding:7px 10px;min-width:180px;flex:1 1 180px;max-width:260px}
+  .srch::placeholder{color:var(--ink-faint)}
+  .srch:focus{outline:none;border-color:var(--accent)}
+  .count{font-family:var(--mono);font-size:11.5px;color:var(--ink-faint);letter-spacing:.04em;
+    margin-left:auto;white-space:nowrap}
+  .count b{color:var(--ink);font-weight:700;font-variant-numeric:tabular-nums}
+  .empty{border:1px dashed var(--line);padding:34px;text-align:center;font-family:var(--mono);
+    font-size:12px;color:var(--ink-faint);letter-spacing:.06em}
+  .ico{width:15px;height:15px;flex:none;fill:none;stroke:currentColor;stroke-width:1.6;
+    stroke-linecap:round;stroke-linejoin:round;vertical-align:-3px}
+
+  /* ---- mansion board ---- */
+  .board{border:1px solid var(--line);background:#0c0a0d;padding:14px;position:relative}
+  .boardscroll{overflow-x:auto}
+  #mansion{display:block;width:100%;min-width:720px;height:auto}
+  .slot{fill:#1d181e;stroke:#3d343e;stroke-width:1.5;transition:fill .15s ease}
+  .slot.w{stroke:var(--w-west);stroke-width:2.5}
+  .slot.e{stroke:var(--w-east);stroke-width:2.5}
+  .slot:hover,.slot.hl{fill:#2c2530;stroke:var(--accent)}
+  .fixed{fill:#262027;stroke:var(--ink-dim);stroke-width:2}
+  .fixed:hover{stroke:var(--accent)}
+  .vigil{stroke:var(--q-gold)}
+  .ext{fill:rgba(156,186,92,.06);stroke:var(--r-exterior);stroke-width:2;stroke-dasharray:7 5}
+  .ext:hover{fill:rgba(156,186,92,.16)}
+  .path{stroke:var(--r-exterior);stroke-width:5;stroke-linecap:round;opacity:.45}
+  .marker{fill:var(--n-tempo);stroke:#0c0a0d;stroke-width:2;cursor:default}
+  .marker:hover{fill:var(--accent)}
+  .doorbar{fill:var(--ink)}
+  .fxname{font-family:var(--display);font-size:25px;fill:var(--ink);text-anchor:middle;pointer-events:none}
+  .fxsub{font-family:var(--mono);font-size:11px;fill:var(--ink-dim);text-anchor:middle;pointer-events:none;letter-spacing:.04em}
+  .fxreq{font-family:var(--mono);font-size:11px;fill:var(--q-gold);text-anchor:middle;pointer-events:none;letter-spacing:.04em}
+  .slabel{font-family:var(--mono);font-size:13px;fill:var(--ink-faint);text-anchor:middle;
+    dominant-baseline:central;pointer-events:none;display:none}
+  body.showlabels .slabel{display:block}
+  .legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;
+    background:var(--line-soft);border:1px solid var(--line);margin-top:14px}
+  .lg{background:var(--panel);padding:13px 15px;display:flex;gap:11px;align-items:flex-start}
+  .lg i{width:16px;height:16px;flex:none;margin-top:4px;border:2px solid var(--sw);background:var(--bg,transparent)}
+  .lg i.dash{border-style:dashed}
+  .lg .nm{font-family:var(--display);font-size:17px;display:flex;align-items:baseline;gap:8px;line-height:1.3}
+  .lg .ct{font-family:var(--mono);font-size:12px;color:var(--accent);font-variant-numeric:tabular-nums}
+  .lg .fx{font-size:13px;color:var(--ink-dim);line-height:1.45;display:block}
+
+  /* ---- notes ---- */
+  .notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1px;
+    background:var(--line-soft);border:1px solid var(--line)}
+  .note{background:var(--panel);padding:18px 20px}
+  .note h3{font-family:var(--display);font-weight:400;font-size:20px;margin:0 0 8px}
+  .note p{margin:0;color:var(--ink-dim);font-size:14px;line-height:1.6}
+  .note p + p{margin-top:9px}
+  .note em{color:var(--ink);font-style:normal;font-weight:500}
+  .note.open h3{color:var(--warn)}
+
+  /* ---- room lines ---- */
+  .line{display:grid;grid-template-columns:172px minmax(0,1fr);gap:18px;
+    padding:22px 0;border-top:1px solid var(--line-soft)}
+  .line:first-of-type{border-top:0;padding-top:6px}
+  .lhead{border-left:3px solid var(--tc);padding:2px 0 2px 13px}
+  .lhead h3{font-family:var(--caps);font-weight:400;font-size:22px;letter-spacing:.06em;color:var(--tc);
+    margin:0 0 2px;line-height:1.1}
+  .lhead .role{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-faint);margin:0 0 10px}
+  .lhead p{font-size:13px;color:var(--ink-dim);line-height:1.5;margin:0}
+  .rcell{display:flex;flex-direction:column;gap:9px;transition:opacity .15s ease}
+  .rcell.off{opacity:.18}
+  .rtile{aspect-ratio:1;overflow:hidden;position:relative;background:var(--panel);border:5px solid var(--tc);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+    text-align:center;padding:18px 16px}
+  .rcell:hover .rtile{background:var(--panel-2)}
+  .db{position:absolute;background:var(--ink);opacity:.92}
+  .db.t{top:6px;left:24%;right:24%;height:5px}
+  .db.b{bottom:6px;left:24%;right:24%;height:5px}
+  .db.l{left:6px;top:24%;bottom:24%;width:5px}
+  .db.r{right:6px;top:24%;bottom:24%;width:5px}
+  .rtile .rn{font-family:var(--display);font-size:22px;line-height:1.05;margin:0;text-wrap:balance}
+  .rtile .rd{font-family:var(--mono);font-size:11px;color:var(--ink-faint);letter-spacing:.04em;margin:0}
+  .icons{display:flex;flex-wrap:wrap;gap:3px 9px;justify-content:center}
+  .ik{display:inline-flex;align-items:center;gap:3px;font-family:var(--mono);font-size:12.5px;color:var(--ink)}
+  .ik .ico{color:var(--ink-dim)}
+  .rtile .sp{font-family:var(--body);font-style:italic;font-size:13px;color:var(--ink-dim);line-height:1.35;margin:0}
+  .req{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+    border:1px solid currentColor;padding:1px 6px;display:inline-flex;gap:4px;align-items:center}
+  .req .ico{width:12px;height:12px;vertical-align:0}
+  .req.key{color:var(--q-key)} .req.gold{color:var(--q-gold)} .req.water{color:var(--q-water)}
+  .req.lamp{color:var(--q-lamp)}
+  .reqs{display:flex;gap:5px;flex-wrap:wrap;justify-content:center}
+  .week{display:flex;gap:2px}
+  .week i{width:14px;height:15px;font-family:var(--mono);font-size:9px;font-style:normal;display:flex;
+    align-items:center;justify-content:center;border:1px solid var(--line);color:var(--ink-faint)}
+  .week i.on{background:var(--r-commerce);border-color:var(--r-commerce);color:var(--ground);font-weight:700}
+  .wingtag{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--wc);border:1px solid currentColor;padding:1px 6px;margin:0 0 10px}
+  .decks{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--line-soft);
+    border:1px solid var(--line);margin-bottom:14px}
+  .dk{background:var(--panel);padding:16px 18px;border-top:3px solid var(--wc)}
+  .dk h3{font-family:var(--caps);font-weight:400;font-size:21px;letter-spacing:.05em;color:var(--wc);margin:0 0 2px}
+  .dk .bl{font-size:13.5px;color:var(--ink-dim);margin:0 0 12px}
+  .dk ul{list-style:none;margin:0 0 12px;padding:0}
+  .dk li{display:flex;align-items:center;gap:9px;padding:5px 0;border-top:1px dashed #4a404b;font-size:14px}
+  .dk li:first-child{border-top:0}
+  .dk li i{width:10px;height:10px;background:var(--tc);flex:none}
+  .dk li small{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
+  .dk li b{margin-left:auto;font-family:var(--mono);font-weight:400;color:var(--ink);font-variant-numeric:tabular-nums}
+  .dk .ft{font-family:var(--mono);font-size:11.5px;color:var(--ink-faint);margin:0;letter-spacing:.03em}
+  .dk .ft b{color:var(--ink);font-weight:700}
+  .rtile .uses{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--ink-faint);margin:0}
+  .rcell .fl{font-style:italic;font-size:13px;color:var(--ink-faint);line-height:1.45;margin:0;padding:0 2px}
+  .tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+  @media (max-width:900px){
+    .line{grid-template-columns:1fr;gap:14px}
+    .tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+  }
+
+  /* ---- ledger tables ---- */
+  .tablewrap{overflow-x:auto;border:1px solid var(--line)}
+  table{border-collapse:collapse;width:100%;background:var(--panel)}
+  th,td{padding:8px 11px;text-align:left;font-size:13.5px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+  thead th{font-family:var(--mono);color:var(--ink-faint);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+    border-bottom:1px solid var(--line);white-space:nowrap;font-weight:400}
+  tbody tr:hover{background:var(--panel-2)}
+  tbody tr:last-child td{border-bottom:0}
+  td.nm{font-family:var(--display);font-size:16px;white-space:nowrap;color:var(--ink)}
+  td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;color:var(--ink)}
+  th.num{text-align:right}
+  td.dim{color:var(--ink-dim)}
+  td.fla{font-style:italic;color:var(--ink-faint);min-width:260px}
+  td .dot{display:inline-block;width:8px;height:8px;background:var(--tc);margin-right:7px;vertical-align:1px}
+  #cand{min-width:900px}
+
+  /* ---- item cards ---- */
+  .ideck{display:grid;grid-template-columns:repeat(auto-fill,minmax(206px,1fr));gap:14px}
+  .igroup{margin:0 0 30px}
+  .ghead{display:flex;align-items:baseline;gap:12px;border-left:3px solid var(--tier);
+    padding-left:13px;margin:0 0 14px}
+  .ghead h3{font-family:var(--caps);font-weight:400;font-size:21px;letter-spacing:.06em;
+    color:var(--tier);margin:0;line-height:1.1}
+  .ghead .gm{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--ink-faint);margin:0}
+  .ghead .gct{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--ink);
+    font-variant-numeric:tabular-nums}
+  .icard{background:var(--panel);border:3px solid var(--tier,var(--ink-dim));border-radius:10px;padding:16px 16px 14px;
+    display:flex;flex-direction:column;transition:background .15s ease;min-height:292px}
+  .icard:hover{background:var(--panel-2)}
+  .icard .rule{border-top:1px dashed #4a404b}
+  .icard .cn{font-family:var(--mono);font-weight:700;font-size:15px;letter-spacing:.06em;text-transform:uppercase;
+    text-align:center;margin:0;padding:7px 0;line-height:1.2}
+  .rar{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;
+    text-align:center;color:var(--ink-faint);margin:9px 0 0}
+  .rar.common{color:var(--t-common)}
+  .rar.uncommon{color:var(--t-uncommon)}
+  .rar.rare{color:var(--t-rare)}
+  .rar.vrare{color:var(--t-vrare)}
+  .icard .tx{font-family:var(--mono);font-size:13px;line-height:1.45;color:var(--ink);text-align:center;margin:14px 0 10px}
+  .faces{display:flex;flex-direction:column;gap:6px;margin:0 0 10px}
+  .face{display:flex;gap:9px;align-items:center;font-family:var(--mono);font-size:12px;color:var(--ink-dim)}
+  .face b{flex:none;width:58px;font-weight:700;font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+    border:1px solid var(--line);text-align:center;padding:2px 0;color:var(--ink)}
+  .face small{font-size:10px;color:var(--ink-faint)}
+  .icard .ty{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--ink-faint);text-align:center;margin:auto 0 10px}
+  .icard .nt{font-size:12.5px;font-style:italic;color:var(--ink-faint);line-height:1.4;margin:0 0 10px;text-align:center}
+  .coins{display:flex;gap:5px;justify-content:center;padding-top:10px}
+  .coin{width:24px;height:24px;border-radius:50%;background:#2e2830;border:1px solid var(--accent);
+    box-shadow:inset 0 0 0 2px #2e2830,inset 0 0 0 3px rgba(201,161,78,.45);
+    display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:13px;color:var(--accent)}
+  .dieset{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--line-soft);
+    border:1px solid var(--line);margin-top:16px}
+  .dieset div{background:var(--panel);padding:13px 16px;display:flex;gap:12px;align-items:center}
+  .dieset .pips{display:flex;gap:3px}
+  .dieset .pips i{width:14px;height:14px;border:1px solid var(--ink-dim);background:var(--ink-dim)}
+  .dieset .pips i.e{background:none;border-color:var(--line)}
+  .dieset b{font-family:var(--display);font-weight:400;font-size:17px;display:block;line-height:1.2}
+  .dieset span{font-family:var(--mono);font-size:11.5px;color:var(--ink-dim)}
+
+  /* ---- night events ---- */
+  .ndeck{display:grid;grid-template-columns:repeat(auto-fill,minmax(236px,1fr));gap:14px}
+  .ncard{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--tc);
+    padding:15px 16px 13px;display:flex;flex-direction:column;transition:background .15s ease}
+  .ncard:hover{background:var(--panel-2)}
+  .ncard .cat{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--tc);
+    text-align:center;margin:0 0 4px}
+  .ncard .cn{font-family:var(--display);font-size:21px;text-align:center;margin:0 0 10px;line-height:1.12;text-wrap:balance}
+  .ncard .rule{border-top:1px dashed #4a404b;margin:0 0 11px}
+  .ncard .who{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 4px}
+  .ncard .fx{font-size:14.5px;color:var(--ink);line-height:1.45;margin:0 0 12px}
+  .ncard .fl{font-style:italic;font-size:13px;color:var(--ink-dim);line-height:1.45;margin:auto 0 0}
+  .ncard .foot{margin-top:auto;padding-top:10px;display:flex;gap:6px;flex-wrap:wrap;border-top:1px solid var(--line-soft)}
+  .chip{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink-dim);border:1px solid currentColor;padding:2px 6px;line-height:1.4}
+  .chip.yes{color:var(--accent)}
+  .chip.no{color:var(--ink-faint)}
+
+  /* ---- investigators ---- */
+  .pdeck{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+  .pcard{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--accent);
+    padding:18px 18px 15px;display:flex;flex-direction:column}
+  .pcard .occ{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--accent);text-align:center;margin:0 0 3px}
+  .pcard .pn{font-family:var(--display);font-size:25px;text-align:center;margin:0 0 12px;line-height:1.1}
+  .pcard .bio{font-style:italic;font-size:13.5px;color:var(--ink-dim);line-height:1.5;margin:0 0 14px;text-align:center}
+  .pcard .rule{border-top:1px dashed #4a404b;margin:0 0 12px}
+  .pcard .pl{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 5px}
+  .pcard .px{font-size:14.5px;line-height:1.5;color:var(--ink);margin:0 0 12px}
+  .ticks{display:flex;gap:6px;margin:-4px 0 12px}
+  .ticks i{width:20px;height:20px;border:1px solid var(--ink-dim)}
+  .pcard .foot{margin-top:auto;padding-top:11px;border-top:1px solid var(--line-soft);
+    font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);
+    display:flex;justify-content:space-between;gap:10px}
+  .pcard .foot b{color:var(--ink);font-weight:700}
+  .pboard{border:1px solid var(--line);background:var(--panel);padding:18px 20px;display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px 26px}
+  .pboard h3{font-family:var(--mono);font-weight:400;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-faint);margin:0 0 8px}
+  .track{display:flex;gap:3px;flex-wrap:wrap}
+  .track i{width:22px;height:24px;border:1px solid var(--line);font-family:var(--mono);font-size:10px;font-style:normal;
+    display:flex;align-items:center;justify-content:center;color:var(--ink-faint)}
+  .track i.s{border-color:var(--accent);color:var(--accent)}
+  .track i.z{border-color:var(--warn);color:var(--warn)}
+  .pboard p{margin:6px 0 0;font-size:13px;color:var(--ink-dim);line-height:1.45}
+
+  /* ---- manual ---- */
+  .manual{display:grid;grid-template-columns:200px minmax(0,1fr);gap:44px;align-items:start;margin-top:6px}
+  .toc{position:sticky;top:66px;max-height:calc(100vh - 92px);overflow-y:auto;
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.02em;padding-top:40px}
+  .toc b{display:block;font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--ink-faint);margin:0 0 9px 12px;font-weight:400}
+  .toc a{display:block;padding:5px 0 5px 12px;color:var(--ink-faint);text-decoration:none;
+    border-left:1px solid var(--line);line-height:1.35;transition:color .12s ease}
+  .toc a:hover{color:var(--ink)}
+  .toc a.on{color:var(--accent);border-left-color:var(--accent)}
+  .toc a:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+  .doc{min-width:0;padding-top:40px}
+  .doc section{padding-top:0;margin:0 0 52px;scroll-margin-top:76px}
+  .doc .kicker{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--accent);margin:0 0 4px}
+  .doc h3{font-family:var(--display);font-weight:400;font-size:31px;line-height:1.1;
+    margin:0 0 14px;color:var(--ink);text-wrap:balance}
+  .doc h4{font-family:var(--caps);font-weight:400;font-size:18px;margin:28px 0 8px;
+    color:var(--ink);letter-spacing:.04em}
+  .doc p{margin:0 0 12px;color:var(--ink-dim);font-size:15.5px;line-height:1.65}
+  .doc strong{color:var(--ink);font-weight:600}
+  .doc em{color:var(--ink);font-style:italic}
+  .doc ul,.doc ol{margin:0 0 13px;padding-left:20px;color:var(--ink-dim);font-size:15.5px;line-height:1.6}
+  .doc li{margin:5px 0}
+  .doc li::marker{color:var(--ink-faint)}
+  .doc .tw{overflow-x:auto;border:1px solid var(--line);margin:0 0 14px}
+  .doc table{width:100%;background:var(--panel)}
+  .doc th,.doc td{font-size:14px;line-height:1.5;padding:9px 13px;color:var(--ink-dim)}
+  .doc thead th{font-size:10px}
+  .doc td.k{color:var(--ink);font-family:var(--display);font-size:17px;white-space:nowrap}
+  .doc td.k .ico{color:var(--accent);margin-right:7px}
+  .doc td.n{font-family:var(--mono);color:var(--accent);font-size:13px;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .doc td.c{text-align:center;padding-left:4px;padding-right:4px}
+  .doc td.c i{display:inline-block;width:11px;height:11px;border:1px solid var(--line)}
+  .doc td.c i.on{background:var(--r-commerce);border-color:var(--r-commerce)}
+  .doc th.c{text-align:center;padding-left:4px;padding-right:4px}
+  .tip{border-left:3px solid var(--accent);background:var(--panel);padding:13px 16px;margin:0 0 14px}
+  .tip p{margin:0;font-size:14.5px}
+  .tip p + p{margin-top:8px}
+  .tip b{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--accent);display:block;margin-bottom:5px;font-weight:700}
+  .tip.open{border-left-color:var(--warn)}
+  .tip.open b{color:var(--warn)}
+  .tip ul{margin:4px 0 0;font-size:14.5px}
+  .steps{list-style:none;padding:0;margin:0 0 14px;counter-reset:s}
+  .steps li{counter-increment:s;position:relative;padding:1px 0 0 42px;margin:0 0 15px;
+    color:var(--ink-dim);font-size:15.5px;line-height:1.6}
+  .steps li::before{content:counter(s, upper-roman);position:absolute;left:0;top:0;width:28px;height:28px;
+    border:1px solid var(--line);background:var(--panel);color:var(--accent);
+    font-family:var(--display);font-size:14px;display:flex;align-items:center;justify-content:center}
+  .steps li b{display:block;font-family:var(--caps);font-size:17px;color:var(--ink);
+    font-weight:400;margin-bottom:1px;letter-spacing:.03em}
+  .cast{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:var(--line-soft);
+    border:1px solid var(--line);margin:0 0 14px}
+  .cast div{background:var(--panel);padding:14px 16px}
+  .cast b{font-family:var(--display);font-weight:400;font-size:18px;color:var(--ink);display:block;line-height:1.2}
+  .cast span{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  .cast p{margin:6px 0 0!important;font-size:14px!important;line-height:1.5!important}
+  .qlist{list-style:none;padding:0!important;margin:0 0 14px!important;border:1px solid var(--line)}
+  .qlist li{margin:0!important;padding:11px 15px;border-bottom:1px solid var(--line-soft);background:var(--panel);font-size:14.5px!important}
+  .qlist li:last-child{border-bottom:0}
+  .qlist li strong{display:block;font-family:var(--caps);font-weight:400;font-size:16.5px;letter-spacing:.03em}
+  @media (max-width:860px){
+    .manual{grid-template-columns:1fr;gap:18px}
+    .toc{position:static;max-height:none;display:flex;flex-wrap:wrap;gap:5px;
+      border:1px solid var(--line);background:var(--panel);padding:11px;margin-top:24px}
+    .toc b{display:none}
+    .toc a{border:1px solid var(--line);padding:5px 9px}
+    .toc a.on{background:var(--accent);color:var(--ground);border-color:var(--accent)}
+    .doc{padding-top:0}
+  }
+
+  footer{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);color:var(--ink-faint);font-size:13px}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+  @media (max-width:640px){
+    .wrap{padding:0 14px 64px}header{padding-top:34px}.readout{margin-left:0;width:100%}
+    .railin{padding:0 14px}.vnav{margin-left:0}.count{margin-left:0;width:100%}
+  }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-inv" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"/><path d="M14.5 14.5L20 20"/><path d="M7.5 9h5M7.5 11.5h3"/></symbol>
+    <symbol id="i-rest" viewBox="0 0 24 24"><path d="M6 11V8a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v3"/><path d="M3 11h4v4h10v-4h4v6H3z"/><path d="M5 17v3M19 17v3"/></symbol>
+    <symbol id="i-pray" viewBox="0 0 24 24"><path d="M10 11h4v9h-4z"/><path d="M12 11V8.5"/><path d="M12 3c1.6 1.8 1.6 3.4 0 4.6c-1.6-1.2-1.6-2.8 0-4.6z"/><path d="M7 20h10"/></symbol>
+    <symbol id="i-stash" viewBox="0 0 24 24"><path d="M3 10h18v10H3z"/><path d="M3 10a4 4 0 0 1 4-5h10a4 4 0 0 1 4 5"/><path d="M11 12.5h2v3h-2z"/></symbol>
+    <symbol id="i-ped" viewBox="0 0 24 24"><path d="M9 5h6M12 2v3"/><path d="M8 7h8l-1 11H9z"/><path d="M7 20.5h10"/><path d="M12 10.5v4"/></symbol>
+    <symbol id="i-act" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1.5"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><circle cx="7" cy="12" r="3.5"/><path d="M10.5 12H21M17.5 12v3M20.5 12v2"/></symbol>
+    <symbol id="i-water" viewBox="0 0 24 24"><path d="M12 3c3 4.5 6 7.6 6 11a6 6 0 0 1-12 0c0-3.4 3-6.5 6-11z"/></symbol>
+    <symbol id="i-boon" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.5-5.8"/><path d="M4 4v4h4"/><path d="M12 8v4l3 2"/></symbol>
+    <symbol id="i-door" viewBox="0 0 24 24"><path d="M6 21V4h12v17"/><path d="M3 21h18"/><circle cx="14.5" cy="13" r=".8"/></symbol>
+  </defs>
+</svg>
+
+<div class="rail">
+  <div class="railin">
+    <span class="mark">Ashworth <i>Manor</i></span>
+    <nav class="vnav" role="tablist" aria-label="Rulebook sections">
+      <button class="vtab" role="tab" id="t-manual" aria-controls="v-manual" aria-selected="true">Manual</button>
+      <button class="vtab" role="tab" id="t-mansion" aria-controls="v-mansion" aria-selected="false">The Mansion</button>
+      <button class="vtab" role="tab" id="t-rooms" aria-controls="v-rooms" aria-selected="false">Rooms <u>36</u></button>
+      <button class="vtab" role="tab" id="t-items" aria-controls="v-items" aria-selected="false">Items <u>10</u></button>
+      <button class="vtab" role="tab" id="t-night" aria-controls="v-night" aria-selected="false">Night Events <u>24</u></button>
+      <button class="vtab" role="tab" id="t-cast" aria-controls="v-cast" aria-selected="false">Investigators <u>4</u></button>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ============ MANUAL ============ -->
+<div class="view" id="v-manual" role="tabpanel" aria-labelledby="t-manual">
+  <header>
+    <p class="eyebrow">Rulebook draft &middot; first pass &middot; 2&ndash;4 players &middot; cooperative, with secret agendas</p>
+    <h1>How to Play</h1>
+    <p class="lede">Cornelius Ashworth never stopped rebuilding his house, and he never showed anyone the plans. You enter through the Foyer, lay the mansion down one blind-drawn room at a time, and push toward <strong>the Last Vigil</strong>, a sealed room that takes two Golden Keys to open. The house takes a little of your sanity every night. Whoever reaches the end can finish the game on the spot, and then <strong>each player wins or loses on their own Personal Mission</strong>.</p>
+    <div class="stats">
+      <div class="stat"><b>2&ndash;4</b><span>Players</span></div>
+      <div class="stat"><b>6</b><span>Actions a day</span></div>
+      <div class="stat"><b>1</b><span>Action a turn</span></div>
+      <div class="stat"><b>10</b><span>Starting sanity</span></div>
+      <div class="stat"><b>2</b><span>Golden Keys to finish</span></div>
+      <div class="stat"><b>42</b><span>Room slots</span></div>
+    </div>
+  </header>
+
+  <div class="manual">
+    <nav class="toc" id="toc" aria-label="Manual contents"></nav>
+    <div class="doc">
+
+      <section id="s-win">
+        <p class="kicker">Chapter I</p>
+        <h3>Overview &amp; winning</h3>
+        <p>Ashworth Manor is a cooperative, tile-based exploration game. You play guests of a dead man, walking into his house through the Foyer and pushing deeper into a mansion nobody has ever mapped. The house is built from room tiles you draw and place as you explore, so no two games share a floor plan.</p>
+        <p>Two pressures squeeze you the whole way. Your <strong>sanity</strong> drains every night, and the house's resources keep running out: room tiles, item cards and rare keys all deplete over the course of a game.</p>
+        <h4>Ending the game</h4>
+        <p>Getting into the Last Vigil takes <strong>two players, each spending a Golden Key at a different door</strong>. Nobody opens it alone.</p>
+        <p>Getting in doesn't win the game on its own. The room prints an <strong>Activate</strong> icon, and any player standing inside may spend 1 action to trigger it. <strong>The game ends immediately.</strong> No one else has to be there, and no one else gets a say.</p>
+        <h4>Who wins</h4>
+        <p>When the game ends, each player checks their own secret <strong>Personal Mission</strong>. If you completed it, you win. If you didn't, you lose. There's no single victor and no all-or-nothing party verdict. Some players can win while others lose in the same game.</p>
+        <p>This is where the semi-cooperative tension comes from. Everyone works toward the same door, but a player who has finished their mission may want to end the game the moment they arrive, whether or not anyone else has finished theirs.</p>
+        <h4>When the house wins</h4>
+        <p>If every player has been removed at 0 sanity before anyone ends the game, the whole party loses.</p>
+        <div class="tip"><b>Allies of convenience</b><p>You work together for as long as it suits you both. Or you work along in public and quietly set up failure for the others. Wherever the design can create a moment that needs cooperation <em>and</em> leaves room for sabotage, it should.</p></div>
+        <div class="tip"><b>Failure is part of the game</b><p>A dead end, a sealed-off wing, a lost party: these are supposed to happen now and then. Think of a run like a game of solitaire. Sometimes it just doesn't come together, and there's always the next game.</p></div>
+        <div class="tip open"><b>Not yet designed</b><p>Personal Missions. Their mechanics, card content, how many there are, and how a rush to end the game plays out at the table are all still open. <em>Has Prayed</em> is a confirmed hook a mission can check.</p></div>
+      </section>
+
+      <section id="s-story">
+        <p class="kicker">Chapter II</p>
+        <h3>The house &amp; its guests</h3>
+        <p>Cornelius Ashworth was a wealthy, reclusive collector who spent the last decades of his life expanding, walling off and re-locking his own home, often overnight and without telling anyone what he'd changed. The house never had a complete floor plan, and it's never the same twice.</p>
+        <p>His will says his heir can only claim the estate by reaching a sealed room deep inside the house. It also names, by trade, three people who must go in with the heir. They aren't strangers hired for the occasion. They all knew him.</p>
+        <div class="cast" id="castmini"></div>
+        <h4>Locks and keys</h4>
+        <p>Cornelius was obsessive about privacy. Ordinary <strong>Keys</strong> open the everyday household locks, the routine cost of his paranoia. <strong>Golden Keys</strong> guard the rooms that held whatever he valued, or feared, most.</p>
+        <h4>The Last Vigil</h4>
+        <p>His sanctum needs two Golden Keys, turned by two different hands, because he trusted no one, not even his own blood, to open it alone. That's the shape of the whole game: nobody gets there without help. What's inside is deliberately left out of the rules. The table decides.</p>
+        <h4>Lost to the house</h4>
+        <p>A player at 0 sanity isn't simply out. They're lost to the house, however your group wants to picture that. Whatever they carried stays behind for someone else to find.</p>
+        <div class="tip"><b>Tone</b><p>Gothic Victorian, played straight: candlelight, aged wood, portraits, old-world dread. The nature of the haunting is never explained. The horror works better when the explanation stays just out of reach.</p></div>
+      </section>
+
+      <section id="s-components">
+        <p class="kicker">Chapter III</p>
+        <h3>Components</h3>
+        <div class="tw"><table>
+          <thead><tr><th>Component</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr><td class="k">Game board</td><td>The mansion's footprint. The Foyer and the Last Vigil are printed on it, surrounded by 42 empty room slots and 7 exterior slots, with printed garden paths and their travel markers. See <em>The Mansion</em> tab.</td></tr>
+            <tr><td class="k">Room tiles</td><td>Uniform 7&thinsp;&times;&thinsp;7&nbsp;cm squares. Each has 1&ndash;4 doors, at most one per side. Drawn blind, one deck each for the west wing, the east wing and the grounds.</td></tr>
+            <tr><td class="k">Investigation Deck</td><td>Searched in ordinary rooms. Items, Keys, Sovereigns, a healthy share of nothing, and a few traps.</td></tr>
+            <tr><td class="k">Rare Investigation Deck</td><td>Searched only in Golden-Key rooms. Better rewards for the harder way in.</td></tr>
+            <tr><td class="k">Item decks</td><td>Every item card, in two decks: the Common Item Deck (common and uncommon) and the Rare Item Deck (rare and very rare). Rooms draw from them and the Peddler sells from them.</td></tr>
+            <tr><td class="k">Night Event Deck</td><td>One card drawn each night. 24 cards in the first pass.</td></tr>
+            <tr><td class="k">Personal Missions</td><td>One secret objective per player. Not drafted yet.</td></tr>
+            <tr><td class="k">Player boards</td><td>Portrait, ability, Sanity track (0&ndash;10), Actions track, <em>Has Prayed</em> marker, Shielded counter.</td></tr>
+            <tr><td class="k">Game Die</td><td>A d6 with 3 Skull, 2 Shield and 1 Monster faces. Rolled by the Lockpick.</td></tr>
+            <tr><td class="k">Calendar</td><td>Day-of-week tracker, Monday to Sunday, advanced each night.</td></tr>
+            <tr><td class="k">Mansion Flags</td><td>Board-wide switches. The first one is <em>Water Restored</em>.</td></tr>
+            <tr><td class="k">The supply</td><td>A face-up bank beside the board: Sovereign cards, spare Keys, and the game's Golden Keys. Coin and keys are taken from here and spent back into it.</td></tr>
+            <tr><td class="k">Stash tray</td><td>One shared off-board mat holding whatever the party has stashed.</td></tr>
+            <tr><td class="k">Markers</td><td>&ldquo;Done&rdquo; tokens for used icons, and personal markers for claiming Rest icons.</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section id="s-setup">
+        <p class="kicker">Chapter IV</p>
+        <h3>Setup</h3>
+        <ol class="steps">
+          <li><b>Lay out the mansion</b>Place the board. The Foyer and the Last Vigil are already printed on it.</li>
+          <li><b>Shuffle the rooms</b>Shuffle the room tiles into one face-down deck.</li>
+          <li><b>Shuffle the decks</b>Shuffle the Investigation, Rare Investigation, Peddler and Night Event decks separately.</li>
+          <li><b>Set the house</b>Set the Calendar to <strong>Monday</strong> and the <em>Water Restored</em> flag to <strong>No</strong>.</li>
+          <li><b>Choose investigators</b>Each player takes a character and their player board. Set Sanity to 10, Actions to 6, <em>Has Prayed</em> to No and Shielded to 0.</li>
+          <li><b>Deal Personal Missions</b>Each player draws one at random and keeps it secret.</li>
+          <li><b>Enter the house</b>Place every investigator in the Foyer.</li>
+          <li><b>Roll for initiative</b>The winner goes first. Play proceeds clockwise.</li>
+        </ol>
+        <div class="tip open"><b>Not settled</b><p>Starting hands, starting Sovereigns, and how many copies of each room go into a deck.</p></div>
+      </section>
+
+      <section id="s-day">
+        <p class="kicker">Chapter V</p>
+        <h3>A day in the house</h3>
+        <p>Everyone shares one day/night clock. A day isn't one long turn per player. It's many short turns going round the table until everyone has used up their actions.</p>
+        <h4>Your turn</h4>
+        <p>You have <strong>6 actions a day</strong>. On your turn, take <strong>one action</strong>, then play passes clockwise. Moving is an action like any other, so every step through the house is a search you didn't make.</p>
+        <div class="tw"><table>
+          <thead><tr><th>Action</th><th>Cost</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr><td class="k">Move</td><td class="n">1</td><td>Go through an open door into an adjacent explored room, or step onto the next travel marker on a garden path.</td></tr>
+            <tr><td class="k">Reveal</td><td class="n">1</td><td>Draw a room tile and place it beyond an open door. If a door lines up, step in for free.</td></tr>
+            <tr><td class="k">Use an icon</td><td class="n">1</td><td>Investigate, Rest, Prayer, Stash, Peddler or Activate. Some cost extra; see Chapter VIII.</td></tr>
+          </tbody>
+        </table></div>
+        <h4>The end of your day</h4>
+        <ul>
+          <li>Once you're out of actions, you're <strong>done for the day</strong> and skipped for the rest of the rotation.</li>
+          <li>Using a <strong>Rest</strong> icon also ends your day, whatever you have left.</li>
+          <li>When no player has any actions left, the <strong>Night</strong> begins.</li>
+          <li>The starting player moves one seat clockwise each day, so nobody always acts last.</li>
+        </ul>
+        <div class="tip"><b>Bending the rule</b><p>Abilities, items and night events can add actions, take them away, or limit what you spend them on. The <em>Torn Blueprint</em> makes moving into a Passage room free, and that move doesn't end your turn. <em>Locked In</em> stops you moving at all for a day.</p></div>
+        <div class="tip open"><b>Draft number</b><p>6 actions a day is a placeholder until playtesting.</p></div>
+      </section>
+
+      <section id="s-explore">
+        <p class="kicker">Chapter VI</p>
+        <h3>Exploring the house</h3>
+        <h4>The Reveal action</h4>
+        <p>Stand in a room with an open door leading to an empty slot, and spend <strong>1 action</strong>. Draw the top room tile blind. Every room costs the same flat action to reveal, because every tile is the same size.</p>
+        <h4>Placing the room</h4>
+        <p>Place the tile in the slot beyond that door, <strong>in any rotation you like</strong>, whether or not any of its printed doors line up with yours. Nothing is ever discarded because it doesn't fit.</p>
+        <ul>
+          <li><strong>A door lines up:</strong> you may step into the new room as part of the same action. No Move action needed.</li>
+          <li><strong>No door lines up:</strong> the room still goes down. It's visible but not reachable from here yet, and may open up later from another side or through an ability.</li>
+          <li><strong>Doors facing the board's edge</strong> or an unmatched neighbour simply don't work.</li>
+        </ul>
+        <h4>Paths to the grounds</h4>
+        <p>The outside slots aren't next to the house. <strong>Garden paths</strong> are printed on the board to link them:</p>
+        <ul>
+          <li><strong>West and east lawns:</strong> from D7 and G7, the slots beside the Foyer, to the bottom outside slot on each side. That slot touches the one above it, and a short path leads on to the top outside slot on that side.</li>
+          <li><strong>The back path:</strong> from B1 across the back of the house to the outside slot above the Last Vigil, and on to I1.</li>
+        </ul>
+        <p>Each path carries <strong>travel markers</strong>. A marker is a space: stepping onto it is a Move action, and so is stepping off the path into the room at the far end. A lawn or a back path (2 markers) takes <strong>3 actions</strong> to cross; a short side path (1 marker) takes <strong>2</strong>. Each step ends your turn, so you'll stand out on the path while the others play, and maybe still be there when night falls.</p>
+        <p>A path works like a long doorway, so the rooms at both ends need a door facing it.</p>
+        <div class="tip open"><b>Open</b><p>Treating markers as ordinary steps makes the grounds expensive. If testing says it's too much, drop a marker per path. Also open: when you Reveal across a path, does the new tile go down at the far end while you stay put?</p></div>
+        <div class="tip"><b>A legible board</b><p>You can always see the whole grid, every empty slot and every existing door before you choose. Hidden information lives in the decks, never on the board.</p></div>
+        <div class="tip"><b>Imogen Vane</b><p>Draws two tiles on every Reveal, places one, and puts the other on the bottom of the deck.</p></div>
+        <div class="tip"><b>Wings</b><p>The house splits down the middle into a <strong>west wing</strong> and an <strong>east wing</strong> of 21 slots each, plus the grounds outside. Each area has its own room deck: when you Reveal, draw from the deck of the area the new slot belongs to.</p><p>The <strong>west</strong> is the family wing, with Chamber and Sacred rooms: rest and prayer. The <strong>east</strong> is the service wing, with Storage and Utility rooms: loot, water and power. <strong>Passage</strong> connectors and <strong>Commerce</strong> stalls go into both, so every wing has corridors and somewhere to trade. That makes the two decks the same size, and leaving the Foyer a choice between recovering and gathering.</p></div>
+        <div class="tip open"><b>Open</b><p>How many copies of each room go into each deck. See the <em>Rooms</em> tab.</p></div>
+      </section>
+
+      <section id="s-locks">
+        <p class="kicker">Chapter VII</p>
+        <h3>Doors, locks &amp; keys</h3>
+        <p>A room tile's bottom line shows what it takes to get in. Rooms without a requirement are free to walk into.</p>
+        <div class="tw"><table>
+          <thead><tr><th>Requirement</th><th>Opened by</th><th>Found</th></tr></thead>
+          <tbody>
+            <tr><td class="k"><svg class="ico"><use href="#i-key"/></svg>Key</td><td>A Key card (used up), a Master Key (reusable), a lucky Lockpick roll, or one of Silas Crane's three free opens.</td><td>Investigation Deck; reliably at a Peddler.</td></tr>
+            <tr><td class="k"><svg class="ico" style="color:var(--q-gold)"><use href="#i-key"/></svg>Golden Key</td><td>One Golden Key. The whole tile is gold-locked, every door.</td><td>The Rare Item Deck, some Night Events, and rarely, at a steep price, a Peddler.</td></tr>
+            <tr><td class="k"><svg class="ico" style="color:var(--q-water)"><use href="#i-water"/></svg>Water</td><td>The mansion flag <em>Water Restored</em>, set once in the Boiler Room.</td><td>See <em>The Mansion remembers</em>.</td></tr>
+            <tr><td class="k"><svg class="ico" style="color:var(--q-lamp)"><use href="#i-ped"/></svg>Lantern</td><td>A Lantern in someone's hand. Some rooms are pitch dark and nobody walks into one without a light. The Lantern is never used up, so it opens every dark room its carrier reaches. A room can ask for two things at once: the Coal Cellar is locked <em>and</em> dark, so it wants a Key and a Lantern.</td><td>Investigation Deck, and the Peddler's common stock.</td></tr>
+          </tbody>
+        </table></div>
+        <h4>Opening a lock</h4>
+        <p>A locked room is drawn, placed and turned like any other. The lock only matters when somebody wants to walk in.</p>
+        <ol class="steps">
+          <li><b>Walk in with the key</b>Spend the key as part of the Move action that takes you through the door. Opening costs no extra action; what it costs is the key.</li>
+          <li><b>The key is gone</b>Discard the Key card. A Golden Key opens the whole tile at once, since every door on a gold room is locked.</li>
+          <li><b>The door stays open</b>From that moment the room is open to everyone, for the rest of the game. Leave the spent key on the tile so the table can see which doors have been paid for.</li>
+        </ol>
+        <p>Nobody is ever forced to open a room. A locked room nobody opens is simply a wall, and walls are part of the house. The <em>Master Key</em> is the exception to the second step: it opens a Key-locked room and stays in your hand afterwards.</p>
+        <div class="tip"><b>One pool, two uses</b><p>The same Golden Keys open the optional gold rooms <strong>and</strong> the Last Vigil. Spend a hard-won key on a tempting side room now, or save it for the ending you know is coming?</p></div>
+        <h4>Opening the Last Vigil</h4>
+        <p>The Vigil has <strong>three doors</strong>: one on its top edge, facing the grounds at the back of the house, and one on each side, facing <strong>D2</strong> in the west wing and <strong>G2</strong> in the east wing. None faces the Foyer. To open it, <strong>two different players each spend a Golden Key at two different doors</strong>. The third door is leeway: if the room drawn beside one door has no door facing the Vigil, there are still two ways in.</p>
+        <p><strong>Both keys turn at the same time.</strong> Nobody unlocks one door and waits: the two players have to be at their doors together and commit together. Keys can be traded, so it doesn't matter who found them, only who is standing at the doors when it counts.</p>
+        <p>That makes the Vigil the game's sharpest moment of trust. Your partner can walk all the way to their door and then decide it doesn't suit them yet.</p>
+        <div class="tip open"><b>The procedure I want to test</b><p>On your turn, standing at a Vigil door with a Golden Key, name another player standing at a different Vigil door. If they agree, you both spend 1 action and a Golden Key, and the Vigil opens. This counts as their action for the rotation. If they refuse, nothing is spent and your turn ends.</p></div>
+        <div class="tip"><b>Two by default</b><p>Opening the Vigil takes two players. A later item or mechanic may let one player do it alone, but that should always be rare or costly, never a reliable plan.</p></div>
+        <h4>Target mix</h4>
+        <p>Across the whole house: roughly half of all rooms Key-locked, 10&ndash;15% gold-locked, the rest open. Gold rooms always carry above-average Investigate icons to make the key worth spending. Commerce rooms are never locked. Merchants want customers, not gatekeeping.</p>
+        <div class="tip open"><b>Open</b><p>Whether anything can lock a door again once it has been opened. A night event that seals a paid-for door would sting in the right way, but nothing does it yet.</p></div>
+      </section>
+
+      <section id="s-icons">
+        <p class="kicker">Chapter VIII</p>
+        <h3>Room icons</h3>
+        <p>Rooms print action icons. Triggering one costs 1 action, but each type behaves differently afterwards.</p>
+        <div class="tw"><table>
+          <thead><tr><th>Icon</th><th>Cost</th><th>Afterwards</th><th>Effect</th></tr></thead>
+          <tbody>
+            <tr><td class="k"><svg class="ico"><use href="#i-inv"/></svg>Investigate</td><td class="n">1 action</td><td>Used up for the whole game. Mark it done.</td><td>Draw 1 from the Investigation Deck, or the Rare deck in a Golden-Key room.</td></tr>
+            <tr><td class="k"><svg class="ico"><use href="#i-rest"/></svg>Rest</td><td class="n">1 action<br>+ ends your day</td><td>One player per icon per night. Claim it with your marker; markers clear at dawn.</td><td>You skip tonight's passive sanity drain.</td></tr>
+            <tr><td class="k"><svg class="ico"><use href="#i-pray"/></svg>Prayer</td><td class="n">1 action<br>+ 1 Sovereign</td><td>Each icon is used up once triggered.</td><td>Gain 1 Shielded charge.</td></tr>
+            <tr><td class="k"><svg class="ico"><use href="#i-stash"/></svg>Stash</td><td class="n">1 action</td><td>No limit. Anyone, any day.</td><td>Move any cards between your hand and the shared Stash.</td></tr>
+            <tr><td class="k"><svg class="ico"><use href="#i-ped"/></svg>Peddler</td><td class="n">1 action</td><td>Reusable. Stock runs down as it's bought.</td><td>Reveal the room's stock: so many common cards, and at the better stalls, rare ones too.</td></tr>
+            <tr><td class="k"><svg class="ico"><use href="#i-act"/></svg>Activate</td><td class="n">1 action</td><td>Every tile prints its own limit: once, twice, or no limit.</td><td>Printed on the tile. Each one is different.</td></tr>
+            <tr><td class="k"><svg class="ico"><use href="#i-boon"/></svg>Entry boon</td><td class="n">free</td><td>Every time you enter.</td><td>A passive printed on the tile. The Kitchen restores 2 actions once the water is on, so walking in pays for itself.</td></tr>
+          </tbody>
+        </table></div>
+        <h4>Investigate</h4>
+        <p>Around a quarter of the Investigation Deck is &ldquo;found nothing&rdquo;, so searching is always a gamble. The traps live here too, not on a separate hazard icon, because nobody would willingly trigger a hazard. A few great pulls are mixed in for the thrill of it.</p>
+        <h4>Rest</h4>
+        <p>Resting late in the day, when you have little left to spend, is cheap. Resting early is a real sacrifice. The Foyer has 4 Rest icons, enough for the whole party. Rest elsewhere is scarcer, so a crowded party has to decide who sleeps.</p>
+        <p>The <strong>Master Suite</strong> is the only room where resting gains ground: +2 sanity on top of skipping the drain. <strong>Dr. Eleanor Voss</strong> takes 1 sanity from any Rest icon in the house, so a night in a bed leaves her a little better than she was. It costs her the whole day to do it.</p>
+        <h4>Prayer</h4>
+        <p>Each <strong>Shielded</strong> charge blocks exactly one sanity loss from a Night Event card, Global or Targeted. Charges stack if you pray more than once before taking a hit. The <strong>Chapel</strong> gives 2 charges for the same donation, and the Bell Tower gives everyone 2 at once.</p>
+        <p><strong>Five is the ceiling.</strong> The track on your player board is all the shelter there is. Charges beyond the fifth are simply not gained, however they were earned, so ring the bell when the party has room for it.</p>
+        <p>The first time you pray, set <em>Has Prayed</em> to Yes on your player board. It never goes back, even after your charges are gone.</p>
+        <div class="tip"><b>Rest and Prayer don't overlap</b><p>Rest holds the line against the nightly drain. Prayer dodges whatever the house throws at you next.</p></div>
+        <h4>Stash</h4>
+        <p>Every Stash icon in the house reaches the <strong>same</strong> shared pool: deposit at one, collect at any other. Items, Sovereigns and keys all count. There's no mundane explanation. The house just seems to connect these spots. The Foyer always has one.</p>
+        <h4>Activate</h4>
+        <p>For rooms that change other rooms or the house itself. The Boiler Room and the Generator Room switch the water and the power on, and off again. The Reliquary trades a Sovereign for one card drawn at random from the item discards. Outside, the Greenhouse gives 1 sanity a day, the Wishing Well sells you an item card for a Sovereign, and the Mausoleum lets one player keep vigil against the night (see Chapter IX).</p>
+        <p><strong>Every Activate tile prints how often it works.</strong> Most say <em>no limit</em>, a few say <em>once</em> or <em>twice</em>, and a couple add a pace: the Greenhouse gives its sanity once a day, and only one keeper can hold the Mausoleum vigil each night. An action is the cost either way, so a room with no limit is only as repeatable as the party can afford.</p>
+        <p>The <strong>Turning Hall</strong> is the one room that rewrites the map. Spend 1 action there to rotate the tile a quarter turn <strong>clockwise</strong>: its two doors swing to face different neighbours, opening a way that wasn't there and closing one that was. It only ever turns one way, so reaching a particular arrangement can cost two or three actions rather than one. Anyone standing in the room stays in it; only the doors move. It never runs out, so the corridor can be turned as often as anyone is willing to pay for it, by whoever gets there first.</p>
+        <h4>Tool rooms</h4>
+        <p>Every room type has one room whose Activate icon needs a <strong>specific item</strong> from the Investigation Deck. The Wrench and the Boiler Room came first, and the rest follow it: a Lantern or a single-use Candle for the dark rooms, a Fuse for the Generator Room, Laudanum for the Sickroom, a Bell Rope for the Bell Tower, a Ledger for the Counting House, a Shovel for The Rose Bed, Coal for the Coal Cellar. The Lantern is different again: it is a light rather than a key to one door, so it opens any dark room, and it is never used up. Every other tool is spent on use. What you dig up is free, which is why it is one card rather than an armful.</p>
+        <p>The <strong>Lumber Room</strong> and the <strong>Coal Cellar</strong> go a step further: both are pitch dark, so without a Lantern you cannot even walk in. Drawn without one, either is a dead end on the board, and with two doors each can wall off whatever lies past it. That is the risk of a house that hands out its rooms at random.</p>
+        <p>Most tool rooms carry no limit on their Activate icon, because the tool is the limit: a Fuse, a Bell Rope, a Shovel or a phial of Laudanum is spent the moment it is used, so the room waits for the next one to be found. The Lantern is the exception. It is never used up, so it opens the Lumber Room and the Coal Cellar for as long as its holder keeps it, which is why the Lumber Room stops after two searches.</p>
+        <p>Both the tool and its room have to turn up in the same game, and often they won't. That's the point: the house is different every time. Three things keep it from being a dead draw:</p>
+        <ul>
+          <li><strong>Tools sell.</strong> A tool whose room never appears is still worth Sovereigns at a Peddler.</li>
+          <li><strong>The Peddler stocks tools.</strong> Find the room first and you can go shopping for the key to it, which turns a lucky match into a plan.</li>
+          <li><strong>Nothing essential is behind one.</strong> The ending only ever needs Golden Keys.</li>
+        </ul>
+        <p>The <strong>Crowbar</strong> is the exception that proves the pattern: it isn't tied to a room at all. Discard it in <em>any</em> Passage room to open a new door on any side of that tile, which is how a sealed-off wing gets rescued.</p>
+      </section>
+
+      <section id="s-night">
+        <p class="kicker">Chapter IX</p>
+        <h3>Night</h3>
+        <p>When nobody has any actions left, the house takes its turn.</p>
+        <ol class="steps">
+          <li><b>Draw a Night Event</b>Draw one card and resolve it for the party as written.</li>
+          <li><b>Passive drain</b>Every player loses 1 sanity, except players who Rested today.</li>
+          <li><b>Advance the Calendar</b>Move the day tracker forward one day.</li>
+          <li><b>Dawn</b>Rest markers clear, unbought Peddler stock goes to the bottom of its deck, and a new day begins with the next starting player.</li>
+        </ol>
+        <h4>Who the house means</h4>
+        <ul>
+          <li><strong>Ties are not broken.</strong> If two players share the lowest sanity, or the fullest hand, the card hits both.</li>
+          <li><strong>Room types</strong> mean the tile you are standing on: Passage, Storage, Utility, Chamber, Sacred, Commerce or Exterior.</li>
+          <li><strong>Out on a path</strong> you are in no room at all. A card that hunts by room type walks straight past you, which is one quiet argument for being caught outside at nightfall.</li>
+          <li><strong>Where a card says choose</strong> and nobody is named, the choice belongs to the player who starts the coming day. The party may say whatever it likes about it.</li>
+        </ul>
+        <h4>Surviving the event</h4>
+        <ul>
+          <li><strong>Shielded</strong> charges each cancel one sanity loss from the card.</li>
+          <li>A <strong>Mourning Brooch</strong>, or any other counter-item, does exactly what its card says, on <em>any</em> event. No card in the deck is immune.</li>
+          <li>Cards that change shared state (sealing a door, disabling an icon type, omens) can't be countered.</li>
+        </ul>
+        <h4>Keeping vigil at the Mausoleum</h4>
+        <p>The one room that can hold the house back, if someone is willing to stand out there and choose.</p>
+        <ol class="steps">
+          <li><b>Keep vigil</b>Standing in the Mausoleum, spend 1 action on its Activate icon. It does not end your day. Only one player can keep vigil each night.</li>
+          <li><b>Draw two</b>At night, the keeper draws <strong>2</strong> Night Event cards and reads both, alone.</li>
+          <li><b>Choose one, or bury both</b>Reveal one of the two and resolve it as normal, discarding the other face down. Or bury both, unresolved, and lose <strong>2 sanity</strong>. Shielded charges and counter-items can't pay that price.</li>
+        </ol>
+        <div class="tip"><b>What it costs</b><p>An action every day you want it, spent in a gold-locked room out at the edge of the grounds, a long way from anything else you might be doing. Choosing between the two cards is the cheap use. Burying both costs 2 sanity on top of the nightly drain, so a keeper who shuts the house out night after night is lost within a few nights.</p></div>
+        <div class="tip"><b>Only the keeper knows</b><p>The table sees the card that resolves, never the one discarded beside it. The keeper can wave through <em>Whispers in the Wall</em> because it lands on a rival and quietly drop the card that would have cost them, and nobody can check. Two cards means the choice is always theirs to spin.</p></div>
+        <p>The deck mixes <strong>seven kinds</strong> of card, so a draw is never simply &ldquo;lose sanity or don't&rdquo;. When it runs out, shuffle the discards into a fresh deck.</p>
+        <div class="tip"><b>No monster on the board</b><p>The haunting arrives entirely through the Night Event Deck. Nothing roams the halls, so there's no monster to move or track.</p></div>
+        <div class="tip open"><b>Order of steps</b><p>The order above is what I would run first. It may change once the night phase gets played a few times.</p></div>
+      </section>
+
+      <section id="s-sanity">
+        <p class="kicker">Chapter X</p>
+        <h3>Sanity</h3>
+        <p>Everyone starts at <strong>10</strong>, which is also the maximum. You lose sanity to the passive drain every night, to Night Events, and to bad luck while exploring.</p>
+        <h4>At 0 sanity</h4>
+        <p>You're removed from the game, lost to the house. Everything you carried drops in the room where you stood, and any other player can pick it up later.</p>
+        <div class="tip open"><b>Draft scale</b><p>A simple 0&ndash;10 track for now. It may move to 0&ndash;20 if event design needs finer steps. The drain stays a flat &minus;1 with no escalation for now.</p></div>
+      </section>
+
+      <section id="s-coin">
+        <p class="kicker">Chapter XI</p>
+        <h3>Sovereigns, the Peddler &amp; the calendar</h3>
+        <p><strong>Sovereigns</strong> are the house's currency. They come into play as <em>Sovereign</em> cards in the Investigation Deck, and they go out through Peddlers, Prayers, the Wishing Well and the Reliquary.</p>
+        <h4>The supply</h4>
+        <p>Sovereign cards are not shuffled into anything. They sit face up beside the board as a bank, along with the spare Keys and the Golden Keys. Whenever the house pays you, whether by selling to a Peddler, digging up coin, or a night that turns generous, take the cards from the supply. Whenever you spend them, they go straight back.</p>
+        <p><strong>Golden Keys are the exception.</strong> The supply holds a fixed number of them for the whole game, and a Golden Key that opens a door is gone for good rather than returned. When the supply is empty, the house has no more to give.</p>
+        <div class="tip open"><b>Not settled</b><p>How many Golden Keys the supply starts with. Two are needed to end the game, and every gold room wants one, so this number decides more than any other in the box.</p></div>
+        <h4>Visiting a Peddler</h4>
+        <ol class="steps">
+          <li><b>Open the stall</b>One player spends 1 action. Draw the room's stock face up: the common cards first, then any rare ones. Both decks carry tools as well as keys and goods.</li>
+          <li><b>Trade</b>Anyone in the room, not only the player who opened it, may buy revealed cards at their printed price or sell any item for its value. No further actions needed.</li>
+          <li><b>Close</b>Anything left unbought goes to the bottom of the deck it came from at the end of the day.</li>
+        </ol>
+        <h4>What each stall carries</h4>
+        <p>The Peddler travels with two cases, the same two decks the house itself deals from. The <strong>Common Item Deck</strong>, holding common and uncommon goods, comes out everywhere. The <strong>Rare Item Deck</strong>, holding rare and very rare, is only opened at the bigger stalls, which is the real reason to wait for the Bazar rather than buy at the first table you find.</p>
+        <p>The Peddler is a recurring, unsettling traveller who somehow always has a stall set up somewhere in the house. <strong>Reginald Ashworth</strong> pays 1 less for everything (minimum 1). The <em>Appraiser Loupe</em> adds 1 to every sale, and <em>Peddler's Favor</em> swaps one revealed card.</p>
+        <h4>Opening days</h4>
+        <p>The Calendar starts on Monday and advances every night. Each Commerce room only trades on its printed days. The bigger the stall, the narrower the window, and everything is shut on Sunday. On a closed day the Peddler icon simply doesn't work.</p>
+        <div class="tw"><table id="caltable"></table></div>
+        <div class="tip open"><b>Not yet drafted</b><p>Prices, and how many copies of each card sit in the two Peddler decks. The Calendar is also reserved as a hook for Night Events (&ldquo;if today is Friday&hellip;&rdquo;), but no such card exists yet.</p></div>
+      </section>
+
+      <section id="s-share">
+        <p class="kicker">Chapter XII</p>
+        <h3>Trading &amp; the Mansion remembers</h3>
+        <h4>Trading</h4>
+        <p>Players in the same room may freely trade the item cards in their hands. To get something to a teammate across the house, use the Stash.</p>
+        <p>Walking over to someone costs actions you could have spent searching, so &ldquo;I'll come to you&rdquo; is a real favour, and one you can quietly fail to deliver.</p>
+        <h4>Mansion Flags</h4>
+        <p>Board-wide switches that stay on for everyone once set. Nobody earns them individually, and they're tracked on the board, not on player boards.</p>
+        <div class="tw"><table>
+          <thead><tr><th>Flag</th><th>How it's set</th><th>What wakes up</th></tr></thead>
+          <tbody>
+            <tr><td class="k"><svg class="ico" style="color:var(--q-water)"><use href="#i-water"/></svg>Water Restored</td><td>Discard a <em>Wrench</em> at the Boiler Room, a Golden Key room. The same icon shuts the water off again. Coal in the Coal Cellar switches it on too.</td><td>The Kitchen's entry boon, the Bathroom's Rest icon and the Wishing Well out in the grounds.</td></tr>
+            <tr><td class="k"><svg class="ico"><use href="#i-act"/></svg>Power Restored</td><td>Discard a <em>Fuse</em> at the Generator Room, a Golden Key room, which prints a second Activate icon that kills the power for nothing but the action. Coal in the Coal Cellar switches it on too.</td><td>The lights. While the power is on, every player gets <strong>+1 action a day</strong>.</td></tr>
+          </tbody>
+        </table></div>
+        <div class="tip"><b>A template</b><p>Water is the first infrastructure line: a fixer room, a consumable item and a family of rooms that wake up. <em>Power Restored</em> is the second, built the same way, and an electrical wing could hang off it later.</p></div>
+        <div class="tip"><b>Flags run both ways</b><p>Neither machine locks on. Anyone who reaches the Boiler Room or the Generator Room can shut the house back down, and it is the loudest sabotage in the game: everyone sees the lights go out, and nobody sees who did it. Closing the valves takes a Wrench either way, but killing the power costs nothing at all, because the fuse has already been burned.</p></div>
+        <h4>The Coal Cellar</h4>
+        <p>The cellar is the other way in. Discard a lump of <strong>Coal</strong> there and <em>both</em> machines come on at once, water and power together, whether or not either has ever run. No Wrench, no Fuse, no Golden Key room to get into first.</p>
+        <p>What it costs instead is three things at the same time: a Key and a Lantern to get through the door, and the Coal itself. Coal is common, so the Peddler sells it, but the door is the hardest in the house that isn't gold.</p>
+        <p>It only ever switches the house on. Shutting anything down still happens at the machine, which keeps sabotage where it belongs and gives the party one clean way to undo it.</p>
+        <div class="tip open"><b>The number to watch</b><p>+1 action a day for everyone is the biggest swing in the game so far. It may want to be smaller, for example lights making every Rest icon also give +1 sanity.</p></div>
+      </section>
+
+      <section id="s-open">
+        <p class="kicker">Chapter XIII</p>
+        <h3>Open questions</h3>
+        <h4>Still to design</h4>
+        <ul class="qlist">
+          <li><strong>Personal Missions</strong>Mechanics, card content, number of cards, and how a rush to end the game resolves at the table.</li>
+          <li><strong>The board&rsquo;s wings</strong>The split is set: west (family) and east (service), 21 slots each, plus the grounds, with lines assigned to each. Still open: copy counts per deck, the west's smaller pool (the Leisure line could fill it), and how 2&ndash;3 and 3&ndash;4 player counts scale on the new shape.</li>
+          <li><strong>The exterior</strong>Paths and the four rooms are set, and the two 3-door rooms can turn a corner or pass through. Still open: how many copies of each go into the grounds deck for its 6&ndash;7 slots, and whether the slot above the Vigil is drawn (a 3-door room can serve it, since it needs exactly left, right and bottom) or printed.</li>
+          <li><strong>The last survivor</strong>With only one investigator left, the Vigil can't be opened, so by default the house wins. A rare item or mechanic may one day allow a solo opening.</li>
+          <li><strong>Turning the keys together</strong>&ldquo;At the same time&rdquo; is decided. The exact procedure isn't: see Chapter VII.</li>
+          <li><strong>Sabotage</strong>Secret ways to set others up for failure while cooperating in public. This will grow alongside Personal Missions.</li>
+          <li><strong>The room deck</strong>42 interior slots against 30 interior room designs, split 15 west and 20 east: duplicates, more lines, or both? A Leisure line (Ballroom, Billiard Room, Dining Hall) is a candidate for the west.</li>
+          <li><strong>Peddler Deck</strong>The split into common and rare stock is set. Prices and copy counts are not.</li>
+          <li><strong>Negative rooms</strong>Parked. They'd shuffle into the normal deck. Candidate effects: a cost on entry, a nightly drain, a trap-only search pool, or a pure dead end.</li>
+          <li><strong>Item cards and the Investigation Deck</strong>Item cards live in a common deck and a rare one, which the Peddler sells from and the Lumber Room draws from. How those two decks feed the Investigation Deck, which also holds traps and empty searches, needs one clean pass.</li>
+          <li><strong>The Mausoleum's limit</strong>No limit, one keeper a night, is what is written. A hard cap of two or three vigils a game may be needed if a keeper proves too good at holding the night off.</li>
+          <li><strong>The Wishing Well outside</strong>It sits in the grounds now but still waits on the house's water. A well of its own might not need the mansion's plumbing at all.</li>
+          <li><strong>Tool rooms</strong>Seven rooms now wait on a specific item. How common tools are in the Investigation Deck and the Peddler Deck decides how often that pairing ever happens.</li>
+          <li><strong>Numeric tuning</strong>Sanity, drain, actions per day, the Generator Room's +1 action, deck mixes, key and Sovereign drop rates. All placeholders.</li>
+          <li><strong>Lock mix</strong>The target is about half the house Key-locked. The 36 rooms drafted so far are 6 Key, 6 Golden, 4 Water and 2 Lantern, with the Coal Cellar needing both a Key and a Lantern, and 19 open.</li>
+        </ul>
+        <h4>Where the printed tiles are out of date</h4>
+        <p>Some tiles were printed before these rules settled. Where a tile and this rulebook disagree, <strong>the rulebook is current</strong>, and the tile art is on my list to redo.</p>
+        <ul class="qlist">
+          <li><strong>Trading Post opening days</strong>The tile prints Tuesday to Friday. An earlier version had Mon / Wed / Fri / Sat. The tile is right.</li>
+          <li><strong>Commerce and Pantry</strong>Commerce is its own line now, in green, and the Pantry belongs to Storage. Both were filed under Utility earlier on.</li>
+          <li><strong>Passage searches</strong>Every connector prints 1&times; Investigate. The first versions had none.</li>
+          <li><strong>Confessional</strong>One door, not the two it had in the first draft.</li>
+          <li><strong>Wishing Well</strong>The tile wording stands: 1 action and 1 Sovereign for 1 item card drawn from the Investigation Deck.</li>
+          <li><strong>Fixed rooms</strong>The Foyer and the Vigil are 2&thinsp;&times;&thinsp;2 on the board, not the single pair of cells they started as.</li>
+          <li><strong>Vigil door count</strong>The Vigil has three doors. Its printed text still reads &ldquo;2 Doors&rdquo; and needs redoing.</li>
+          <li><strong>Names</strong>The board still says &ldquo;Vigil Room&rdquo;, and before that &ldquo;End Room&rdquo;. The room is <em>the Last Vigil</em>. The rare key is a <em>Golden Key</em> everywhere, never a Gold Key.</li>
+          <li><strong>Master Key</strong>It is reusable and never used up, unlike the one-use Key. Older copies say &ldquo;while drafting a room&rdquo;; keys are spent on the way in now, not when the tile is placed.</li>
+        </ul>
+      </section>
+
+    </div>
+  </div>
+  <footer>Ashworth Manor is in development. Nothing here is final: rooms, items and events get added as the game needs them, and every number is a first draft waiting on the table to correct it.</footer>
+</div>
+
+<!-- ============ MANSION ============ -->
+<div class="view" id="v-mansion" role="tabpanel" aria-labelledby="t-mansion" hidden>
+  <header>
+    <p class="eyebrow">Game board &middot; in development &middot; 7&thinsp;cm cells</p>
+    <h1>The Mansion</h1>
+    <p class="lede">The house replaces the old three-rectangle board with a <strong>mansion silhouette</strong>: two wings around a central spine, the Foyer printed at the front door and the Last Vigil printed at the heart. <strong>Garden paths</strong> lead out to the grounds, and one reaches the Vigil's back door.</p>
+    <div class="stats">
+      <div class="stat"><b>21 + 21</b><span>West + east slots</span></div>
+      <div class="stat"><b>2</b><span>Printed rooms</span></div>
+      <div class="stat"><b>7</b><span>Exterior slots</span></div>
+      <div class="stat"><b>6</b><span>Garden paths</span></div>
+      <div class="stat"><b>10</b><span>Travel markers</span></div>
+      <div class="stat"><b>3</b><span>Vigil doors</span></div>
+    </div>
+  </header>
+
+  <section>
+    <h2>Layout</h2>
+    <p class="sub">Hover a slot to name it. Columns run A&ndash;J from the left and rows 1&ndash;7 from the top, so the Foyer sits at the bottom of the spine.</p>
+    <div class="board"><div class="boardscroll"><svg id="mansion" viewBox="-80 -20 1160 740" role="img" aria-label="Ashworth Manor board layout"></svg></div></div>
+    <div class="controls">
+      <button class="toggle" id="tLabels" aria-pressed="false">Slot labels</button>
+      <span class="readout" id="readout">Hover a slot</span>
+    </div>
+    <div class="legend">
+      <div class="lg"><i style="--sw:var(--ink-dim);--bg:#262027"></i><span><span class="nm">Foyer <span class="ct">2&times;2</span></span><span class="fx">Printed start. 6 doors, 1 Stash, 4 Rest. No searches, no surprises.</span></span></div>
+      <div class="lg"><i style="--sw:var(--q-gold);--bg:#262027"></i><span><span class="nm">The Last Vigil <span class="ct">2&times;2</span></span><span class="fx">Printed end room. 3 doors, one to the grounds. Two players, a Golden Key each. Activate ends the game.</span></span></div>
+      <div class="lg"><i style="--sw:var(--w-west);--bg:#1d181e"></i><span><span class="nm">West wing <span class="ct">21</span></span><span class="fx">The family wing. Columns A&ndash;D and the spine cells E4, E5. Holds the Vigil's D2 door and the west lawn.</span></span></div>
+      <div class="lg"><i style="--sw:var(--w-east);--bg:#1d181e"></i><span><span class="nm">East wing <span class="ct">21</span></span><span class="fx">The service wing. Columns G&ndash;J and the spine cells F4, F5. Holds the Vigil's G2 door and the east lawn.</span></span></div>
+      <div class="lg"><i class="dash" style="--sw:var(--r-exterior)"></i><span><span class="nm">Exterior slot <span class="ct">7</span></span><span class="fx">The grounds, reached by garden paths. Takes Exterior rooms: Garden Shed, Greenhouse, Carriage House, Mausoleum.</span></span></div>
+      <div class="lg"><i style="--sw:#0c0a0d;--bg:var(--n-tempo);border-radius:4px"></i><span><span class="nm">Travel marker <span class="ct">10</span></span><span class="fx">A space on a garden path. Stepping onto one is a Move action.</span></span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What the layout settles</h2>
+    <div class="notes">
+      <div class="note"><h3>Two mirrored wings</h3><p>The house splits down its spine into a <em>west wing</em> and an <em>east wing</em> of 21 slots each, with the grounds as a third area. Each wing gets 3 of the Foyer's doors, one of the Vigil's house doors, one lawn and one end of the back path. Neither direction from the start is the right one. A wing's character comes from what's in its deck: the west is the family wing (Chamber, Sacred), the east the service wing (Storage, Utility), and Passage and Commerce rooms are dealt to both.</p></div>
+      <div class="note"><h3>One tile size</h3><p>Small, Medium and Large rooms are gone. Every drawn room fills exactly one slot, so there's no footprint maths and only one sorting axis to plan for: <em>wing</em>.</p></div>
+      <div class="note"><h3>Printed rooms break the rules</h3><p>The Foyer and the Last Vigil aren't drawn, so they aren't bound by the 1&ndash;4-doors, one-per-side cap. The Foyer carries six, two on each open side. The Vigil carries three, so one bad draw beside it can't shut the ending off.</p></div>
+      <div class="note"><h3>Garden paths</h3><p>Six printed paths carry the 10 travel markers. <em>Every marker is a step, and every step is an action</em>: a lawn costs 3, a side path 2. The grounds are a real detour, not a free shortcut. The lawns start beside the Foyer, so the garden opens early. The back path is the long way round to the Vigil's third door.</p></div>
+      <div class="note"><h3>Close quarters</h3><p>The start and the end are no longer at opposite ends of a rectangle: two rows of slots separate the Foyer from the Vigil. That's fine now that arriving no longer wins by itself. The keys are the real distance.</p></div>
+      <div class="note"><h3>Board edges</h3><p>A door that ends up flush against the outer edge of the house doesn't work, exactly like a door facing an unmatched neighbour. The irregular silhouette makes that edge long.</p></div>
+      <div class="note open"><h3>Deck versus slots</h3><p>42 interior slots, and 30 interior rooms drawn so far. Filling the house needs duplicates (the Passage connectors are the natural ones), more lines, or both. Not every slot has to fill, though: a sealed-off wing is part of the game.</p></div>
+      <div class="note open"><h3>Still open</h3><p>How many copies go into each wing's deck, whether the slot above the Vigil is drawn or printed, how many copies of each outside room there are, and how the board shrinks for fewer players.</p></div>
+    </div>
+  </section>
+  <footer>Slot names (A&ndash;J across, 1&ndash;7 down) are only used here, to talk about the board. They are not printed on it.</footer>
+</div>
+
+<!-- ============ ROOMS ============ -->
+<div class="view" id="v-rooms" role="tabpanel" aria-labelledby="t-rooms" hidden>
+  <header>
+    <p class="eyebrow">Room tiles &middot; 7 &times; 7 cm &middot; six lines inside, one outside</p>
+    <h1>Rooms</h1>
+    <p class="lede">Each line is a family that <strong>escalates one idea</strong>: more doors, more rest, more prayer, a bigger stall. The top room usually wants a Golden Key, and Commerce is the exception because it never locks. Every line also has one <strong>tool room</strong>, which needs a particular item from the deck rather than a key.</p>
+    <div class="stats" id="roomstats"></div>
+  </header>
+
+  <section>
+    <h2>Wing decks</h2>
+    <p class="sub">Each area of the board draws from its own deck. The west is the <em>family wing</em> and the east the <em>service wing</em>. Passage and Commerce go into both, because every wing needs corridors and somewhere to spend a Sovereign, which leaves the two decks the same size.</p>
+    <div class="decks" id="decks"></div>
+    <div class="tip open"><b>Open</b><p>Copy counts per deck. Each wing now holds 20 designs for 21 slots, so the decks are nearly all unique; the parked Leisure line (Ballroom, Billiard Room, Dining Hall) would give the west more to draw from as lines grow towards eight rooms each.</p></div>
+  </section>
+
+  <section>
+    <h2>The seven lines</h2>
+    <p class="sub">Doors are drawn on the tile as they're printed, in the tile's own orientation. You rotate the tile when you place it. Use the filters to highlight rooms by what they need or what they offer.</p>
+    <div class="filters" id="wingbar"><span class="lbl">Wing</span></div>
+    <div class="filters" id="reqbar"><span class="lbl">Needs</span></div>
+    <div class="filters" id="iconbar"><span class="lbl">Offers</span></div>
+    <div id="lines" style="margin-top:18px"></div>
+  </section>
+
+  <section>
+    <h2>Candidates outside the lines</h2>
+    <p class="sub">Twenty rooms sketched early on that haven't joined a line yet. Nothing here is cut, and nothing is settled. The four with more than four doors were drawn before the one-door-per-side cap.</p>
+    <div class="tablewrap"><table id="cand"></table></div>
+  </section>
+  <footer>Every line is still open to change. The Exterior rooms are the newest and haven't been made into tiles yet.</footer>
+</div>
+
+<!-- ============ ITEMS ============ -->
+<div class="view" id="v-items" role="tabpanel" aria-labelledby="t-items" hidden>
+  <header>
+    <p class="eyebrow">Item cards &middot; first batch &middot; found in the Investigation Deck</p>
+    <h1>Items</h1>
+    <p class="lede">Held in hand, traded in the same room, passed through the Stash. Eleven of them are <strong>tools</strong>, each the key to one room somewhere in the house, except the Crowbar, the Lantern and the Candle, which work on a whole room type. Every item sits in one of <strong>four tiers</strong>, and the tier decides both which deck it lives in and what it is worth. The coins along the bottom are what the <strong>Peddler pays</strong> when you sell the item, which is what a tool is worth when its room never turns up.</p>
+    <div class="stats">
+      <div class="stat"><b>32</b><span>Items</span></div>
+      <div class="stat"><b>11</b><span>Tools</span></div>
+      <div class="stat" id="st-common"></div>
+      <div class="stat" id="st-uncommon"></div>
+      <div class="stat" id="st-rare"></div>
+      <div class="stat" id="st-vrare"></div>
+    </div>
+  </header>
+  <section>
+    <h2>Two decks, four tiers</h2>
+    <p class="sub">Items are dealt from two decks, and each deck holds two tiers. The aim is <em>three of the lower tier for every one of the higher</em> within a deck, which is a target to build towards rather than where the roster stands today.</p>
+    <div class="tw" style="margin-bottom:26px"><table>
+      <thead><tr><th>Deck</th><th>Tier</th><th>Sells for</th><th>Drawn from</th></tr></thead>
+      <tbody>
+        <tr><td class="k">Common Item Deck</td><td style="color:var(--t-common)">Common</td><td class="n">1 Sovereign</td><td rowspan="2">Ordinary searches, the Lumber Room, and the common stock at every stall.</td></tr>
+        <tr><td class="k"></td><td style="color:var(--t-uncommon)">Uncommon</td><td class="n">2 Sovereigns</td></tr>
+        <tr><td class="k">Rare Item Deck</td><td style="color:var(--t-rare)">Rare</td><td class="n">3 Sovereigns</td><td rowspan="2">Gold rooms, The Rose Bed, and the case the Peddler only opens at the Emporium, the Bazar and the Counting House.</td></tr>
+        <tr><td class="k"></td><td style="color:var(--t-vrare)">Very rare</td><td class="n">4 Sovereigns</td></tr>
+      </tbody>
+    </table></div>
+    <h2>The cards</h2>
+    <p class="sub">Card text as printed. The line under the text says when a card works, and whether it's used up. The tier sits under the name, and the coins along the bottom are what that tier sells for.</p>
+    <div class="filters" id="ibar"><span class="lbl">Tier</span></div>
+    <div id="igroups"></div>
+  </section>
+  <section>
+    <h2>The Game Die</h2>
+    <p class="sub">The game's only die, rolled by the Lockpick at a locked door and by the Coin Purse every time coin changes hands. The prototype uses HeroQuest dice; themed dice are planned for production.</p>
+    <div class="dieset">
+      <div><span class="pips"><i></i><i></i><i></i><i class="e"></i><i class="e"></i><i class="e"></i></span><span><b>Skull</b><span>3 of 6 faces</span></span></div>
+      <div><span class="pips"><i></i><i></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i></span><span><b>Shield</b><span>2 of 6 faces</span></span></div>
+      <div><span class="pips"><i></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i></span><span><b>Monster</b><span>1 of 6 faces</span></span></div>
+    </div>
+  </section>
+  <footer>The Sovereign card is how currency physically enters play, and the Golden Key card is how the ending does. More counter-items for Night Events and traps will follow the Mourning Brooch.</footer>
+</div>
+
+<!-- ============ NIGHT ============ -->
+<div class="view" id="v-night" role="tabpanel" aria-labelledby="t-night" hidden>
+  <header>
+    <p class="eyebrow">Night Event Deck &middot; first pass &middot; one card a night</p>
+    <h1>Night Events</h1>
+    <p class="lede">The house's turn. Seven kinds of card, from direct sanity loss to <strong>omens that do nothing at all</strong>, so every draw keeps the table nervous until the card is read.</p>
+    <div class="stats" id="nightstats"></div>
+  </header>
+  <section>
+    <h2>The deck</h2>
+    <p class="sub">Filter by category. Any card can be stopped by an item that says so, and any sanity loss can be blocked by Shielded charges. Nothing here is immune to either.</p>
+    <div class="filters" id="nbar"></div>
+    <div class="controls" style="margin:0 0 18px">
+      <input class="srch" id="nsrch" type="search" placeholder="Search name or text…" aria-label="Search night events">
+      <span class="count" id="ncount"></span>
+    </div>
+    <div class="ndeck" id="ndeck"></div>
+    <div class="empty" id="nempty" hidden>No night event matches that search</div>
+  </section>
+  <footer>Reshuffle the discards when the deck runs out: a long game sees more nights than there are cards.</footer>
+</div>
+
+<!-- ============ INVESTIGATORS ============ -->
+<div class="view" id="v-cast" role="tabpanel" aria-labelledby="t-cast" hidden>
+  <header>
+    <p class="eyebrow">Characters &middot; first pass &middot; one per player</p>
+    <h1>Investigators</h1>
+    <p class="lede">Four people the will names, each anchored in a different system of the game, with <strong>one clean signature ability</strong> each. Easy to remember at the table, and no two compete for the same spotlight.</p>
+    <div class="stats">
+      <div class="stat"><b>4</b><span>Investigators</span></div>
+      <div class="stat"><b>10</b><span>Starting sanity</span></div>
+      <div class="stat"><b>1</b><span>Ability each</span></div>
+      <div class="stat"><b>4</b><span>Hooks left for wave two</span></div>
+    </div>
+  </header>
+  <section>
+    <h2>The party</h2>
+    <div class="pdeck" id="pdeck"></div>
+  </section>
+  <section>
+    <h2>Player board</h2>
+    <div class="pboard">
+      <div><h3>Sanity</h3><div class="track" id="strack"></div><p>Start and max at 10. At 0 you're lost to the house.</p></div>
+      <div><h3>Actions today</h3><div class="track" id="atrack"></div><p>Six a day, one per turn. Moving counts. Reset at dawn.</p></div>
+      <div><h3>Has Prayed</h3><div class="track"><i style="width:44px">No</i><i style="width:44px" class="s">Yes</i></div><p>Flips once, never back.</p></div>
+      <div><h3>Shielded</h3><div class="track" id="shtrack"></div><p>+1 per Prayer, +2 at the Chapel or from the Bell Tower. &minus;1 per blocked loss. Caps at 5; anything over is lost.</p></div>
+    </div>
+  </section>
+  <section>
+    <h2>Room for a second wave</h2>
+    <div class="notes">
+      <div class="note"><h3>Investigation luck</h3><p>Better draws, peeking, or rerolling the top of the deck.</p></div>
+      <div class="note"><h3>Night Event mitigation</h3><p>Softening, redirecting or foreseeing the night's card.</p></div>
+      <div class="note"><h3>Action economy</h3><p>A spare action, cheaper Reveals, or an extra move.</p></div>
+      <div class="note"><h3>Stash range</h3><p>Reaching the shared Stash without a Stash icon.</p></div>
+    </div>
+  </section>
+  <footer>One ability each, anchored in a different system, and four people who all knew Cornelius before they walked in.</footer>
+</div>
+
+</div>
+
+<script>
+/* ============ view switching ============ */
+const VIEWS = ["manual","mansion","rooms","items","night","cast"];
+function show(v){
+  VIEWS.forEach(k => {
+    const on = k === v;
+    document.getElementById("t-" + k).setAttribute("aria-selected", String(on));
+    document.getElementById("v-" + k).hidden = !on;
+  });
+  window.scrollTo({top:0,behavior:"instant"});
+  try { localStorage.setItem("am-view", v); } catch(e) {}
+}
+VIEWS.forEach(k => document.getElementById("t-" + k).addEventListener("click", () => show(k)));
+try { const v = localStorage.getItem("am-view"); if (v && VIEWS.includes(v)) show(v); } catch(e) {}
+
+const ic = (id, style) => '<svg class="ico"' + (style ? ' style="' + style + '"' : '') + '><use href="#i-' + id + '"/></svg>';
+
+/* ---- manual contents ---- */
+const tocEl = document.getElementById("toc");
+const secs = [...document.querySelectorAll("#v-manual .doc section[id]")];
+tocEl.innerHTML = '<b>Contents</b>' + secs.map(s =>
+  '<a href="#' + s.id + '">' + s.querySelector("h3").textContent + '</a>').join("");
+const tocLinks = [...tocEl.querySelectorAll("a")];
+tocLinks.forEach((a, i) => a.addEventListener("click", e => {
+  e.preventDefault();
+  secs[i].scrollIntoView({behavior:"smooth", block:"start"});
+}));
+if ("IntersectionObserver" in window) {
+  const seen = new Map();
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => seen.set(en.target.id, en));
+    let best = null;
+    seen.forEach(en => {
+      if (!en.isIntersecting) return;
+      if (!best || en.target.getBoundingClientRect().top < best.target.getBoundingClientRect().top) best = en;
+    });
+    if (best) tocLinks.forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + best.target.id));
+  }, {rootMargin:"-70px 0px -55% 0px"});
+  secs.forEach(s => io.observe(s));
+}
+
+/* ============ DATA ============ */
+const DAYS = ["M","T","W","T","F","S","S"];
+const DAYNAMES = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+const LINES = [
+  {key:"passage", name:"Passage", role:"Connectors",
+   note:"Pure circulation. Door count climbs from two to four; each hides a single search.",
+   rooms:[
+    {n:"Hallway", d:"tb", inv:1, shape:"I shape", fl:"A draft, and nothing else."},
+    {n:"L-Way", d:"lb", inv:1, shape:"L shape", fl:"It bends where a hallway shouldn't."},
+    {n:"T-Way", d:"lrb", inv:1, shape:"T shape", fl:"Three ways forward. The house picked none of them for you."},
+    {n:"Servant's Stairwell", d:"tlrb", inv:1, shape:"+ shape", fl:"Every direction looks the same from here."},
+    {n:"Turning Hall", d:"lb", inv:1, act:1, uses:"No limit", sp:"Rotate this tile a quarter turn clockwise", fl:"It did not lead this way yesterday."}]},
+  {key:"storage", name:"Storage", role:"Searching",
+   note:"Enclosed, forgotten spaces, heavy on Investigate. Ends in the Reliquary, where the discards give something back.",
+   rooms:[
+    {n:"Closet", d:"b", inv:2, fl:"Coats long since eaten by moths."},
+    {n:"Pantry", d:"tb", inv:3, fl:"Jars of preserves, none labeled, all sealed."},
+    {n:"Storeroom", d:"lrb", inv:2, stash:1, req:"key", fl:"Crates stacked to the ceiling, labeled in a hand none of you recognize."},
+    {n:"Reliquary", d:"b", inv:3, act:1, uses:"No limit", sp:"Lose 1 Sovereign, gain 1 random card from the item discards", req:"gold", fl:"Everything he ever refused to let go of. Take a piece back — it always wants payment."},
+    {n:"Lumber Room", d:"lb", act:1, uses:"Twice", sp:"Draw 3 common item cards, keep 1", req:"lamp", fl:"Pitch dark, and stacked to the ceiling with furniture under sheets."}]},
+  {key:"utility", name:"Utility", role:"The water",
+   note:"The house's machinery. Water and power both switch on here, and both can be switched off again.",
+   rooms:[
+    {n:"Boiler Room", d:"b", act:1, uses:"No limit", sp:"Discard a Wrench: water on, or off again", req:"gold", fl:"Cold iron, colder water. It hasn't run in years."},
+    {n:"Kitchen", d:"lb", inv:2, boon:"Restore 2 actions", req:"water", fl:"The stove is lit. The water won't come."},
+    {n:"Bathroom", d:"b", rest:1, req:"water", fl:"The tub is full. The water hasn't moved in years."},
+    {n:"Coal Cellar", d:"lb", inv:1, act:1, uses:"No limit", sp:"Discard Coal: switch the water and the power on", req:["key","lamp"], fl:"The chute is open. There is still coal at the bottom."},
+    {n:"Generator Room", d:"b", act:2, uses:"No limit", sp:"Discard a Fuse: power on · Second icon: power off", req:"gold", fl:"Cold copper and glass. It has not hummed in years."}]},
+  {key:"chamber", name:"Chamber", role:"Resting",
+   note:"Private rooms. Rest capacity climbs to three, and the Master Suite finally gains ground.",
+   rooms:[
+    {n:"Den", d:"b", inv:1, rest:1, fl:"The pipe in the ashtray hasn't gone cold."},
+    {n:"Guest Bedroom", d:"lb", rest:2, req:"key", fl:"The linens are turned down. No one turned them."},
+    {n:"Dormitory", d:"lrb", inv:1, rest:3, req:"key", fl:"The cots are still made. The mobiles still turn."},
+    {n:"Master Suite", d:"b", inv:2, rest:2, sp:"Resting here restores 2 sanity", req:"gold", fl:"The bed is made. The house has been waiting."},
+    {n:"Sickroom", d:"tb", inv:1, rest:1, act:1, uses:"No limit", sp:"Discard Laudanum: a player here restores 4 sanity", fl:"The bed was stripped in a hurry. The basin was not."}]},
+  {key:"sacred", name:"Sacred", role:"Praying",
+   note:"The only rooms with Prayer. The Chapel doubles every prayer said in it.",
+   rooms:[
+    {n:"Confessional", d:"b", inv:1, pray:1, fl:"The screen between the seats has been clawed through."},
+    {n:"Shrine", d:"b", pray:2, fl:"A dozen candles, all still lit, all still burning down."},
+    {n:"Vestry", d:"tb", inv:1, pray:2, req:"key", fl:"The vestments are laid out for a service that never came."},
+    {n:"Chapel", d:"lrb", inv:2, pray:3, sp:"Doubles the effect of a prayer", req:"gold", fl:"The pews face an altar that faces nothing at all."},
+    {n:"Bell Tower", d:"b", inv:1, act:1, uses:"Once", sp:"Discard a Bell Rope: every player gains 2 Shielded", fl:"The bell is still. The rope is not."}]},
+  {key:"commerce", name:"Commerce", role:"Trading",
+   note:"Never locked, at any tier. The bigger the stall, the fewer days it trades.",
+   rooms:[
+    {n:"Market Stall", d:"b", ped:1, com:1, days:[1,1,1,1,1,1,0], fl:"A folding table, a single lantern, and more stock than it should hold."},
+    {n:"Trading Post", d:"tb", ped:1, com:2, days:[0,1,1,1,1,0,0], fl:"A peddler's stall, oddly well-stocked for a condemned house."},
+    {n:"Emporium", d:"lb", ped:1, com:2, rar:1, days:[0,0,1,0,0,1,0], fl:"Every drawer holds something different. None of it makes sense together."},
+    {n:"Grand Bazar", d:"b", ped:1, com:3, rar:2, days:[0,0,0,0,0,1,0], fl:"A market that shouldn't exist, in a house that shouldn't either."},
+    {n:"Counting House", d:"b", inv:1, act:1, uses:"No limit", sp:"Discard a Ledger: 3 rare cards at half price today", fl:"Ledgers in a hand that never wavers."}]},
+  {key:"exterior", name:"Exterior", role:"The grounds",
+   note:"Outside the walls, reached only by the garden paths. The Greenhouse and Carriage House carry 3 doors, so either can turn the corner where a lawn meets the chain, or pass a route straight through.",
+   rooms:[
+    {n:"Garden Shed", d:"b", inv:2, fl:"Shears, a spade, and a padlock fitted on the inside."},
+    {n:"Greenhouse", d:"lrb", inv:2, act:1, uses:"No limit · 1 a day", sp:"Gain 1 sanity", req:"water", fl:"The panes are fogged. From the inside."},
+    {n:"Carriage House", d:"lrb", inv:1, stash:1, req:"key", fl:"The carriage is harnessed. There are no horses."},
+    {n:"Mausoleum", d:"b", inv:2, act:1, uses:"No limit · 1 a night", sp:"Keep vigil: draw 2 events, resolve 1 or bury both (-2 sanity)", req:"gold", fl:"Every Ashworth is interred here. One niche is still open."},
+    {n:"The Rose Bed", d:"b", inv:1, act:1, uses:"No limit", sp:"Discard a Shovel: dig up 1 rare card", fl:"Nothing else in the grounds grows like this."},
+    {n:"Wishing Well", d:"b", act:1, uses:"No limit", sp:"Lose 1 Sovereign, gain 1 item card", req:"water", fl:"Toss a coin. The house always collects."}]}
+];
+const ICONS = [["inv","Investigate"],["rest","Rest"],["pray","Prayer"],["stash","Stash"],["ped","Peddler"],["act","Activate"]];
+const REQ = {key:["Key","key",""], gold:["Golden Key","key","color:var(--q-gold)"], water:["Water","water",""],
+  lamp:["Lantern","ped","color:var(--q-lamp)"]};
+
+/* ============ CAST (manual mini + investigators) ============ */
+const CAST = [
+  {n:"Silas Crane", occ:"Locksmith", anchor:"Locks", ticks:3,
+   bio:"Installed most of the locks in this house, and never got a full accounting of how many there really were.",
+   ab:"Open 3 doors that ask for a Key, free, over the course of the game. Each one stays open for everybody afterwards, as any paid door does. A Golden Key still costs a Golden Key."},
+  {n:"Imogen Vane", occ:"Architect", anchor:"Board connectivity",
+   bio:"Drafted his additions for over a decade and was never once shown a finished plan. Every commission was “just one more wing.”",
+   ab:"On every Reveal, draw 2 room tiles from that area's deck and choose which to place. The other goes to the bottom of the same deck, never to a discard pile."},
+  {n:"Dr. Eleanor Voss", occ:"Physician", anchor:"Sanity",
+   bio:"His physician, with quiet doubts of her own about what actually killed him.",
+   ab:"When she Rests, at any Rest icon in the house, she also gains 1 sanity, up to the usual maximum of 10. At the Master Suite the two bonuses stack, for 3. Every other Rest rule still applies."},
+  {n:"Reginald Ashworth", occ:"The Heir", anchor:"Sovereigns",
+   bio:"The only living relative willing to go inside and claim what's his. Here for the inheritance, not the ghosts.",
+   ab:"All Peddler purchases cost 1 less Sovereign, counted after any other discount, to a minimum of 1."}
+];
+document.getElementById("castmini").innerHTML = CAST.map(c =>
+  '<div><span>' + c.occ + '</span><b>' + c.n + '</b><p>' + c.bio + '</p></div>').join("");
+document.getElementById("pdeck").innerHTML = CAST.map(c =>
+  '<article class="pcard"><p class="occ">' + c.occ + '</p><h3 class="pn">' + c.n + '</h3>' +
+  '<p class="bio">' + c.bio + '</p><div class="rule"></div>' +
+  '<p class="pl">Signature ability</p><p class="px">' + c.ab + '</p>' +
+  (c.ticks ? '<div class="ticks" aria-label="Three uses">' + '<i></i>'.repeat(c.ticks) + '</div>' : '') +
+  '<div class="foot"><span>Anchor</span><b>' + c.anchor + '</b></div></article>').join("");
+document.getElementById("strack").innerHTML = Array.from({length:11}, (_, i) =>
+  '<i class="' + (i === 10 ? "s" : i === 0 ? "z" : "") + '">' + i + '</i>').join("");
+document.getElementById("atrack").innerHTML = [1,2,3,4,5,6].map(i => '<i class="s">' + i + '</i>').join("");
+document.getElementById("shtrack").innerHTML = [0,1,2,3,4,5].map(i => '<i>' + i + '</i>').join("");
+
+/* ============ CALENDAR (manual) ============ */
+const COMM = LINES.find(l => l.key === "commerce").rooms;
+const stock = r => r.com + " common" + (r.rar ? " + " + r.rar + " rare" : "");
+document.getElementById("caltable").innerHTML =
+  '<thead><tr><th>Room</th><th>Stock</th>' + DAYNAMES.map(d => '<th class="c">' + d + '</th>').join("") + '</tr></thead><tbody>' +
+  COMM.filter(r => r.days).map(r => '<tr><td class="k">' + r.n + '</td><td class="n">' + stock(r) + '</td>' +
+    r.days.map((o, i) => '<td class="c"><i class="' + (o ? "on" : "") + '" title="' + DAYNAMES[i] + (o ? " open" : " closed") + '"></i></td>').join("") + '</tr>').join("") +
+  '</tbody>';
+
+/* ============ MANSION ============ */
+const svg = document.getElementById("mansion");
+const ROWS = [[0,1,8,9],[0,1,2,3,6,7,8,9],[1,2,3,6,7,8],[1,2,3,4,5,6,7,8],[1,2,3,4,5,6,7,8],[1,2,3,6,7,8],[3,6]];
+const COLS = "ABCDEFGHIJ";
+let s = "";
+/* garden paths, drawn first so the cells sit on top; n = travel markers on the path */
+const PATHS = [
+  {x1:198, y1:50,  x2:452,  y2:50,  n:2, name:"Back path, west"},
+  {x1:548, y1:50,  x2:802,  y2:50,  n:2, name:"Back path, east"},
+  {x1:-12, y1:398, x2:-12,  y2:502, n:1, name:"West side path"},
+  {x1:36,  y1:650, x2:302,  y2:650, n:2, name:"West lawn"},
+  {x1:1012,y1:398, x2:1012, y2:502, n:1, name:"East side path"},
+  {x1:698, y1:650, x2:964,  y2:650, n:2, name:"East lawn"}
+];
+PATHS.forEach(p => {
+  s += '<line class="path" x1="' + p.x1 + '" y1="' + p.y1 + '" x2="' + p.x2 + '" y2="' + p.y2 + '"/>';
+  for (let i = 1; i <= p.n; i++) {
+    const f = i / (p.n + 1), cx = p.x1 + (p.x2 - p.x1) * f, cy = p.y1 + (p.y2 - p.y1) * f;
+    s += '<rect class="marker" data-t="mark" data-id="' + p.name + '" data-n="' + p.n + '" x="' + (cx - 10) + '" y="' + (cy - 10) + '" width="20" height="20" rx="4"/>';
+  }
+});
+ROWS.forEach((cols, r) => cols.forEach(c => {
+  const id = COLS[c] + (r + 1);
+  /* the wings split down the spine: columns A–E west, F–J east */
+  const wing = c <= 4 ? "w" : "e";
+  s += '<rect class="slot ' + wing + '" data-t="slot" data-id="' + id + '" data-wing="' + (wing === "w" ? "west" : "east") + '" x="' + (c*100+2) + '" y="' + (r*100+2) + '" width="96" height="96"/>' +
+       '<text class="slabel" x="' + (c*100+50) + '" y="' + (r*100+50) + '">' + id + '</text>';
+}));
+const EXT = [[452,2],[-60,302],[-60,502],[-60,602],[964,302],[964,502],[964,602]];
+EXT.forEach(([x, y], i) => {
+  s += '<rect class="ext" data-t="ext" data-id="E' + (i+1) + '" x="' + x + '" y="' + y + '" width="96" height="96"/>' +
+       '<text class="slabel" x="' + (x+48) + '" y="' + (y+48) + '">E' + (i+1) + '</text>';
+});
+/* the Last Vigil — columns E–F, rows 2–3 */
+s += '<rect class="fixed vigil" data-t="vigil" x="402" y="102" width="196" height="196"/>' +
+     '<rect class="doorbar" x="472" y="108" width="56" height="5"/>' +
+     '<rect class="doorbar" x="408" y="122" width="5" height="55"/>' +
+     '<rect class="doorbar" x="587" y="122" width="5" height="55"/>' +
+     '<text class="fxname" x="500" y="172">The Last Vigil</text>' +
+     '<text class="fxsub" x="500" y="198">End Room · 3 doors</text>' +
+     '<text class="fxsub" x="500" y="217">Activate: ends the game</text>' +
+     '<text class="fxreq" x="500" y="246">Req: 2 Golden Keys,</text>' +
+     '<text class="fxreq" x="500" y="263">from 2 players</text>';
+/* the Foyer — columns E–F, rows 6–7, open on three sides */
+s += '<rect class="fixed" data-t="foyer" x="402" y="502" width="196" height="196"/>';
+[[422,508,55,5],[523,508,55,5],[408,522,5,55],[408,623,5,55],[587,522,5,55],[587,623,5,55]].forEach(([x,y,w,h]) =>
+  s += '<rect class="doorbar" x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '"/>');
+s += '<text class="fxname" x="500" y="592">Foyer</text>' +
+     '<text class="fxsub" x="500" y="618">6 doors · 1 Stash · 4 Rest</text>';
+svg.innerHTML = s;
+
+const readout = document.getElementById("readout");
+const DESC = {
+  vigil:"<b>The Last Vigil</b> — printed end room · 3 doors: top to the grounds, west to D2, east to G2 · 2 players, a Golden Key each",
+  foyer:"<b>Foyer</b> — printed start · doors on the top, left and right sides · the bottom edge is the front door"
+};
+svg.querySelectorAll("[data-t]").forEach(el => {
+  el.addEventListener("mouseenter", () => {
+    const t = el.dataset.t, id = el.dataset.id;
+    readout.innerHTML = t === "slot" ? "<b>Slot " + id + "</b> — " + el.dataset.wing + " wing · revealed from the " + el.dataset.wing + " wing deck"
+      : t === "ext" ? "<b>Exterior " + id + "</b> — the grounds, reached by garden path" + (id === "E1" ? " · also touches the Vigil's back door" : "")
+      : t === "mark" ? "<b>" + id + "</b> — " + el.dataset.n + (el.dataset.n === "1" ? " travel marker" : " travel markers") + " · crossing takes " + (+el.dataset.n + 1) + " Move actions"
+      : DESC[t];
+  });
+  el.addEventListener("mouseleave", () => readout.textContent = "Hover a slot");
+});
+document.getElementById("tLabels").addEventListener("click", e => {
+  const on = document.body.classList.toggle("showlabels");
+  e.currentTarget.setAttribute("aria-pressed", String(on));
+});
+
+/* ============ ROOMS ============ */
+/* which deck each line goes into — Passage is shared by both wings */
+const WING = {passage:"both", commerce:"both", storage:"east", utility:"east", chamber:"west", sacred:"west", exterior:"grounds"};
+const WINGS = [
+  ["west", "West wing", "var(--w-west)", "The family wing. Recovery: Rest and Prayer.", "21"],
+  ["east", "East wing", "var(--w-east)", "The service wing. Loot, water and the Peddler.", "21"],
+  ["grounds", "Grounds", "var(--r-exterior)", "Outside the walls, down the garden paths.", "6–7"]
+];
+const inWing = (lw, w) => lw === w || (lw === "both" && w !== "grounds");
+function wingTag(l){
+  const w = WING[l.key];
+  const [lab, col] = w === "both" ? ["Both wings", "var(--ink-dim)"] : WINGS.filter(x => x[0] === w).map(x => [x[1], x[2]])[0];
+  return '<span class="wingtag" style="--wc:' + col + '">' + lab + '</span>';
+}
+document.getElementById("decks").innerHTML = WINGS.map(([k, name, col, blurb, slots]) => {
+  const lines = LINES.filter(l => inWing(WING[l.key], k));
+  const designs = lines.reduce((n, l) => n + l.rooms.length, 0);
+  return '<div class="dk" style="--wc:' + col + '"><h3>' + name + '</h3><p class="bl">' + blurb + '</p><ul>' +
+    lines.map(l => '<li style="--tc:var(--r-' + l.key + ')"><i></i>' + l.name +
+      (WING[l.key] === "both" ? ' <small>shared</small>' : '') + '<b>' + l.rooms.length + '</b></li>').join("") +
+    '</ul><p class="ft"><b>' + designs + '</b> room designs · <b>' + slots + '</b> slots</p></div>';
+}).join("");
+const ALL = [];
+LINES.forEach(l => l.rooms.forEach(r => { r.line = l; ALL.push(r); }));
+const reqsOf = r => r.req ? (Array.isArray(r.req) ? r.req : [r.req]) : [];
+const reqCount = k => ALL.filter(r => k === "free" ? !reqsOf(r).length : reqsOf(r).includes(k)).length;
+document.getElementById("roomstats").innerHTML = [
+  [ALL.length, "Rooms"], [LINES.length, "Lines"], [reqCount("free"), "Open"],
+  [reqCount("key"), "Key"], [reqCount("gold"), "Golden Key"], [reqCount("water"), "Need water"]
+].map(([n, l]) => '<div class="stat"><b>' + n + '</b><span>' + l + '</span></div>').join("");
+
+function tileHTML(r){
+  const doors = r.d.split("").map(sd => '<i class="db ' + sd + '"></i>').join("");
+  const icons = ICONS.filter(([k]) => r[k]).map(([k, lab]) =>
+    '<span class="ik" title="' + lab + '">' + ic(k) + '×' + r[k] + '</span>').join("");
+  const boon = r.boon ? '<span class="ik" title="Entry boon">' + ic("boon") + '</span>' : "";
+  let extra = "";
+  if (r.boon) extra += '<p class="sp">' + r.boon + ' on entry</p>';
+  if (r.sp) extra += '<p class="sp">' + r.sp + '</p>';
+  if (r.uses) extra += '<p class="uses">' + r.uses + '</p>';
+  if (r.com) extra += '<p class="sp">Reveals ' + stock(r) + '</p>' +
+    '<div class="week" aria-label="Open days">' + r.days.map((o, i) => '<i class="' + (o ? "on" : "") + '" title="' + DAYNAMES[i] + '">' + DAYS[i] + '</i>').join("") + '</div>';
+  const rq = reqsOf(r).map(q => '<span class="req ' + q + '">' + ic(REQ[q][1]) + REQ[q][0] + '</span>').join("");
+  const req = rq ? '<div class="reqs">' + rq + '</div>' : "";
+  return '<div class="rtile">' + doors +
+    '<h4 class="rn">' + r.n + '</h4>' +
+    ((icons || boon) ? '<div class="icons">' + icons + boon + '</div>' : "") + extra + req + '</div>';
+}
+document.getElementById("lines").innerHTML = LINES.map(l =>
+  '<div class="line" style="--tc:var(--r-' + l.key + ')">' +
+  '<div class="lhead"><h3>' + l.name + '</h3><p class="role">' + l.role + '</p>' + wingTag(l) + '<p>' + l.note + '</p></div>' +
+  '<div class="tiles">' +
+  l.rooms.map(r => {
+    const icons = ICONS.filter(([k]) => r[k]).map(([k]) => k).join(" ");
+    return '<div class="rcell" data-wing="' + WING[l.key] + '" data-req="' + (reqsOf(r).join(" ") || "free") + '" data-icons="' + icons + '">' + tileHTML(r) +
+      '<p class="fl">' + r.fl + '</p></div>';
+  }).join("") + '</div></div>').join("");
+
+const rf = {req:null, icon:null, wing:null};
+function applyRooms(){
+  document.querySelectorAll(".rcell").forEach(el => {
+    const ok = (!rf.req || el.dataset.req.split(" ").includes(rf.req)) && (!rf.icon || el.dataset.icons.split(" ").includes(rf.icon)) &&
+      (!rf.wing || inWing(el.dataset.wing, rf.wing));
+    el.classList.toggle("off", !ok);
+  });
+  document.querySelectorAll("#wingbar .tg").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.k === rf.wing)));
+  document.querySelectorAll("#reqbar .tg").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.k === rf.req)));
+  document.querySelectorAll("#iconbar .tg").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.k === rf.icon)));
+}
+const wingbar = document.getElementById("wingbar");
+WINGS.forEach(([k, name, col]) => {
+  const b = document.createElement("button");
+  b.className = "tg"; b.dataset.k = k; b.style.setProperty("--tc", col);
+  b.innerHTML = name + ' <b>' + ALL.filter(r => inWing(WING[r.line.key], k)).length + '</b>';
+  b.addEventListener("click", () => { rf.wing = rf.wing === k ? null : k; applyRooms(); });
+  wingbar.appendChild(b);
+});
+const reqbar = document.getElementById("reqbar");
+[["free","Nothing","var(--ink-dim)",""],["key","Key","var(--q-key)","key"],["gold","Golden Key","var(--q-gold)","key"],["water","Water","var(--q-water)","water"],["lamp","Lantern","var(--q-lamp)","ped"]]
+  .forEach(([k, lab, col, icn]) => {
+    const b = document.createElement("button");
+    b.className = "tg"; b.dataset.k = k; b.style.setProperty("--tc", col);
+    b.innerHTML = (icn ? ic(icn) : "") + lab + ' <b>' + reqCount(k) + '</b>';
+    b.addEventListener("click", () => { rf.req = rf.req === k ? null : k; applyRooms(); });
+    reqbar.appendChild(b);
+  });
+const iconbar = document.getElementById("iconbar");
+ICONS.forEach(([k, lab]) => {
+  const b = document.createElement("button");
+  b.className = "tg"; b.dataset.k = k; b.style.setProperty("--tc", "var(--accent)");
+  b.innerHTML = ic(k) + lab + ' <b>' + ALL.filter(r => r[k]).length + '</b>';
+  b.addEventListener("click", () => { rf.icon = rf.icon === k ? null : k; applyRooms(); });
+  iconbar.appendChild(b);
+});
+applyRooms();
+
+const TYPECOL = {Passage:"--r-passage", Storage:"--r-storage", Utility:"--r-utility", Chamber:"--r-chamber", Sacred:"--r-sacred", Grand:"--accent"};
+const CAND = [
+  ["Powder Room","Utility",1,"Key","Investigate 1","A cracked mirror shows one reflection too many."],
+  ["Linen Closet","Storage",1,"Key","Investigate 1","Sheets folded with unsettling precision."],
+  ["Root Cellar Hatch","Storage",1,"Golden Key","Investigate 2","The trapdoor is cold to the touch, even in summer."],
+  ["Taxidermy Nook","Chamber",1,"Golden Key","Investigate 2","Glass eyes follow you around the room."],
+  ["Cloakroom","Storage",2,"Key","Investigate 1","A single coat still sways, though the air is still."],
+  ["Sewing Room","Chamber",2,"Key","Investigate 2","A dressmaker's dummy stands where you swear it wasn't."],
+  ["Wine Rack Alcove","Storage",2,"Key","Investigate 2","Dust undisturbed for decades, save for one bottle."],
+  ["Study Nook","Chamber",2,"Key","Investigate 2","Correspondence, unanswered and unopened."],
+  ["Butler's Nook","Utility",3,"Key","Investigate 1","A silver tray, still set for a guest who never came."],
+  ["Library","Chamber",2,"—","Investigate 3","Every book concerns the house itself."],
+  ["Billiard Room","Chamber",3,"—","Investigate 2","The balls are racked. No one racked them."],
+  ["Music Room","Chamber",3,"Key","Investigate 2","The piano plays itself, softly, off-key."],
+  ["Dining Hall","Grand",5,"—","Investigate 2 · Peddler 1","Places set for twelve. The house has room for four."],
+  ["Laundry Room","Utility",2,"Key","Investigate 2","Something is still wet on the line."],
+  ["Parlor","Chamber",3,"Key","Investigate 2","Tea, still warm, in cups no one is drinking."],
+  ["Gallery Hall","Passage",6,"—","Investigate 1","The portraits' eyes move a half-second behind yours."],
+  ["Armory","Storage",2,"Golden Key","Investigate 2","Old wards and older weapons, kept for a reason."],
+  ["Ballroom","Grand",6,"—","Investigate 2","The chandelier sways. There is no draft."],
+  ["Grand Staircase","Passage",4,"—","Investigate 1","It creaks in time with footsteps that aren't yours."],
+  ["Wine Cellar","Storage",3,"Key","Investigate 3","Bottles older than the house's deed."]
+];
+document.getElementById("cand").innerHTML =
+  '<thead><tr><th>Room</th><th>Type</th><th class="num">Doors</th><th>Needs</th><th>Icons</th><th>Flavour</th></tr></thead><tbody>' +
+  CAND.map(([n, t, d, q, i, f]) =>
+    '<tr><td class="nm">' + n + '</td><td class="dim" style="--tc:var(' + TYPECOL[t] + ')"><span class="dot"></span>' + t + '</td>' +
+    '<td class="num"' + (d > 4 ? ' style="color:var(--warn)" title="Exceeds the one-per-side cap"' : '') + '>' + d + '</td>' +
+    '<td class="dim">' + q + '</td><td class="dim">' + i + '</td><td class="fla">' + f + '</td></tr>').join("") + '</tbody>';
+
+/* ============ ITEMS ============ */
+const ITEMS = [
+  {n:"Coin Purse", t:"Each time you gain a Sovereign, roll the Game Die.", ty:"Passive · on every gain", v:1,
+   faces:[["Skull","Gain 1 extra Sovereign."],["Shield","Nothing happens."],["Monster","Lose 1 Sovereign, or 1 sanity if you cannot pay."]],
+   nt:"You roll whether you want to or not."},
+  {n:"Key", t:"Spend to enter a room that asks for a Key. The door stays open afterwards.", ty:"On entry · used up", v:2},
+  {n:"Sovereign", t:"Spend as 1 Sovereign, at a stall or anywhere else the house asks for coin.", ty:"Spent · used up", v:1, nt:"How currency enters play. Prayers, the Wishing Well and the Reliquary all want one."},
+  {n:"Lockpick", t:"At a door that asks for a Key, spend 1 action to roll the Game Die.", ty:"At a locked door · 1 action", v:2, nt:"A Golden Key door is beyond it.",
+   faces:[["Skull","The door opens, and stays open."],["Shield","Nothing happens."],["Monster","Discard this item card."]]},
+  {n:"Metal Detector", t:"While performing the Investigate action, draw 2 cards instead of 1.", ty:"Passive · on Investigate", v:3},
+  {n:"Torn Blueprint", t:"Moving to a Passage room costs no action.", ty:"Passive · always on", v:2, nt:"The free move doesn't end your turn. Counts where you arrive, not where you leave."},
+  {n:"Wrench", t:"Discard in the Boiler Room to switch the water on, or to shut it off again.", ty:"Discarded on use", v:2, nt:"Either direction costs a Wrench."},
+  {n:"Master Key", t:"Opens any room that asks for a Key, and is never used up.", ty:"On entry · reusable", v:4, nt:"No help against a Golden Key. Those cost a Golden Key, every time."},
+  {n:"Peddler's Favor", t:"While browsing revealed stock, discard 1 card and draw its replacement from the deck it came from.", ty:"At a Peddler · used up", v:1, nt:"A rare card is replaced from the rare deck, a common one from the common deck."},
+  {n:"Appraiser Loupe", t:"Gain 1 more Sovereign for each item you sell to the Peddler.", ty:"Passive · when selling", v:3},
+  {n:"Crowbar", t:"In any Passage room, discard this to open a new door on any side of that tile.", ty:"In a Passage room · used up", v:3, nt:"Works anywhere in a room type rather than in one named room."},
+  {n:"Lantern", t:"Some rooms are pitch dark. You cannot enter one without a Lantern.", ty:"Opens dark rooms · not used up", v:3, nt:"Two rooms are dark so far: the Lumber Room and the Coal Cellar."},
+  {n:"Fuse", t:"Discard in the Generator Room to switch the power on.", ty:"Discarded on use", v:2, nt:"Killing the power again takes no Fuse, only the room's second icon."},
+  {n:"Laudanum", t:"Discard in the Sickroom: one player there restores 4 sanity.", ty:"Discarded on use", v:3},
+  {n:"Bell Rope", t:"Discard in the Bell Tower: every player, anywhere, gains 2 Shielded charges.", ty:"Discarded on use", v:3, nt:"Nobody goes past 5 charges, so time the ringing."},
+  {n:"Ledger", t:"Discard in the Counting House: reveal 3 rare Peddler cards and buy any of them at half price today.", ty:"Discarded on use", v:2},
+  {n:"Shovel", t:"Discard in The Rose Bed to dig: draw 1 card from the Rare Investigation Deck.", ty:"Discarded on use", v:3},
+  {n:"Coal", t:"Discard in the Coal Cellar to switch the water and the power on, both at once.", ty:"Discarded on use", v:3, nt:"No Wrench, no Fuse, and neither machine has to have run before."},
+  {n:"Candle", t:"Enter one dark room, then discard this.", ty:"On entry · used up", v:1, nt:"A Lantern that only lasts one doorway."},
+  {n:"Cold Supper", t:"Discard to gain 1 action.", ty:"Discarded on use", v:1},
+  {n:"Smelling Salts", t:"Discard to gain 1 sanity.", ty:"Discarded on use", v:1, nt:"Never past 10."},
+  {n:"Oil Can", t:"At the Turning Hall, turn the tile anticlockwise instead. Discard after.", ty:"Discarded on use", v:1},
+  {n:"Stout Boots", t:"Discard to cross a whole garden path in 1 action.", ty:"Discarded on use", v:1},
+  {n:"Trade Card", t:"At a Peddler, reveal 1 extra common card.", ty:"At a Peddler · used up", v:1},
+  {n:"Chipped Cup", t:"No effect. It is worth exactly what someone will pay for it.", ty:"Sells, nothing more", v:1},
+  {n:"Mourning Brooch", t:"Discard to ignore tonight's Night Event completely, for you alone.", ty:"At night · used up", v:2, nt:"Any card, even one that reshapes the house, though those seldom care about you."},
+  {n:"Porter's Sack", t:"Discard to use the Stash from the room you are standing in.", ty:"Discarded on use", v:2},
+  {n:"Golden Key", t:"Opens a Golden Key room, or turns one of the Last Vigil's locks.", ty:"On entry · used up", v:4, nt:"Selling one is a decision, not a transaction."},
+  {n:"Pocket Watch", t:"You have 1 extra action every day, for the rest of the game.", ty:"Passive · always on", v:4},
+  {n:"Bottle of Claret", t:"Discard to gain 2 sanity.", ty:"Discarded on use", v:2},
+  {n:"Picnic Hamper", t:"Discard to gain 4 actions, or 2 sanity.", ty:"Discarded on use", v:3, nt:"Packed for a day nobody had."},
+  {n:"Pot of Broth", t:"Discard: every player in this room gains 2 sanity.", ty:"Discarded on use", v:3, nt:"Worth more the more of you are standing there."}
+];
+/* four tiers in two decks: common and uncommon in the Common Item Deck,
+   rare and very rare in the Rare Item Deck. The tier is also what the item sells for. */
+const TIERS = {common:["Common", 1], uncommon:["Uncommon", 2], rare:["Rare", 3], vrare:["Very rare", 4]};
+const TIER_OF = {
+  "Sovereign":"common", "Key":"common", "Peddler's Favor":"common",
+  "Wrench":"common", "Crowbar":"common", "Coal":"common",
+  "Candle":"common", "Cold Supper":"common", "Smelling Salts":"common", "Oil Can":"common",
+  "Stout Boots":"common", "Trade Card":"common", "Chipped Cup":"common", "Shovel":"common",
+  "Mourning Brooch":"uncommon", "Porter's Sack":"uncommon", "Bottle of Claret":"uncommon",
+  "Picnic Hamper":"rare", "Pot of Broth":"rare",
+  "Golden Key":"vrare", "Pocket Watch":"vrare",
+  "Coin Purse":"uncommon", "Torn Blueprint":"uncommon",
+  "Appraiser Loupe":"uncommon", "Fuse":"uncommon", "Laudanum":"uncommon",
+  "Lockpick":"rare", "Lantern":"rare", "Metal Detector":"rare", "Ledger":"rare", "Bell Rope":"rare",
+  "Master Key":"vrare"
+};
+ITEMS.forEach(it => { it.r = TIER_OF[it.n] || "common"; it.v = TIERS[it.r][1]; });
+const tierCount = k => ITEMS.filter(it => it.r === k).length;
+["common", "uncommon", "rare", "vrare"].forEach(k =>
+  document.getElementById("st-" + k).innerHTML = '<b>' + tierCount(k) + '</b><span>' + TIERS[k][0] + '</span>');
+const TIERKEYS = ["common", "uncommon", "rare", "vrare"];
+const deckOf = k => (k === "common" || k === "uncommon") ? "Common Item Deck" : "Rare Item Deck";
+const itemCard = it =>
+  '<article class="icard" style="--tier:var(--t-' + it.r + ')"><div class="rule"></div><h3 class="cn">' + it.n + '</h3><div class="rule"></div>' +
+  '<p class="rar ' + it.r + '">' + TIERS[it.r][0] + '</p>' +
+  '<p class="tx">' + it.t + '</p>' +
+  (it.faces ? '<div class="faces">' + it.faces.map(([f, e]) => '<div class="face"><b>' + f + '</b>' + e + '</div>').join("") + '</div>' : '') +
+  '<p class="ty">' + it.ty + '</p>' + (it.nt ? '<p class="nt">' + it.nt + '</p>' : '') +
+  '<div class="rule"></div><div class="coins" aria-label="Sells for ' + it.v + '">' + '<span class="coin">S</span>'.repeat(it.v) + '</div></article>';
+
+let itier = null;
+function renderItems(){
+  document.getElementById("igroups").innerHTML = TIERKEYS.filter(k => !itier || itier === k).map(k => {
+    const list = ITEMS.filter(it => it.r === k);
+    return '<div class="igroup" style="--tier:var(--t-' + k + ')">' +
+      '<div class="ghead"><h3>' + TIERS[k][0] + '</h3>' +
+      '<p class="gm">' + deckOf(k) + ' &middot; sells for ' + TIERS[k][1] +
+      (TIERS[k][1] === 1 ? ' Sovereign' : ' Sovereigns') + '</p>' +
+      '<span class="gct">' + list.length + '</span></div>' +
+      '<div class="ideck">' + list.map(itemCard).join("") + '</div></div>';
+  }).join("");
+  document.querySelectorAll("#ibar .tg").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.k === itier)));
+}
+const ibar = document.getElementById("ibar");
+TIERKEYS.forEach(k => {
+  const b = document.createElement("button");
+  b.className = "tg"; b.dataset.k = k; b.style.setProperty("--tc", "var(--t-" + k + ")");
+  b.innerHTML = TIERS[k][0] + ' <b>' + tierCount(k) + '</b>';
+  b.addEventListener("click", () => { itier = itier === k ? null : k; renderItems(); });
+  ibar.appendChild(b);
+});
+renderItems();
+
+/* ============ NIGHT ============ */
+const CATS = [
+  ["Sanity","--n-sanity","Direct sanity loss, to everyone or to a target."],
+  ["Resource","--n-resource","Takes something other than sanity."],
+  ["Tempo","--n-tempo","A debuff on tomorrow."],
+  ["Environmental","--n-environmental","Changes the board or a deck."],
+  ["Choice","--n-choice","The party decides who pays."],
+  ["Omen","--n-omen","No effect at all."],
+  ["Mixed Reward","--n-mixed","Something good, with a price."]
+];
+const NIGHT = [
+  ["Cold Spot","Sanity","Global","All players","Each player loses 1 sanity.",1,"The temperature drops all at once, in every room."],
+  ["Whispers in the Wall","Sanity","Targeted","Lowest sanity player","That player loses 2 sanity.",1,"Only one of you can hear it. It knows your name."],
+  ["Restless","Sanity","Targeted","Highest sanity player","That player loses 2 sanity.",1,"Confidence, the house has decided, needs correcting."],
+  ["The Long Hall Breathes","Sanity","Targeted","Players in a Passage room","Each loses 1 sanity.",1,"The corridor exhales. You did not think it could."],
+  ["Something in the Pipes","Sanity","Targeted","Players in a Utility room","Each loses 1 sanity.",1,"The knocking is rhythmic. Almost a heartbeat."],
+  ["Sticky Fingers","Resource","Targeted","Lowest sanity player","Discard 1 card from hand, player's choice.",1,"You reach for it and your hand is already empty."],
+  ["Spilled Coin","Resource","Global","All players","Each player returns 1 Sovereign to the supply, if they hold one.",1,"It rolls under something. You don't go looking."],
+  ["Salted Earth","Resource","Targeted","Players in a Sacred room","Discard your next Investigation Deck draw unseen.",1,"The offering isn't for you."],
+  ["Borrowed","Resource","Targeted","Most cards in hand","Discard 1 card, player's choice.",1,"The house takes its cut."],
+  ["Heavy Air","Tempo","Global","All players","−1 Action tomorrow, for everyone.",1,"Every breath costs something tonight."],
+  ["Locked In","Tempo","Targeted","Lowest sanity player","That player can't take the Move action tomorrow. They can still use whatever their room offers.",1,"The halls rearrange themselves, just for you."],
+  ["No Rest for the Wicked","Tempo","Global","All players","Rest icons cannot be used tomorrow.",0,"Sleep is a courtesy. Tonight, none is extended."],
+  ["Silence at the Stall","Tempo","Global","All players","Peddler icons cannot be used tomorrow.",0,"He's not selling. Not tonight."],
+  ["The House Settles","Environmental","Global","The board","The starting player seals one open, unmatched door anywhere on the board, permanently.",0,"A groan, a shift, and one way forward is gone."],
+  ["A Door Remembers","Environmental","Global","The board","The starting player adds a door between one unreachable room and an explored neighbour, if there is one.",0,"For once, the house lets something in."],
+  ["Reshuffled","Environmental","Global","A deck","Shuffle the Investigation Deck's discard pile back in.",0,"Everything old is new again, whether you like it or not."],
+  ["One Must Answer","Choice","Targeted","Party decides","The party chooses one player: they lose 2 sanity. If nobody is chosen, every player loses 1.",1,"It will take what it's owed. You decide from whom."],
+  ["Give It Something","Choice","Targeted","Party decides","The party chooses one player: they discard a card. If nobody is chosen, every player loses 1 sanity.",1,"An offering, or a toll. Choose quickly."],
+  ["Draw Straws","Choice","Targeted","Party decides","The party chooses one player: they cannot act at all tomorrow.",1,"Someone has to stay behind."],
+  ["Footsteps Overhead","Omen","Global","Nobody","No mechanical effect.",0,"There is no floor above this one."],
+  ["A Portrait Turns","Omen","Global","Nobody","No mechanical effect.",0,"It was facing the wall yesterday. You're almost sure."],
+  ["The Clock Stops","Omen","Global","Nobody","No mechanical effect.",0,"For one night, the house holds its breath too."],
+  ["A Gift, Almost","Mixed Reward","Targeted","Party decides","The party chooses one player: they take a Golden Key from the supply, then lose 2 sanity.",1,"It hands something over. Its grip lingers a moment too long."],
+  ["Found Money","Mixed Reward","Targeted","Party decides","The party chooses one player: they take 2 Sovereigns from the supply, then discard a card.",1,"Coins, warm as if just held. By what?"]
+];
+const CATCOL = Object.fromEntries(CATS.map(([n, v]) => [n, v]));
+const decides = NIGHT.filter(c => c[3] === "Party decides").length;
+document.getElementById("nightstats").innerHTML = [
+  [NIGHT.length, "Cards"], [CATS.length, "Categories"], [NIGHT.filter(c => c[2] === "Global").length, "Global"],
+  [NIGHT.filter(c => c[2] === "Targeted").length, "Targeted"], [decides, "Party decides"], [NIGHT.filter(c => c[1] === "Omen").length, "Pure omens"]
+].map(([n, l]) => '<div class="stat"><b>' + n + '</b><span>' + l + '</span></div>').join("");
+
+const nstate = {cat:null, q:""};
+const nbar = document.getElementById("nbar");
+CATS.forEach(([n, v, d]) => {
+  const b = document.createElement("button");
+  b.className = "tg"; b.dataset.k = n; b.title = d; b.style.setProperty("--tc", "var(" + v + ")");
+  b.innerHTML = n + ' <b>' + NIGHT.filter(c => c[1] === n).length + '</b>';
+  b.addEventListener("click", () => { nstate.cat = nstate.cat === n ? null : n; renderNight(); });
+  nbar.appendChild(b);
+});
+document.getElementById("nsrch").addEventListener("input", e => { nstate.q = e.target.value.trim().toLowerCase(); renderNight(); });
+function renderNight(){
+  const list = NIGHT.filter(c => (!nstate.cat || c[1] === nstate.cat) &&
+    (!nstate.q || (c[0] + " " + c[4] + " " + c[6] + " " + c[3]).toLowerCase().includes(nstate.q)));
+  document.getElementById("ndeck").innerHTML = list.map(([n, cat, sc, tr, fx, co, fl]) =>
+    '<article class="ncard" style="--tc:var(' + CATCOL[cat] + ')"><p class="cat">' + cat + '</p><h3 class="cn">' + n + '</h3><div class="rule"></div>' +
+    '<p class="who">' + sc + ' · ' + tr + '</p><p class="fx">' + fx + '</p><p class="fl">' + fl + '</p>' +
+    '</article>').join("");
+  document.getElementById("nempty").hidden = list.length > 0;
+  document.getElementById("ncount").innerHTML = '<b>' + list.length + '</b> of ' + NIGHT.length + ' cards';
+  nbar.querySelectorAll(".tg").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.k === nstate.cat)));
+}
+renderNight();
+</script>
+</body>
+</html>
