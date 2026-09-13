@@ -19,7 +19,7 @@
     --accent:#c9a14e; --warn:#c46a4c;
     /* room lines, taken from the printed tile borders and lifted for a dark ground */
     --r-passage:#948e8b; --r-storage:#a8853c; --r-utility:#4f9d96; --r-chamber:#a35fbb;
-    --r-sacred:#d04d3e; --r-commerce:#5aa46a; --r-exterior:#9cba5c;
+    --r-sacred:#d04d3e; --r-commerce:#5aa46a; --r-exterior:#9cba5c; --r-leisure:#c9708f;
     /* the two wings, red and blue, as printed on the board */
     --w-west:#b5564b; --w-east:#5577c2;
     /* door requirements */
@@ -174,9 +174,10 @@
   .rcell.off{opacity:.18}
   .rtile{aspect-ratio:1;overflow:hidden;position:relative;background:var(--panel);border:5px solid var(--tc);
     display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
-    text-align:center;padding:18px 16px}
+    text-align:center;padding:18px 30px}
   .rcell:hover .rtile{background:var(--panel-2)}
   .db{position:absolute;background:var(--ink);opacity:.92}
+  @media (max-width:560px){.rtile{padding:14px 18px}}
   .db.t{top:6px;left:24%;right:24%;height:5px}
   .db.b{bottom:6px;left:24%;right:24%;height:5px}
   .db.l{left:6px;top:24%;bottom:24%;width:5px}
@@ -332,6 +333,7 @@
   .track i{width:22px;height:24px;border:1px solid var(--line);font-family:var(--mono);font-size:10px;font-style:normal;
     display:flex;align-items:center;justify-content:center;color:var(--ink-faint)}
   .track i.s{border-color:var(--accent);color:var(--accent)}
+  .track i.x{border-color:var(--t-uncommon);color:var(--t-uncommon);border-style:dashed}
   .track i.z{border-color:var(--warn);color:var(--warn)}
   .pboard p{margin:6px 0 0;font-size:13px;color:var(--ink-dim);line-height:1.45}
 
@@ -436,7 +438,7 @@
     <nav class="vnav" role="tablist" aria-label="Rulebook sections">
       <button class="vtab" role="tab" id="t-manual" aria-controls="v-manual" aria-selected="true">Manual</button>
       <button class="vtab" role="tab" id="t-mansion" aria-controls="v-mansion" aria-selected="false">The Mansion</button>
-      <button class="vtab" role="tab" id="t-rooms" aria-controls="v-rooms" aria-selected="false">Rooms <u>36</u></button>
+      <button class="vtab" role="tab" id="t-rooms" aria-controls="v-rooms" aria-selected="false">Rooms <u>42</u></button>
       <button class="vtab" role="tab" id="t-items" aria-controls="v-items" aria-selected="false">Items <u>33</u></button>
       <button class="vtab" role="tab" id="t-night" aria-controls="v-night" aria-selected="false">Night Events <u>24</u></button>
       <button class="vtab" role="tab" id="t-cast" aria-controls="v-cast" aria-selected="false">Investigators <u>8</u></button>
@@ -536,9 +538,9 @@
           <li><b>Shuffle the decks</b>Shuffle the Investigation, Rare Investigation, Common Item, Rare Item and Night Event decks separately.</li>
           <li><b>Set out the supply</b>Put the Sovereign cards, the spare Keys and the Golden Keys face up beside the board. This is the bank the house pays you from.</li>
           <li><b>Set the house</b>Set the Calendar to <strong>Monday</strong>, and both mansion flags, <em>Water Restored</em> and <em>Power Restored</em>, to <strong>No</strong>.</li>
-          <li><b>Choose investigators</b>Each player takes a character and their player board. Set Sanity to 10, Actions to 6, <em>Prayed</em> to No and Shielded to 0, then take whatever that character starts with: Silas Crane draws 3 Key cards from the supply.</li>
+          <li><b>Choose investigators</b>Each player takes a character and their player board. Set Sanity to 10, Actions to 6 and Shielded to 0, and leave the <em>Prayed</em> box empty, then take whatever that character starts with: Silas Crane draws 3 Key cards from the supply. From here on, the rules call you and your investigator a <em>player</em>.</li>
           <li><b>Deal objectives</b>Deal each player 3 objective cards. They keep <strong>2</strong> in secret and return the third to the box.</li>
-          <li><b>Enter the house</b>Place every investigator in the Foyer.</li>
+          <li><b>Enter the house</b>Place every player in the Foyer.</li>
           <li><b>Roll for initiative</b>The winner takes the starting player marker and goes first. Play proceeds clockwise.</li>
         </ol>
       </section>
@@ -548,7 +550,7 @@
         <h3>A day in the house</h3>
         <p>Everyone shares one day/night clock. A day isn't one long turn per player. It's many short turns going round the table until everyone has used up their actions.</p>
         <h4>Your turn</h4>
-        <p>You have <strong>6 actions a day</strong>. On your turn, take <strong>one action</strong>, then play passes clockwise. Moving is an action like any other, so every step through the house is a search you didn't make.</p>
+        <p>You have <strong>6 actions a day</strong>. Your action track runs to 10: the last four boxes hold extra actions, from the power, a Pocket Watch or a night in the Billiard Room, and anything past your day's number is gone by dawn. On your turn, take <strong>one action</strong>, then play passes clockwise. Moving is an action like any other, so every step through the house is a search you didn't make.</p>
         <div class="tw"><table>
           <thead><tr><th>Action</th><th>Cost</th><th>What it does</th></tr></thead>
           <tbody>
@@ -590,7 +592,7 @@
         <p>A path works like a long doorway, so the rooms at both ends need a door facing it.</p>
         <div class="tip"><b>A legible board</b><p>You can always see the whole grid, every empty slot and every existing door before you choose. Hidden information lives in the decks, never on the board.</p></div>
         <div class="tip"><b>Imogen Vane</b><p>Draws two tiles on every Reveal and places either one. The other goes back on <em>top</em> of the deck, so the next player gets what she left, or into the discard pile, where it is out of the game. Both choices say something about who she is helping.</p></div>
-        <div class="tip"><b>Wings</b><p>The house splits down the middle into a <strong>west wing</strong> and an <strong>east wing</strong> of 21 slots each, plus the grounds outside. Each area has its own room deck: when you Reveal, draw from the deck of the area the new slot belongs to.</p><p>The <strong>west</strong> is the family wing, with Chamber and Sacred rooms: rest and prayer. The <strong>east</strong> is the service wing, with Storage and Utility rooms: loot, water and power. <strong>Passage</strong> connectors and <strong>Commerce</strong> stalls go into both, so every wing has corridors and somewhere to trade. That makes the two decks the same size, and leaving the Foyer a choice between recovering and gathering.</p></div>
+        <div class="tip"><b>Wings</b><p>The house splits down the middle into a <strong>west wing</strong> and an <strong>east wing</strong> of 21 slots each, plus the grounds outside. Each area has its own room deck: when you Reveal, draw from the deck of the area the new slot belongs to.</p><p>The <strong>west</strong> is the family wing, with Chamber, Sacred and Leisure rooms: rest, prayer, and each other. The <strong>east</strong> is the service wing, with Storage and Utility rooms: loot, water and power. <strong>Passage</strong> connectors and <strong>Commerce</strong> stalls go into both, so every wing has corridors and somewhere to trade. Leaving the Foyer is a choice between recovering and gathering.</p></div>
       </section>
 
       <section id="s-locks">
@@ -658,6 +660,16 @@
         <p>For rooms that change other rooms or the house itself. The Boiler Room and the Generator Room switch the water and the power on, and off again. The Reliquary trades a Sovereign for one card drawn at random from the item discards. Outside, the Greenhouse gives 1 sanity a day, the Wishing Well sells you an item card for a Sovereign, and the Mausoleum lets one player keep vigil against the night (see Chapter IX).</p>
         <p><strong>Every Activate tile prints how often it works.</strong> Most say <em>no limit</em>, a few say <em>once</em> or <em>twice</em>, and a couple add a pace: the Greenhouse gives its sanity once a day, and only one keeper can hold the Mausoleum vigil each night. An action is the cost either way, so a room with no limit is only as repeatable as the party can afford.</p>
         <p>The <strong>Turning Hall</strong> is the one room that rewrites the map. Spend 1 action there to rotate the tile a quarter turn <strong>clockwise</strong>: its two doors swing to face different neighbours, opening a way that wasn't there and closing one that was. It only ever turns one way, so reaching a particular arrangement can cost two or three actions rather than one. Anyone standing in the room stays in it; only the doors move. It never runs out, so the corridor can be turned as often as anyone is willing to pay for it, by whoever gets there first.</p>
+        <p>The <strong>Secret Passage</strong> looks like a dead end: one door in. Spend 1 action there and step out of any other Passage room in the same wing. It only works one way, so you still have to walk to it, and it never reaches the other wing or the grounds.</p>
+        <h4>Leisure rooms</h4>
+        <p>Most Leisure rooms reach another player, and a few of them need a ruling the tile has no room for.</p>
+        <ul>
+          <li><strong>Billiard Room.</strong> Your day ends where you spend your last action. End it here and you start the next day with 2 extra actions. It is not a bed: unless you Rested, you still wake in the Foyer, and the extra actions are what pay for the walk back.</li>
+          <li><strong>Dining Hall.</strong> Restored actions can take you onto the extra boxes of your track.</li>
+          <li><strong>Music Room.</strong> Everyone in the room hears it; the only choice is whether to be there. The player at the piano loses 1 sanity for every listener, even if that takes them to 0.</li>
+          <li><strong>Ballroom.</strong> The named player chooses: arrive at the start of their next turn, through any door, locked or not, or refuse and lose 1 sanity. A player who Rested today cannot be named: a bed holds its ground.</li>
+          <li><strong>Parlor.</strong> The séance is seen alone, and nobody has to tell the truth about what was on the cards.</li>
+        </ul>
         <h4>Tool rooms</h4>
         <p>Nearly every room type has a room whose Activate icon waits on a <strong>specific item</strong> from the item decks. The Wrench and the Boiler Room came first, and the rest follow it: a Lantern or a single-use Candle for the dark rooms, a Fuse for the Generator Room, Laudanum for the Sickroom, a Bell Rope for the Bell Tower, a Ledger for the Counting House, a Shovel for The Rose Bed, Coal for the Coal Cellar. The Lantern is different again: it is a light rather than a key to one door, so it opens any dark room, and it is never used up. Every other tool is spent on use. What you dig up is free, which is why it is one card rather than an armful.</p>
         <p>The <strong>Lumber Room</strong> and the <strong>Coal Cellar</strong> go a step further: both are pitch dark, so without a Lantern you cannot even walk in. Drawn without one, either is a dead end on the board, and with two doors each can wall off whatever lies past it. That is the risk of a house that hands out its rooms at random.</p>
@@ -704,7 +716,7 @@
         <h4>Who the house means</h4>
         <ul>
           <li><strong>Ties are not broken.</strong> If two players share the lowest sanity, or the fullest hand, the card hits both.</li>
-          <li><strong>Room types</strong> mean the tile you are standing on: Passage, Storage, Utility, Chamber, Sacred, Commerce or Exterior.</li>
+          <li><strong>Room types</strong> mean the tile you are standing on: Passage, Storage, Utility, Chamber, Sacred, Leisure, Commerce or Exterior.</li>
           <li><strong>Out on a path</strong> you are in no room at all. A card that hunts by room type walks straight past you, which is one quiet argument for being caught outside at nightfall.</li>
           <li><strong>Where a card says choose</strong> and nobody is named, the choice belongs to the player who starts the coming day. The party may say whatever it likes about it.</li>
         </ul>
@@ -846,7 +858,7 @@
 
   <section>
     <h2>Candidates outside the lines</h2>
-    <p class="sub">Twenty rooms sketched early on that haven't joined a line yet. Nothing here is cut, and nothing is settled. The four with more than four doors were drawn before the one-door-per-side cap.</p>
+    <p class="sub">Fifteen rooms sketched early on that haven't joined a line yet. Nothing here is cut, and nothing is settled. The one with more than four doors was drawn before the one-door-per-side cap.</p>
     <div class="tablewrap"><table id="cand"></table></div>
   </section>
   <footer>Every line is still open to change. The Exterior rooms are the newest and haven't been made into tiles yet.</footer>
@@ -939,8 +951,8 @@
     <h2>Player board</h2>
     <div class="pboard">
       <div class="wide"><h3>Sanity</h3><div class="track" id="strack"></div><p>Start and max at 10. At 0 you're lost to the house.</p></div>
-      <div><h3>Actions today</h3><div class="track" id="atrack"></div><p>Six a day, one per turn. Moving counts. Reset at dawn.</p></div>
-      <div><h3>Prayed</h3><div class="track"><i style="width:44px">No</i><i style="width:44px" class="s">Yes</i></div><p>Flips once, never back.</p></div>
+      <div class="wide"><h3>Actions today</h3><div class="track" id="atrack"></div><p>Six a day, one per turn, and moving counts. The four coloured boxes hold extra actions for today only. Every dawn you go back to six, unless something says otherwise.</p></div>
+      <div><h3>Prayed</h3><div class="track"><i style="width:44px" class="s">Yes</i></div><p>Put a block here the first time you pray. It never comes off.</p></div>
       <div><h3>Shielded</h3><div class="track" id="shtrack"></div><p>+1 per Prayer, +2 at the Chapel or from the Bell Tower. &minus;1 per blocked loss. Caps at 5; anything over is lost.</p></div>
     </div>
   </section>
@@ -1028,7 +1040,7 @@
     <h2>Rules that need an answer</h2>
     <p class="sub">Situations that will come up at a table and have no ruling yet.</p>
     <ul class="qlist">
-      <li><strong>The last survivor</strong>Opening the Vigil takes two players, so one investigator left alone cannot end the game at all. Intended, or does a rare item let one person turn both locks?</li>
+      <li><strong>The last survivor</strong>Opening the Vigil takes two players, so one player left alone cannot end the game at all. Intended, or does a rare item let one person turn both locks?</li>
       <li><strong>Turning both keys</strong>The procedure in Chapter VII is on trial: name a partner, both spend an action and a key, and a refusal costs nothing. It needs a table before it is trusted.</li>
       <li><strong>Locking a door again</strong>Once a key is spent that door is open forever, and nothing in the game can shut it. A night event that seals a paid-for door would sting in the right way.</li>
       <li><strong>Nightwork and paid rooms</strong>A room the party spent a key on can still be pulled out of the house at dawn. The spent key sits on the tile, so protecting it would be easy to read. For now nothing is safe but the Foyer and the Vigil.</li>
@@ -1042,9 +1054,9 @@
     <h2>Content still to write</h2>
     <p class="sub">Rooms, cards and lines the game has room for and does not have.</p>
     <ul class="qlist">
-      <li><strong>The Leisure line</strong>Ballroom, Billiard Room and Dining Hall are drawn but belong to nothing. The family wing has fewer designs than the service wing, so this is where they would go.</li>
       <li><strong>The slot above the Vigil</strong>Drawn from the grounds deck, or printed on the board? It wants doors on three sides to serve both back paths and the Vigil's own door.</li>
       <li><strong>Night events that use what exists</strong>Nothing in the deck touches the Calendar, the water or the power, and four room types are never targeted. A card that puts the lights out would be the house doing its own sabotage.</li>
+      <li><strong>A gaming room</strong>Wagers between players belong in a room built for them. A card room or a gaming table would give the Leisure line a sixth room that is purely about betting against each other.</li>
       <li><strong>Negative rooms</strong>Parked. They would shuffle into the normal decks like anything else. Candidates: a cost on entry, a nightly drain, a search pool of nothing but traps, or a dead end with no icons at all.</li>
       <li><strong>A third wave of investigators</strong>Eight exist and four play at once, so there is room for more. Untouched hooks: Prayer, nightwork, the grounds, and coin as income rather than discount.</li>
     </ul>
@@ -1122,7 +1134,8 @@ const LINES = [
     {n:"L-Way", d:"lb", inv:1, shape:"L shape", fl:"It bends where a hallway shouldn't."},
     {n:"T-Way", d:"lrb", inv:1, shape:"T shape", fl:"Three ways forward. The house picked none of them for you."},
     {n:"Servant's Stairwell", d:"tlrb", inv:1, shape:"+ shape", fl:"Every direction looks the same from here."},
-    {n:"Turning Hall", d:"lb", inv:1, act:1, uses:"No limit", sp:"Rotate this tile a quarter turn clockwise", fl:"It did not lead this way yesterday."}]},
+    {n:"Turning Hall", d:"lb", inv:1, act:1, uses:"No limit", sp:"Rotate this tile a quarter turn clockwise", fl:"It did not lead this way yesterday."},
+    {n:"Secret Passage", d:"b", act:1, uses:"No limit", sp:"Move to any other Passage room in this wing", fl:"A panel that should not open, onto a corridor that should not be there."}]},
   {key:"storage", name:"Storage", role:"Searching",
    note:"Enclosed, forgotten spaces, heavy on Investigate. Ends in the Reliquary, where the discards give something back.",
    rooms:[
@@ -1155,6 +1168,14 @@ const LINES = [
     {n:"Vestry", d:"tb", inv:1, pray:2, req:"key", fl:"The vestments are laid out for a service that never came."},
     {n:"Chapel", d:"lrb", inv:2, pray:3, sp:"Doubles the effect of a prayer", req:"gold", fl:"The pews face an altar that faces nothing at all."},
     {n:"Bell Tower", d:"b", inv:1, act:1, uses:"Once", sp:"Discard a Bell Rope: every player gains 2 Shielded", fl:"The bell is still. The rope is not."}]},
+  {key:"leisure", name:"Leisure", role:"Each other",
+   note:"The rooms where the guests entertained. A late game, a table, an audience, the wing, and the night.",
+   rooms:[
+    {n:"Billiard Room", d:"tb", inv:1, sp:"End your day here: start tomorrow with 2 extra actions", fl:"The balls are racked. No one racked them."},
+    {n:"Dining Hall", d:"lrb", act:1, uses:"1 a day", sp:"Every player here restores 2 actions", fl:"Places set for twelve. The house has room for four."},
+    {n:"Music Room", d:"b", inv:1, act:1, uses:"1 a day", sp:"Every other player here gains 2 sanity. You lose 1 for each", req:"key", fl:"The piano plays itself, softly, off-key."},
+    {n:"Ballroom", d:"tlrb", act:1, uses:"1 a day", sp:"Name a player in this wing. They start their next turn here, or lose 1 sanity", req:"key", fl:"The chandelier sways. There is no draft."},
+    {n:"Parlor", d:"lb", inv:2, act:1, uses:"1 a day", sp:"Look at the next 3 Night Events and return them in any order", req:"gold", fl:"Tea, still warm, in cups no one is drinking."}]},
   {key:"commerce", name:"Commerce", role:"Trading",
    note:"Never locked, at any tier. The bigger the stall, the fewer days it trades.",
    rooms:[
@@ -1214,7 +1235,7 @@ document.getElementById("pdeck").innerHTML = CAST.map(c =>
   '<div class="foot"><span>Anchor</span><b>' + c.anchor + '</b></div></article>').join("");
 document.getElementById("strack").innerHTML = Array.from({length:11}, (_, i) =>
   '<i class="' + (i === 10 ? "s" : i === 0 ? "z" : "") + '">' + i + '</i>').join("");
-document.getElementById("atrack").innerHTML = [1,2,3,4,5,6].map(i => '<i class="s">' + i + '</i>').join("");
+document.getElementById("atrack").innerHTML = [1,2,3,4,5,6,7,8,9,10].map(i => '<i class="' + (i <= 6 ? "s" : "x") + '">' + i + '</i>').join("");
 document.getElementById("shtrack").innerHTML = [0,1,2,3,4,5].map(i => '<i>' + i + '</i>').join("");
 
 /* ============ CALENDAR (manual) ============ */
@@ -1299,9 +1320,9 @@ document.getElementById("tLabels").addEventListener("click", e => {
 
 /* ============ ROOMS ============ */
 /* which deck each line goes into — Passage is shared by both wings */
-const WING = {passage:"both", commerce:"both", storage:"east", utility:"east", chamber:"west", sacred:"west", exterior:"grounds"};
+const WING = {passage:"both", commerce:"both", storage:"east", utility:"east", chamber:"west", sacred:"west", leisure:"west", exterior:"grounds"};
 const WINGS = [
-  ["west", "West wing", "var(--w-west)", "The family wing. Recovery: Rest and Prayer.", "21"],
+  ["west", "West wing", "var(--w-west)", "The family wing. Rest, prayer, and each other.", "21"],
   ["east", "East wing", "var(--w-east)", "The service wing. Loot, water and the Peddler.", "21"],
   ["grounds", "Grounds", "var(--r-exterior)", "Outside the walls, down the garden paths.", "6–7"]
 ];
@@ -1405,14 +1426,9 @@ const CAND = [
   ["Study Nook","Chamber",2,"Key","Investigate 2","Correspondence, unanswered and unopened."],
   ["Butler's Nook","Utility",3,"Key","Investigate 1","A silver tray, still set for a guest who never came."],
   ["Library","Chamber",2,"—","Investigate 3","Every book concerns the house itself."],
-  ["Billiard Room","Chamber",3,"—","Investigate 2","The balls are racked. No one racked them."],
-  ["Music Room","Chamber",3,"Key","Investigate 2","The piano plays itself, softly, off-key."],
-  ["Dining Hall","Grand",5,"—","Investigate 2 · Peddler 1","Places set for twelve. The house has room for four."],
   ["Laundry Room","Utility",2,"Key","Investigate 2","Something is still wet on the line."],
-  ["Parlor","Chamber",3,"Key","Investigate 2","Tea, still warm, in cups no one is drinking."],
   ["Gallery Hall","Passage",6,"—","Investigate 1","The portraits' eyes move a half-second behind yours."],
   ["Armory","Storage",2,"Golden Key","Investigate 2","Old wards and older weapons, kept for a reason."],
-  ["Ballroom","Grand",6,"—","Investigate 2","The chandelier sways. There is no draft."],
   ["Grand Staircase","Passage",4,"—","Investigate 1","It creaks in time with footsteps that aren't yours."],
   ["Wine Cellar","Storage",3,"Key","Investigate 3","Bottles older than the house's deed."]
 ];
@@ -1433,7 +1449,7 @@ const ITEMS = [
   {n:"Lockpick", t:"At a door that asks for a Key, spend 1 action to roll the Game Die.", ty:"At a locked door · 1 action", v:2, nt:"A Golden Key door is beyond it.",
    faces:[["Skull","The door opens, and stays open."],["Shield","Nothing happens."],["Monster","Discard this item card."]]},
   {n:"Metal Detector", t:"While performing the Investigate action, draw 2 cards instead of 1.", ty:"Passive · on Investigate", v:3},
-  {n:"Torn Blueprint", t:"Moving to a Passage room costs no action.", ty:"Passive · always on", v:2, nt:"The free move doesn't end your turn. Counts where you arrive, not where you leave."},
+  {n:"Torn Blueprint", t:"Moving to a Passage room costs no action.", ty:"Passive · always on", v:2, nt:"The free move doesn't end your turn. Counts where you arrive, not where you leave. A Secret Passage is an Activate, not a move, so it still costs the action."},
   {n:"Wrench", t:"Discard in the Boiler Room to switch the water on, or to shut it off again.", ty:"Discarded on use", v:2, nt:"Either direction costs a Wrench."},
   {n:"Master Key", t:"Opens any room that asks for a Key, and is never used up.", ty:"On entry · reusable", v:4, nt:"No help against a Golden Key. Those cost a Golden Key, every time."},
   {n:"Peddler's Favor", t:"While browsing revealed stock, discard 1 card and draw its replacement from the deck it came from.", ty:"At a Peddler · used up", v:1, nt:"A rare card is replaced from the rare deck, a common one from the common deck."},
@@ -1590,17 +1606,17 @@ const OBJ = [
   ["Whole of Mind", 3, "nerve", "You end with 7 or more sanity.", "Walk out the same person who walked in."],
   ["The Long Night", 3, "house", "The game ends on the seventh day or later.", "Let it take its time with us."],
   ["Lamplighter", 3, "house", "Water and power are both on.", "The house should not be dark when it is finally seen."],
-  ["The Richest of Us", 3, "duel", "You hold more Sovereigns than any other investigator.", "There is no prize for second."],
+  ["The Richest of Us", 3, "duel", "You hold more Sovereigns than any other player.", "There is no prize for second."],
   ["Sole Keyholder", 3, "duel", "You hold a Golden Key, and nobody else does.", "Let them ask you for it."],
   ["The Heir's Dignity", 4, "ending", "You are inside the Last Vigil when the game ends.", "He would not have wanted strangers in there first."],
-  ["The House Is Owed", 4, "duel", "Fewer investigators are left than started.", "It wants somebody. It need not be you."],
+  ["The House Is Owed", 4, "duel", "Fewer players are left than started.", "It wants somebody. It need not be you."],
   ["Keeper of the Gate", 4, "ending", "You triggered the Last Vigil yourself.", "They can settle their business on their own time."],
   ["Small Economies", 1, "coin", "You hold 3 or more Sovereigns.", "Enough for a room somewhere else."],
   ["Well Provisioned", 2, "nerve", "You hold 6 or more item cards.", "He took what he could carry, and then some."],
   ["Groundskeeper", 2, "house", "You are somewhere in the grounds when the game ends.", "Under open sky, for once."],
   ["The Dark Below", 3, "house", "Neither the water nor the power is on.", "Let it stay as he left it."],
   ["Collector", 3, "coin", "You hold a very rare item. A Golden Key does not count.", "He would have wanted it kept, not used."],
-  ["Locksmith's Envy", 3, "duel", "You hold more item cards than any other investigator.", "Let them count their own pockets."],
+  ["Locksmith's Envy", 3, "duel", "You hold more item cards than any other player.", "Let them count their own pockets."],
   ["Devout", 4, "faith", "You have prayed, and still hold 4 or more Shielded charges.", "Asked, and asked again."],
   ["Unshaken", 5, "nerve", "You end the game at full sanity.", "Not one night of it touched him. He says."]
 ];
