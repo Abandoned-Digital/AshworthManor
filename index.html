@@ -434,6 +434,10 @@
   .toc a{display:block;padding:5px 0 5px 12px;color:var(--ink-faint);text-decoration:none;
     border-left:1px solid var(--line);line-height:1.35;transition:color .12s ease}
   .toc a:hover{color:var(--ink)}
+  .toc a small{display:block;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);opacity:.85}
+  .toc a.on small{color:var(--accent)}
+  a.xref{color:var(--accent);text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px;cursor:pointer}
+  a.xref:hover{text-decoration-style:solid}
   .toc a.on{color:var(--accent);border-left-color:var(--accent)}
   .toc a:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
   .doc{min-width:0;padding-top:40px}
@@ -558,7 +562,7 @@
       <div class="stat"><b>10</b><span>Starting Sanity</span></div>
       <div class="stat"><b>2</b><span>Golden Keys to finish</span></div>
       <div class="stat"><b>7</b><span>Days to do it</span></div>
-      <div class="stat"><b>44</b><span>Room slots</span></div>
+      <div class="stat"><b>49</b><span>Room slots</span></div>
     </div>
   </header>
 
@@ -581,7 +585,7 @@
         <p>This is where the semi-cooperative tension comes from. Everyone works toward the same room, but a player whose Objectives are done may want to spend that last Action the moment they arrive, whether or not anyone else is ready.</p>
         <h4>When the house wins</h4>
         <p>The party has <strong>one week</strong>. If nobody has ended the game when Sunday ends, the house wins and nobody takes anything.</p>
-        <p>If only <strong>one living player is left</strong>, the game ends at once, whatever the Vigil or the Calendar says, and the will is read for them alone. A player lost to the house takes nothing from the will; they come back as a <strong>ghost</strong>, and win only if the house does.</p>
+        <p>Nobody is ever lost. A player who sinks to 0 Sanity stays in the game, still holds their Objectives, and still has a share of the will to play for.</p>
         <div class="tip"><b>Allies of convenience</b><p>You work together for as long as it suits you both. Or you work along in public and quietly set up failure for the others. Wherever the design can create a moment that needs cooperation <em>and</em> leaves room for sabotage, it should.</p></div>
         <div class="tip"><b>Failure is part of the game</b><p>A dead end, a sealed-off wing, a lost party: these are supposed to happen now and then. Think of a run like a game of solitaire. Sometimes it just doesn't come together, and there's always the next game.</p></div>
       </section>
@@ -596,8 +600,8 @@
         <p>Cornelius was obsessive about privacy. Ordinary <strong>Iron Keys</strong> open the everyday household locks, the routine cost of his paranoia. <strong>Golden Keys</strong> guard the rooms that held whatever he valued, or feared, most.</p>
         <h4>The Last Vigil</h4>
         <p>His sanctum answers to two side chapels at opposite ends of its wall, because he trusted no one, not even his own blood, with a single way in. Two Golden Keys reach them. What's inside is deliberately left out of the rules. The table decides.</p>
-        <h4>Lost to the house</h4>
-        <p>A player at 0 Sanity isn't simply out. They're lost to the house, and the house keeps them: they walk its rooms as a ghost from then on, through walls, on the house's side. Whatever they carried is gone.</p>
+        <h4>The ghosts</h4>
+        <p>The house is not empty. One ghost walks it from the first night, and every player at 0 Sanity brings another. Ghosts are not players: they hold nothing and take no turns. They drift where the Haunting cards send them, and wherever they enter a room, the people in it lose Sanity.</p>
         <div class="tip"><b>Tone</b><p>Gothic Victorian, played straight: candlelight, aged wood, portraits, old-world dread. The nature of the haunting is never explained. The horror works better when the explanation stays just out of reach.</p></div>
       </section>
 
@@ -607,8 +611,8 @@
         <div class="tw"><table>
           <thead><tr><th>Component</th><th>What it does</th></tr></thead>
           <tbody>
-            <tr><td class="k">Game board</td><td>The mansion's footprint: 36 room slots, 10 grounds slots, the garden paths with their travel markers, and six printed rooms &mdash; the Foyer, the Last Vigil, the Left and Right Vigil, the Boiler and the Generator. See <em>The Mansion</em> tab.</td></tr>
-            <tr><td class="k">Turning Halls</td><td>Four room tiles that are never drawn: they are placed in B3, J3, C5 and I5 at setup. Passage rooms with a Passive that turns them after every Shift, and an Iron Key at their two doors.</td></tr>
+            <tr><td class="k">Game board</td><td>The mansion's footprint: 41 Interior slots, 8 grounds slots, the garden paths with their travel markers, and eight printed rooms &mdash; the Foyer, The Wake, the Last Vigil, the Left and Right Vigil, the Ritual Chamber, the Boiler and the Generator. See <em>The Mansion</em> tab.</td></tr>
+            <tr><td class="k">Turning Halls</td><td>Four room tiles that are never drawn: they are placed in B3, J3, C5 and I5 at setup. Passage rooms with a Passive that turns them after every Shift, and two open doors.</td></tr>
             <tr><td class="k">Room tiles</td><td>Uniform 7&thinsp;&times;&thinsp;7&nbsp;cm squares, each with 1&ndash;4 doors, at most one per side. Two decks, drawn blind: the <strong>Interior deck</strong> (<b data-count="interiorTiles"></b> tiles) and the <strong>Exterior deck</strong> (<b data-count="exteriorTiles"></b>).</td></tr>
             <tr><td class="k">Investigation deck</td><td><b data-count="searchCards"></b> cards. One deck for every search in the house: finds, knowledge, a good share of nothing, and harm. See the <em>Searches</em> tab.</td></tr>
             <tr><td class="k">Item decks</td><td>The <strong>Common Item deck</strong> (Common and Uncommon, <b data-count="commonDeck"></b> cards) and the <strong>Rare Item deck</strong> (Rare and Very Rare, <b data-count="rareDeck"></b>). See the <em>Items</em> tab.</td></tr>
@@ -620,7 +624,7 @@
             <tr><td class="k">The Mansion</td><td>A box printed on the board beside the Calendar, with a marker for each of four things: <em>Water</em> and <em>Power</em>, On or Off, and the <em>Left Vigil</em> and <em>Right Vigil</em>, also On or Off. Everything starts Off.</td></tr>
             <tr><td class="k">The supply</td><td>The bank that Sovereigns and keys come from and go back to. It has no pieces: you count what you hold on your player board.</td></tr>
             <tr><td class="k">Stash tray</td><td>One shared off-board mat holding whatever the party has stashed.</td></tr>
-            <tr><td class="k">Starting player marker</td><td>One token, held by whoever starts the current day. It passes one seat clockwise every dawn, skipping ghosts.</td></tr>
+            <tr><td class="k">Starting player marker</td><td>One token, held by whoever starts the current day. It passes one seat clockwise every dawn.</td></tr>
             <tr><td class="k">Locked tokens</td><td>One on every room that has been revealed but not yet opened. It sits on the whole tile, so it goes wherever the tile goes.</td></tr>
             <tr><td class="k">Spent tokens</td><td>For Investigate and Prayer icons that have been used, which stay used for the rest of the game.</td></tr>
             <tr><td class="k">Helper cards</td><td>Poker-size reference cards: one per player in their colour, <em>Room Icons</em> on the front and <em>Your Turn</em> on the back, and one <em>A Day at Ashworth</em> for the starting player, with <em>The Shift</em> on its back. See the <em>Helper Cards</em> tab.</td></tr>
@@ -633,7 +637,7 @@
         <p class="kicker">Chapter IV</p>
         <h3>Setup</h3>
         <ol class="steps">
-          <li><b>Lay out the mansion</b>Place the board. Put a <strong>locked token</strong> on the Boiler, the Generator and the Last Vigil, which ask for an Iron Key, and on the Left and Right Vigil and the Ritual Chamber, which ask for a Golden Key. Place the four <strong>Turning Halls</strong> in B3, J3, C5 and I5, their two doors as the board shows, each with a locked token of its own.</li>
+          <li><b>Lay out the mansion</b>Place the board. Put a <strong>locked token</strong> on the Last Vigil, which asks for an Iron Key, and on the Left and Right Vigil and the Ritual Chamber, which ask for a Golden Key. The Boiler and the Generator stand open. Place the four <strong>Turning Halls</strong> in B3, J3, C5 and I5, their two doors as the board shows; they stand open too.</li>
           <li><b>Shuffle the decks</b>Shuffle the Interior, Exterior, Investigation, Common Item, Rare Item and Haunting decks separately, and place them face down.</li>
           <li><b>Hand out the player boards</b>One board and six tracking blocks for each player.</li>
           <li><b>Set the house</b>Put the Calendar marker on <strong>Monday morning</strong> and set Water, Power and both Vigils to <strong>Off</strong> in <em>The Mansion</em> box.</li>
@@ -650,7 +654,7 @@
         <h3>A day in the house</h3>
         <p>Everyone shares one clock. A day comes in two halves, a <strong>morning</strong> and an <strong>afternoon</strong>, and neither is one long turn per player: each is many short turns going round the table until everyone has used up their Actions. At the end of each half, the house takes a turn of its own.</p>
         <h4>Your turn</h4>
-        <p>You have <strong>5 Actions in the morning and 5 in the afternoon</strong>. On your turn, take <strong>one Action</strong>, then play passes clockwise. Moving is an Action like any other, so every step through the house is a search you didn't make.</p>
+        <p>You have <strong>up to 5 Actions in the morning and 5 in the afternoon</strong>, fewer as your Sanity dwindles. On your turn, take <strong>one Action</strong>, then play passes clockwise. Moving is an Action like any other, so every step through the house is a search you didn't make.</p>
         <div class="tw"><table>
           <thead><tr><th>Action</th><th>Cost</th><th>What it does</th></tr></thead>
           <tbody>
@@ -662,7 +666,7 @@
           </tbody>
         </table></div>
         <h4>The Actions track</h4>
-        <p>The track runs to 10. The first five boxes are your Actions for the half; the last five hold any <strong>extra Actions</strong> a card or room gives you. Actions never carry over: whatever is left when a half ends is gone, and the track goes back to 5 for the next one. Anything that takes Actions away takes them from the half you are in, and never below 0.</p>
+        <p>The track runs to 10. At the start of each half you set your marker by your Sanity (see Chapter X); the boxes above it hold any <strong>extra Actions</strong> a card or room gives you. Actions never carry over: whatever is left when a half ends is gone, and the track is set again for the next one. Anything that takes Actions away takes them from the half you are in, and never below 0.</p>
         <p><strong>Playing a card costs nothing</strong> unless it says so. Discarding an item for its effect is free, doesn't end your turn, and can be done as often as you like on your own turn.</p>
         <h4>The end of your day</h4>
         <ul>
@@ -701,12 +705,12 @@
         <h4>The courtyard</h4>
         <p>The courtyard sits at the heart of the house, three slots by three: <strong>E3 to G5</strong>. Its eight grounds slots surround the printed <strong>Ritual Chamber</strong> in F4. They are revealed from the Exterior deck like any other patch of open air, and no path reaches them: you walk in through a door, the same as anywhere else.</p>
         <h4>One house</h4>
-        <p>The mansion is one house of 42 Interior slots, not two wings. A card that reaches across the house reaches all of it: <em>any Interior room</em>, <em>any Exterior room</em>, or simply <em>the mansion</em>, which is every room on the board.</p>
+        <p>The mansion is one house of 41 Interior slots, not two wings. A card that reaches across the house reaches all of it: <em>any Interior room</em>, <em>any Exterior room</em>, or simply <em>the mansion</em>, which is every room on the board.</p>
         <h4>The Turning Halls</h4>
         <p>Four loose tiles stand in fixed places from the start: <strong>B3, J3, C5 and I5</strong>. They are real room tiles, not board art, because they move. <strong>The Shift cannot relocate them.</strong> Instead, after every Shift, at noon and at night, each Turning Hall turns a quarter turn clockwise, with anyone inside it. They never go into a deck.</p>
-        <p>Each has two doors in an L and an Iron Key at both. They start with their doors as the board shows them: <strong>B3</strong> top and left, <strong>J3</strong> top and right, <strong>C5</strong> left and bottom, <strong>I5</strong> right and bottom.</p>
+        <p>Each has two doors in an L, and neither is locked. They start with their doors as the board shows them: <strong>B3</strong> top and left, <strong>J3</strong> top and right, <strong>C5</strong> left and bottom, <strong>I5</strong> right and bottom.</p>
         <h4>The printed rooms</h4>
-        <p>Seven rooms are printed on the board and never drawn: the <strong>Foyer</strong> at the front door, the <strong>Ritual Chamber</strong> at the heart of the courtyard, the <strong>Last Vigil</strong> and its <strong>Left and Right Vigil</strong> across the back of the house, and the <strong>Boiler</strong> and the <strong>Generator</strong> in the bottom corners, A7 and K7, where the side paths and the lawns meet. They work like any other room, with the icons and doors printed on them, but they are not room tiles: nothing relocates them or counts them as Exterior. (The Turning Halls are different: see above.) They have room types all the same: the Foyer is Passage, the three Vigils Sacred, and the two machines Utility.</p>
+        <p>Eight rooms are printed on the board and never drawn: the <strong>Foyer</strong> at the front door, <strong>The Wake</strong> just under the Last Vigil, the <strong>Ritual Chamber</strong> at the heart of the courtyard, the <strong>Last Vigil</strong> and its <strong>Left and Right Vigil</strong> across the back of the house, and the <strong>Boiler</strong> and the <strong>Generator</strong> in the bottom corners, A7 and K7, where the side paths and the lawns meet. They work like any other room, with the icons and doors printed on them, but they are not room tiles: nothing relocates them or counts them as Exterior. (The Turning Halls are different: see above.) They have room types all the same: the Foyer is Passage, the three Vigils Sacred, and the two machines Utility.</p>
         <div class="tip"><b>A legible board</b><p>You can always see the whole grid, every empty slot and every existing door before you choose. Hidden information lives in the decks, never on the board.</p></div>
       </section>
 
@@ -756,7 +760,7 @@
             <tr><td class="k"><svg class="ico"><use href="#i-rest"/></svg>Rest</td><td class="n">1 Action<br>+ ends your day</td><td>One player per icon per night. Claim it with your marker; markers clear at dawn.</td><td>You wake in that room instead of at the Foyer.</td></tr>
             <tr><td class="k"><svg class="ico"><use href="#i-pray"/></svg>Prayer</td><td class="n">1 Action</td><td>Used up for the whole game. Put a spent token on it.</td><td>Gain 1 Sanity.</td></tr>
             <tr><td class="k"><svg class="ico"><use href="#i-stash"/></svg>Stash</td><td class="n">1 Action</td><td>No limit. Anyone, any day.</td><td>Move any cards between your hand and the shared Stash.</td></tr>
-            <tr><td class="k"><svg class="ico"><use href="#i-ped"/></svg>Peddler</td><td class="n">1 Action</td><td>Once a day per icon. Claim it with your marker; markers clear at dawn.</td><td>Open the stall on its printed days. See Chapter XI.</td></tr>
+            <tr><td class="k"><svg class="ico"><use href="#i-ped"/></svg>Peddler</td><td class="n">1 Action</td><td>Once a day per icon. Claim it with your marker; markers clear at dawn.</td><td>Open the stall. See Chapter XI.</td></tr>
             <tr><td class="k"><svg class="ico"><use href="#i-act"/></svg>Activate</td><td class="n">1 Action</td><td>Once a day per icon. Claim it with your marker; markers clear at dawn.</td><td>Does what the tile says.</td></tr>
             <tr><td class="k"><svg class="ico"><use href="#i-boon"/></svg>Passive</td><td class="n">free</td><td>Whenever its moment comes.</td><td>Takes effect by itself, as the tile says: when you enter, rest or search there, at dawn, or all the time.</td></tr>
           </tbody>
@@ -796,19 +800,19 @@
         </table></div>
         <h4>Keeping and discarding</h4>
         <p><strong>An item stays in your hand and keeps working until something tells you to discard it</strong> &mdash; its own text, or the text of the room it is used in. A card nothing ever discards is never used up. A discarded item goes to the <strong>Item discard pile</strong>, which both item decks share.</p>
-        <p>A tool whose room never turns up is still worth a Sovereign or more at a Peddler, and the stalls stock tools as well as goods, so finding the room first turns a lucky match into a shopping trip.</p>
+        <p>A tool whose room never turns up is dead weight in your hand, but you can give it to someone who is heading there, and the stalls stock tools as well as goods, so finding the room first turns a lucky match into a shopping trip.</p>
         <h4>Harmful items</h4>
         <p>Some items are made to be used on somebody else: to rob them, slow them, frighten them or rewrite their plans. A harmful item wears a <strong>red band</strong> inside its black frame, the same red that marks a harmful Investigation card. Unlike a Haunting, a harmful item is aimed: <strong>you choose when to play it, and at whom</strong>, within the reach its text gives. Most reach only a player in your room; the dearer ones reach anywhere in the mansion.</p>
         <p><strong>Harmful</strong> means a red-framed card of either deck, and anything that answers harm answers both: a <em>Lucky Charm</em> turns aside a harmful item played on you as readily as a harmful card you draw, once, and the Very Rare <em>Hagstone</em> does it for the rest of the game. Neither touches a Haunting: the house is not a card a player plays.</p>
         <h4>Tiers and prices</h4>
-        <p>Every item sits in one of four tiers, printed in small capitals just above the bottom rule: <strong>Common</strong>, <strong>Uncommon</strong>, <strong>Rare</strong> or <strong>Very Rare</strong>, with <em>Tool</em> after it when it is one. The back of the card says which deck it belongs in. The coins along the bottom are its price at a Peddler; sold back, it fetches one Sovereign less.</p>
+        <p>Every item sits in one of four tiers, printed in small capitals just above the bottom rule: <strong>Common</strong>, <strong>Uncommon</strong>, <strong>Rare</strong> or <strong>Very Rare</strong>, with <em>Tool</em> after it when it is one. The back of the card says which deck it belongs in. The coins along the bottom are its price at a Peddler. Items cannot be sold: a card is worth what it does.</p>
         <div class="tw"><table>
-          <thead><tr><th>Tier</th><th>Deck</th><th>Price</th><th>Sells for</th></tr></thead>
+          <thead><tr><th>Tier</th><th>Deck</th><th>Price</th></tr></thead>
           <tbody>
-            <tr><td class="k" style="color:var(--t-common)">Common</td><td>Common Item deck</td><td class="n">2</td><td class="n">1</td></tr>
-            <tr><td class="k" style="color:var(--t-uncommon)">Uncommon</td><td>Common Item deck</td><td class="n">3</td><td class="n">2</td></tr>
-            <tr><td class="k" style="color:var(--t-rare)">Rare</td><td>Rare Item deck</td><td class="n">4</td><td class="n">3</td></tr>
-            <tr><td class="k" style="color:var(--t-vrare)">Very Rare</td><td>Rare Item deck</td><td class="n">5</td><td class="n">4</td></tr>
+            <tr><td class="k" style="color:var(--t-common)">Common</td><td>Common Item deck</td><td class="n">2</td></tr>
+            <tr><td class="k" style="color:var(--t-uncommon)">Uncommon</td><td>Common Item deck</td><td class="n">3</td></tr>
+            <tr><td class="k" style="color:var(--t-rare)">Rare</td><td>Rare Item deck</td><td class="n">4</td></tr>
+            <tr><td class="k" style="color:var(--t-vrare)">Very Rare</td><td>Rare Item deck</td><td class="n">5</td></tr>
           </tbody>
         </table></div>
       </section>
@@ -818,50 +822,46 @@
         <h3>Hauntings, night &amp; Sanity</h3>
         <h4>Sanity</h4>
         <p>Everyone starts at <strong>10</strong>, which is also the maximum. You lose Sanity to the nightly drain, to Hauntings, and to bad luck while exploring.</p>
-        <h4>At 0 Sanity</h4>
-        <p>You're lost to the house. Everything you were carrying goes with you: items, keys and coin alike, out of the game for good. A Golden Key in a lost player's hand is a Golden Key the house keeps. Your Objectives are set aside face down. If that leaves only one living player, the game ends at once.</p>
-        <p>You are not out of the game. You come back as a <strong>ghost</strong>, in the room where you were lost. From now on you play for the house, and <strong>you win if the house wins</strong>: if Sunday ends before the Last Vigil is activated.</p>
-        <h4>Playing a ghost</h4>
-        <ul>
-          <li><strong>You keep your seat.</strong> You take turns in the usual order, one Action a turn, with <strong>3 Actions</strong> each morning and each afternoon on your Actions track instead of 5.</li>
-          <li><strong>You hold nothing and feel nothing.</strong> No items, keys or Sovereigns, and no Sanity. Hauntings, the nightly drain and every card that names a player or "every player" mean the living only. You do not Rest, and dawn does not move you.</li>
-          <li><strong>You never hold the starting player marker.</strong> At dawn it passes to the next living player.</li>
-        </ul>
+        <h4>Sanity and Actions</h4>
+        <p>Your Sanity decides how long your day is. At the start of every half, set your Actions track to the band your Sanity is in.</p>
         <div class="tw"><table>
-          <thead><tr><th>A ghost may</th><th>Cost</th><th>What happens</th></tr></thead>
+          <thead><tr><th>Sanity</th><th>Actions each half</th><th>And</th></tr></thead>
           <tbody>
-            <tr><td class="k">Drift</td><td class="n">1 Action</td><td>Move to an adjacent slot of the board, revealed or not. Doors, locks and Light mean nothing to you; only the edge of the board stops you.</td></tr>
-            <tr><td class="k">Chill</td><td class="n">1 Action</td><td>Every living player in your room loses 1 Action.</td></tr>
-            <tr><td class="k">Rattle</td><td class="n">1 Action</td><td>Put a spent token on an unspent Investigate, Rest or Stash icon in your room. A Rest or Stash icon with a spent token cannot be used again.</td></tr>
-            <tr><td class="k">Fright</td><td class="n">1 Action</td><td>Every living player in your room loses 1 Sanity.</td></tr>
+            <tr><td class="k">6 to 10</td><td class="n">5</td><td>Nothing else.</td></tr>
+            <tr><td class="k">3 to 5</td><td class="n">4</td><td>Nothing else.</td></tr>
+            <tr><td class="k">1 or 2</td><td class="n">3</td><td>Nothing else.</td></tr>
+            <tr><td class="k">0</td><td class="n">3</td><td>A ghost joins the house for as long as you stay at 0.</td></tr>
           </tbody>
         </table></div>
-        <h4>What a ghost cannot do</h4>
+        <p><strong>Nobody leaves the game.</strong> At 0 Sanity you keep your items, keys, Sovereigns and Objectives, and you can still search, Rest and pray your way back up. Sanity never goes below 0, and a cost in Sanity can only be paid if you have it.</p>
+        <h4>The ghosts</h4>
+        <p>Ghosts are tokens, not players. They hold nothing and take no turns, and they do exactly one thing: they move when the house takes its turn, and they take Sanity from whoever they walk in on.</p>
         <ul>
-          <li><strong>Holy ground.</strong> A ghost cannot enter a Sacred room.</li>
-          <li><strong>The Vigils are out of reach.</strong> A ghost cannot enter the Left, Right or Last Vigil.</li>
+          <li><strong>Where they start.</strong> One ghost is placed in <strong>The Wake</strong> at setup. Another stands there for every player at 0 Sanity, and leaves the moment that player has any Sanity again (the player chooses which one goes). Every ghost enters play in The Wake.</li>
+          <li><strong>How they move.</strong> After every Haunting card, at noon and at night, every ghost moves <strong>2 spaces</strong>, one for each arrow printed on the card, in the direction the arrow shows on the board, straight or diagonal: up is toward the Last Vigil, down toward the Foyer. Doors, walls, locks and Light mean nothing to a ghost, and it may pass through a slot that has no room in it yet.</li>
+          <li><strong>What is a space.</strong> Any slot of the board grid, or a printed room. The garden paths and their travel markers are not spaces: a ghost cannot stand on one.</li>
+          <li><strong>Where they stop.</strong> A ghost that would step into a <strong>Sacred</strong> room, including the Vigils and the Ritual Chamber, stops where it is and makes no further step this time. A ghost that would step off the board, or into a gap in the grid, goes back to The Wake and stops there.</li>
+          <li><strong>What they do.</strong> Whenever a ghost <strong>enters</strong> a room, every player in it loses 1 Sanity. Each ghost does this on its own, so two ghosts entering the same room cost 2. Being placed in a room, or being stopped in it, costs nothing: only entering does.</li>
+          <li><strong>The Shift.</strong> A ghost belongs to its slot, not to the tile standing in it. If a room is relocated, the ghost stays where it was.</li>
         </ul>
-        <h4>Coming back to life</h4>
-        <p>The <strong>Ritual Chamber</strong>, printed at the heart of the courtyard, is the one way back. It starts locked: somebody has to spend a <strong>Golden Key</strong> to open it, and once open it stays open for everyone. A living player standing in it may use its Activate: <strong>lose any number of Sanity</strong>, and one ghost of their choice <strong>returns to life in the Ritual Chamber with that much Sanity</strong>. It is a Sacred room, so the ghost never has to be there; it simply wakes in the chamber, a player again.</p>
-        <ul>
-          <li><strong>The revived player takes back their Objectives</strong>, the ones set aside when they were lost. They can win the will again, and stop winning with the house.</li>
-          <li>They come back with nothing in their hands, and keep the Actions their ghost had left this half.</li>
-          <li>Like every Activate, it works once a day. Nobody has to use it, and nobody can make you: whether a rival is worth your Sanity is your call.</li>
-        </ul>
-        <div class="tip"><b>The house has hands now</b><p>A ghost is a visible enemy at the table, and that pulls the living back together: spread out, keep to holy ground, reach the Vigils. It also cuts the other way. Leading a ghost into a rival's room is the same quiet sabotage the house has always invited. A few items answer them too: the <em>Mourning Veil</em> and <em>Rowan Twig</em>, a <em>Scrubbing Brush</em> to undo a Rattle, <em>Holy Water</em> to drive a ghost back to the Foyer, and the Very Rare <em>Spirit Bell</em>.</p></div>
+        <h4>The Wake</h4>
+        <p>The Wake is printed on the board in F2, between E2 and G2, just under the Last Vigil. It is a Passage room with two open doors, left and right, and one Passive: <strong>entering here, lose 2 Sanity</strong>. Nobody has to go in, and nothing else on the board gets you across from E2 to G2 as quickly. It is also where every ghost begins, and where a ghost returns when the house throws it off the board.</p>
+        <h4>The Ritual Chamber</h4>
+        <p>The <strong>Ritual Chamber</strong>, printed at the heart of the courtyard, is the one place that turns coin back into reason. It starts locked: somebody has to spend a <strong>Golden Key</strong> to open it, and once open it stays open for everyone. It is a Sacred room, so no ghost can enter, and it has a <strong>Rest icon</strong> as well: a living player can spend the night there in peace. Its Activate, once a day like any other: <strong>lose any number of Sovereigns, and gain that much Sanity</strong>, to the maximum of 10.</p>
+        <div class="tip"><b>No reason to die</b><p>Nothing here rewards sinking to 0. A player at 0 Sanity has fewer Actions, brings a ghost into the house, and keeps every Objective they still have to finish, so they are never better off than a player who is climbing back. The house is a visible, shared enemy: spread out, keep to holy ground, read the arrows, and think twice before leading a ghost into a rival's room. A few items answer ghosts too: the <em>Mourning Veil</em>, <em>Rowan Twig</em>, <em>Holy Water</em> and the Very Rare <em>Spirit Bell</em>.</p></div>
         <h4>Hauntings</h4>
         <p>A <strong>Haunting</strong> is a card from the <strong>Haunting deck</strong>. The house draws one at noon and one at night, and each is resolved for the whole party as written. The deck mixes six kinds of card, so a draw is never simply &ldquo;lose Sanity or don't&rdquo;.</p>
         <h4>At noon</h4>
-        <p>When nobody has any Actions left in the morning, <strong>draw a Haunting</strong> and resolve it. The holder of the starting player marker may <strong>shift the house</strong> once, and then every Turning Hall turns. Then the Calendar marker moves to the afternoon, every Actions track goes back to 5 and the afternoon begins, with the same player starting.</p>
+        <p>When nobody has any Actions left in the morning, <strong>draw a Haunting</strong> and resolve it. The holder of the starting player marker may <strong>shift the house</strong> once, and then every Turning Hall turns. Then every ghost moves, the Calendar marker moves to the afternoon, every Actions track is set again by Sanity and the afternoon begins, with the same player starting.</p>
         <h4>When night falls</h4>
         <p>When nobody has any Actions left in the afternoon, the house takes its turn.</p>
         <ol class="steps">
           <li><b>The end of the week</b>If it is Sunday, the week is over and the house wins. Nothing more is drawn.</li>
-          <li><b>Draw a Haunting</b>Draw one card and resolve it for the party as written.</li>
+          <li><b>Draw a Haunting</b>Draw one card and resolve it for the party as written. Then every ghost moves, in the directions the card shows.</li>
           <li><b>The Shift</b>The holder of the starting player marker may shift the house once. Then every Turning Hall turns a quarter turn clockwise.</li>
           <li><b>The nightly drain</b>Every player loses 1 Sanity, Rested or not.</li>
           <li><b>Advance the Calendar</b>Move the Calendar marker on to the next day's morning.</li>
-          <li><b>Dawn</b>Everyone who did not Rest is moved to the Foyer, unless a card says otherwise. Rest, Activate and Peddler markers clear, and the starting player marker passes one seat clockwise to the next living player.</li>
+          <li><b>Dawn</b>Everyone who did not Rest is moved to the Foyer, unless a card says otherwise. Rest, Activate and Peddler markers clear, the starting player marker passes one seat clockwise, and every Actions track is set by Sanity.</li>
         </ol>
         <p>So a bed is not Sanity. It is ground held. The party's reach into the house is measured by the furthest room somebody can sleep in, and every morning the people without beds start again at the front door. It also means nobody is ever stuck: a player sealed into a dead end simply wakes up at the door.</p>
         <h4>The Shift</h4>
@@ -899,20 +899,17 @@
         <p><strong>Keys work the same way</strong>, each kind on its own track. They are not a fixed pile that runs dry: they come out of the supply when the house hands one over or the counter sells one, and they go back to it when they are spent. What limits them is not a count in the box but what you can find, sell and afford.</p>
         <h4>Visiting a Peddler</h4>
         <ol class="steps">
-          <li><b>Open the stall</b>On one of its printed days, one player spends 1 Action and marks the Peddler icon. Reveal the stock the tile names, face up: the Common Item cards first, then any Rare ones.</li>
-          <li><b>Pick in turn</b>The player who opened the stall picks first, then it goes clockwise round the table to each other player in the room. On your pick, buy as many of the revealed cards as you like at their printed price, and sell any items you like, each for one Sovereign less than its price. Everyone gets one pick. Buying and selling cost no Action: the Action spent opening the stall is what buys first choice. It all happens at once, inside the opener's turn.</li>
+          <li><b>Open the stall</b>One player spends 1 Action and marks the Peddler icon. Reveal the stock the tile names, face up: the Common Item cards first, then any Rare ones.</li>
+          <li><b>Pick in turn</b>The player who opened the stall picks first, then it goes clockwise round the table to each other player in the room. On your pick, buy as many of the revealed cards as you like at their printed price. Everyone gets one pick. Buying costs no Action: the Action spent opening the stall is what buys first choice. It all happens at once, inside the opener's turn.</li>
           <li><b>Close</b>Discard whatever is left unbought onto the Item discard pile. Nothing stays on the tile, and the icon stays marked until dawn.</li>
         </ol>
-        <p>Selling for a Sovereign less than the price means nothing can be bought and sold back at a profit.</p>
+        <p><strong>Items cannot be sold.</strong> A stall only sells, and the Foyer's counter does the same. What you do not want you can give to another player in your room, or keep for the day it is wanted.</p>
         <h4>The Locksmith's Counter</h4>
-        <p>The Foyer's counter is not a stall. It is printed as a <strong>Passive</strong>, so it is always open, costs no Action and marks nothing: while you are in the Foyer on your turn, you may <strong>sell items</strong>, each for one Sovereign less than its price, and buy keys from the supply, an <strong>Iron Key for 2 Sovereigns</strong> and a <strong>Golden Key for 5</strong>, as many as you can pay for. It does not buy keys back. No other room in the house sells keys.</p>
+        <p>The Foyer's counter is not a stall. It is printed as a <strong>Passive</strong>, so it is always open, costs no Action and marks nothing: while you are in the Foyer on your turn, you may buy keys from the supply, an <strong>Iron Key for 2 Sovereigns</strong> and a <strong>Golden Key for 5</strong>, as many as you can pay for. It does not buy keys back. No other room in the house sells keys.</p>
         <p>Everyone who did not Rest wakes in the Foyer, so a morning at the front door is the natural time to buy the day's keys.</p>
         <h4>Trading with each other</h4>
         <p>Players in the same room may freely give each other anything they hold: item cards, keys and Sovereigns alike. To get something to a teammate across the house, use the Stash.</p>
         <p>Walking over to someone costs Actions you could have spent searching, so &ldquo;I'll come to you&rdquo; is a real favour, and one you can quietly fail to deliver.</p>
-        <h4>The Calendar and opening days</h4>
-        <p>The Calendar starts on Monday and advances every night, and when Sunday ends so does the game. A change to the Calendar takes effect at once, so a stall can open or shut on the spot. Each stall trades only on its printed days; on a closed day its Peddler icon simply doesn't work.</p>
-        <div class="tw"><table id="caltable"></table></div>
       </section>
 
       <section id="s-share">
@@ -922,8 +919,8 @@
         <div class="tw"><table>
           <thead><tr><th>Switch</th><th>How it's set</th><th>While it's on</th></tr></thead>
           <tbody>
-            <tr><td class="k"><svg class="ico" style="color:var(--q-water)"><use href="#i-water"/></svg>Water</td><td>The Activate in the <strong>Boiler</strong>, in the bottom-left corner, behind an Iron Key. The same icon turns it off.</td><td>Every icon behind a Water requirement works.</td></tr>
-            <tr><td class="k"><svg class="ico" style="color:var(--q-power)"><use href="#i-power"/></svg>Power</td><td>The Activate in the <strong>Generator</strong>, in the bottom-right corner, behind an Iron Key. The same icon turns it off.</td><td>The Lights are on: every room that needs Light stands open to everybody, and every icon behind a Light or Power requirement works.</td></tr>
+            <tr><td class="k"><svg class="ico" style="color:var(--q-water)"><use href="#i-water"/></svg>Water</td><td>The Activate in the <strong>Boiler</strong>, in the bottom-left corner. The same icon turns it off.</td><td>Every icon behind a Water requirement works.</td></tr>
+            <tr><td class="k"><svg class="ico" style="color:var(--q-power)"><use href="#i-power"/></svg>Power</td><td>The Activate in the <strong>Generator</strong>, in the bottom-right corner. The same icon turns it off.</td><td>The Lights are on: every room that needs Light stands open to everybody, and every icon behind a Light or Power requirement works.</td></tr>
           </tbody>
         </table></div>
         <div class="tip"><b>Switches run both ways</b><p>Neither machine locks on. Anyone who reaches the Boiler or the Generator can shut the house back down, and it is the loudest sabotage in the game: everyone sees the Lights go out. Either switch costs nothing but the Action, which is what makes the walk out there the only thing standing between the house and the dark.</p></div>
@@ -947,7 +944,7 @@
             <tr><td class="k">Turn a room</td><td>Rotate the tile a quarter turn clockwise, in its slot. Anyone inside stays inside and any token stays on it; only the doors move.</td></tr>
             <tr><td class="k">Gain Actions</td><td>Put them on your Actions track, onto the extra boxes if need be. They last until the end of the half you are in.</td></tr>
             <tr><td class="k">Lose Actions</td><td>Take them off the half you are in, down to 0.</td></tr>
-            <tr><td class="k">Gain / Lose Sanity</td><td>Never above 10. At 0 you are lost to the house.</td></tr>
+            <tr><td class="k">Gain / Lose Sanity</td><td>Never above 10, never below 0. At 0 a ghost joins the house, and you play on with 3 Actions. A Sanity cost can only be paid if you have it.</td></tr>
             <tr><td class="k">Gain Sovereigns, Gain a Key</td><td>Move the block up that many boxes on your player board.</td></tr>
             <tr><td class="k">Draw</td><td>Take the top card of the deck it names into your hand, or resolve it, for an Investigation or Haunting card.</td></tr>
             <tr><td class="k">Reveal</td><td>Turn cards face up for the table, as a stall does.</td></tr>
@@ -977,9 +974,9 @@
     <h1>The Mansion</h1>
     <p class="lede">The board is a <strong>mansion silhouette</strong>: one house around a central spine, the Foyer printed at the front door and the three Vigils printed across the back. <strong>Garden paths</strong> lead out to the grounds, and the two back paths are the only way to the Left and Right Vigil.</p>
     <div class="stats">
-      <div class="stat"><b>36</b><span>Interior slots</span></div>
+      <div class="stat"><b>41</b><span>Interior slots</span></div>
       <div class="stat"><b>4</b><span>Printed rooms</span></div>
-      <div class="stat"><b>10</b><span>Grounds slots</span></div>
+      <div class="stat"><b>8</b><span>Grounds slots</span></div>
       <div class="stat"><b>6 + 6</b><span>Paths + spurs</span></div>
       <div class="stat"><b>12</b><span>Travel markers</span></div>
       <div class="stat"><b>3</b><span>Vigils</span></div>
@@ -997,14 +994,15 @@
     <div class="legend">
       <div class="lg"><i style="--sw:var(--r-passage);--bg:#262027"></i><span><span class="nm">Foyer <span class="ct">3&times;1</span></span><span class="fx">Printed start, three slots wide across the front of the house, and a <strong>Passage</strong> room. 4 doors, a Stash and the Locksmith's Counter. Everyone who did not Rest wakes here at dawn. No searches, no beds.</span></span></div>
       <div class="lg"><i style="--sw:var(--q-gold);--bg:#262027"></i><span><span class="nm">The Vigils <span class="ct">3 printed</span></span><span class="fx">The Last Vigil, three slots wide in E1 to G1, entered from E2 and G2 through Iron-locked doors. The Left Vigil in D1 and the Right Vigil in H1, each behind a Golden Key at the end of a back path, each with an Activate that turns it on or off. The Last Vigil's Activate ends the game while both are on.</span></span></div>
-      <div class="lg"><i style="--sw:var(--ink-dim);--bg:#262027"></i><span><span class="nm">Boiler <span class="ct">Grounds</span></span><span class="fx">Printed plant, in the bottom-left corner, A7. Two doors, one onto the west side path and one onto the west lawn, with an Iron Key at each. Its Activate turns the Water on, and off again.</span></span></div>
-      <div class="lg"><i style="--sw:var(--ink-dim);--bg:#262027"></i><span><span class="nm">Generator <span class="ct">Grounds</span></span><span class="fx">Printed plant, in the bottom-right corner, K7. Two doors, one onto the east side path and one onto the east lawn, with an Iron Key at each. Its Activate turns the Power and the Lights on, and off again.</span></span></div>
-      <div class="lg"><i style="--sw:var(--w-house);--bg:#1d181e"></i><span><span class="nm">Interior slot <span class="ct">42</span></span><span class="fx">The house itself, revealed from the Interior deck. There are no wings: a card that reaches across the house reaches all of it.</span></span></div>
+      <div class="lg"><i style="--sw:var(--ink-dim);--bg:#262027"></i><span><span class="nm">Boiler <span class="ct">Grounds</span></span><span class="fx">Printed plant, in the bottom-left corner, A7. Two open doors, one onto the west side path and one onto the west lawn. Its Activate turns the Water on, and off again.</span></span></div>
+      <div class="lg"><i style="--sw:var(--ink-dim);--bg:#262027"></i><span><span class="nm">Generator <span class="ct">Grounds</span></span><span class="fx">Printed plant, in the bottom-right corner, K7. Two open doors, one onto the east side path and one onto the east lawn. Its Activate turns the Power and the Lights on, and off again.</span></span></div>
+      <div class="lg"><i style="--sw:var(--w-house);--bg:#1d181e"></i><span><span class="nm">Interior slot <span class="ct">41</span></span><span class="fx">The house itself, revealed from the Interior deck. There are no wings: a card that reaches across the house reaches all of it.</span></span></div>
       <div class="lg"><i style="--sw:var(--r-passage);--bg:#262027"></i><span><span class="nm">Turning Halls <span class="ct">4 tiles</span></span><span class="fx">Placed at setup in B3, J3, C5 and I5, doors as the board shows. The Shift cannot relocate them; after every Shift they turn a quarter turn clockwise.</span></span></div>
       <div class="lg"><i style="--sw:#14120f;--bg:#fff"></i><span><span class="nm">The Calendar <span class="ct">on the board</span></span><span class="fx">Printed above the west back path: Monday to Sunday, each with a morning (AM) and an afternoon (PM). The marker moves to PM at noon and on to the next day at night.</span></span></div>
       <div class="lg"><i style="--sw:#14120f;--bg:#fff"></i><span><span class="nm">The Mansion <span class="ct">on the board</span></span><span class="fx">Printed beside the Calendar: Water, Power, the Left Vigil and the Right Vigil, each On or Off.</span></span></div>
       <div class="lg"><i class="dash" style="--sw:var(--r-exterior)"></i><span><span class="nm">Grounds slot <span class="ct">8</span></span><span class="fx">All eight are the courtyard, E3 to G5 around the Ritual Chamber. All are revealed from the Exterior deck.</span></span></div>
-      <div class="lg"><i style="--sw:var(--q-gold);--bg:#262027"></i><span><span class="nm">Ritual Chamber <span class="ct">printed</span></span><span class="fx">At the heart of the courtyard, F4, with a door on every side and a Golden Key to open it. A Sacred room, so no ghost can enter. Its Activate brings a ghost back to life.</span></span></div>
+      <div class="lg"><i style="--sw:var(--q-gold);--bg:#262027"></i><span><span class="nm">Ritual Chamber <span class="ct">printed</span></span><span class="fx">At the heart of the courtyard, F4, with a door on every side and a Golden Key to open it. A Sacred room, so no ghost can enter. It has a Rest icon, and its Activate turns Sovereigns into Sanity.</span></span></div>
+      <div class="lg"><i style="--sw:var(--r-passage);--bg:#262027"></i><span><span class="nm">The Wake <span class="ct">printed</span></span><span class="fx">F2, between E2 and G2 under the Last Vigil. Two open doors, left and right, and a Passive: entering here, lose 2 Sanity. Every ghost starts here.</span></span></div>
       <div class="lg"><i style="--sw:#0c0a0d;--bg:var(--n-tempo);border-radius:4px"></i><span><span class="nm">Travel marker <span class="ct">12</span></span><span class="fx">A space on a garden path. Stepping onto one is a Move Action.</span></span></div>
     </div>
   </section>
@@ -1023,7 +1021,7 @@
 
   <section>
     <h2>The two decks</h2>
-    <p class="sub">Everything indoors is one deck. The six interior lines shuffle together and fill all 42 slots between them, so nothing guarantees a bedroom on the west side or a boiler on the east. How many of each room is printed sits under its tile below: corridors come thickest, ordinary rooms turn up two or three times, and the room that defines a line &mdash; the Reliquary, the Master Suite, the Chapel &mdash; is the only one of itself anywhere in the house. The Interior deck holds <strong><span data-count="interiorTiles"></span> tiles for 44 slots</strong> and the Exterior deck <span data-count="exteriorTiles"></span> for 8, so more than half the house stays in the box and no two houses are ever built the same.</p>
+    <p class="sub">Everything indoors is one deck. The six interior lines shuffle together and fill all 41 slots between them, so nothing guarantees a bedroom on the west side or a boiler on the east. How many of each room is printed sits under its tile below: corridors come thickest, ordinary rooms turn up two or three times, and the room that defines a line &mdash; the Reliquary, the Master Suite, the Chapel &mdash; is the only one of itself anywhere in the house. The Interior deck holds <strong><span data-count="interiorTiles"></span> tiles for 44 slots</strong> and the Exterior deck <span data-count="exteriorTiles"></span> for 8, so more than half the house stays in the box and no two houses are ever built the same.</p>
     <div class="decks" id="decks"></div>
   </section>
 
@@ -1044,7 +1042,7 @@
 
   <section>
     <h2>What a house ends up holding</h2>
-    <p class="sub">Every icon in the two decks, and how many of each reach the table once 44 rooms are dealt indoors and 8 outside. A room printed twice puts its icons in twice, so these are counts of <em>icons</em> rather than of rooms. The last column is what an average game actually contains, which is the number that decides whether a system is a system or a rumour.</p>
+    <p class="sub">Every icon in the two decks, and how many of each reach the table once 41 rooms are dealt indoors and 8 outside. A room printed twice puts its icons in twice, so these are counts of <em>icons</em> rather than of rooms. The last column is what an average game actually contains, which is the number that decides whether a system is a system or a rumour.</p>
     <div class="tablewrap"><table id="icontbl"></table></div>
   </section>
 
@@ -1069,7 +1067,7 @@
   <header>
     <p class="eyebrow">Item cards &middot; first batch &middot; dealt from two item decks</p>
     <h1>Items</h1>
-    <p class="lede">Held in hand, traded in the same room, passed through the Stash. They come in two kinds: <strong>consumables</strong> that work anywhere (<span data-count="kUse"></span>) and <strong>tools</strong> that work in a particular place (<span data-count="kTool"></span>). Every item does something: there are no cards that only sell. Every item also sits in one of <strong>four tiers</strong>, and the tier decides both which deck it lives in and what it is worth. How many of each is printed sits under its card: the staples come thickest, a tool turns up often enough to find but never for certain, and anything that changes a whole game is the only one of itself.</p>
+    <p class="lede">Held in hand, traded in the same room, passed through the Stash. They come in two kinds: <strong>consumables</strong> that work anywhere (<span data-count="kUse"></span>) and <strong>tools</strong> that work in a particular place (<span data-count="kTool"></span>). Every item does something, and none can be sold. Every item also sits in one of <strong>four tiers</strong>, and the tier decides both which deck it lives in and what it costs. How many of each is printed sits under its card: the staples come thickest, a tool turns up often enough to find but never for certain, and anything that changes a whole game is the only one of itself.</p>
     <div class="stats">
       <div class="stat" id="st-designs"></div>
       <div class="stat" id="st-cards"></div>
@@ -1083,16 +1081,16 @@
     <h2>Two decks, four tiers</h2>
     <p class="sub">Items are dealt from two decks, and each deck holds two tiers, with roughly <em>three or four of the lower tier for every one of the higher</em>. The <strong>Common Item deck</strong> runs to <span data-count="commonDeck"></span> cards, <span data-count="tCommon"></span> Common against <span data-count="tUncommon"></span> Uncommon; the <strong>Rare Item deck</strong> to <span data-count="rareDeck"></span>, <span data-count="tRare"></span> Rare against <span data-count="tVrare"></span> Very Rare. <span data-count="itemCards"></span> cards from <span data-count="itemDesigns"></span> designs, so a deck that has been shuffled all week still has something in it you have not seen.</p>
     <div class="tw" style="margin-bottom:26px"><table>
-      <thead><tr><th>Deck</th><th>Tier</th><th>Price</th><th>Sells for</th><th>Drawn from</th></tr></thead>
+      <thead><tr><th>Deck</th><th>Tier</th><th>Price</th><th>Drawn from</th></tr></thead>
       <tbody>
-        <tr><td class="k">Common Item deck</td><td style="color:var(--t-common)">Common</td><td class="n">2 Sovereigns</td><td class="n">1 Sovereign</td><td rowspan="2">Anything that says <em>Common Item card</em>, and the Common stock at every stall.</td></tr>
-        <tr><td class="k"></td><td style="color:var(--t-uncommon)">Uncommon</td><td class="n">3 Sovereigns</td><td class="n">2 Sovereigns</td></tr>
-        <tr><td class="k">Rare Item deck</td><td style="color:var(--t-rare)">Rare</td><td class="n">4 Sovereigns</td><td class="n">3 Sovereigns</td><td rowspan="2">Anything that says <em>Rare Item card</em>, and the Rare stock at the stalls that carry it.</td></tr>
-        <tr><td class="k"></td><td style="color:var(--t-vrare)">Very Rare</td><td class="n">5 Sovereigns</td><td class="n">4 Sovereigns</td></tr>
+        <tr><td class="k">Common Item deck</td><td style="color:var(--t-common)">Common</td><td class="n">2 Sovereigns</td><td rowspan="2">Anything that says <em>Common Item card</em>, and the Common stock at every stall.</td></tr>
+        <tr><td class="k"></td><td style="color:var(--t-uncommon)">Uncommon</td><td class="n">3 Sovereigns</td></tr>
+        <tr><td class="k">Rare Item deck</td><td style="color:var(--t-rare)">Rare</td><td class="n">4 Sovereigns</td><td rowspan="2">Anything that says <em>Rare Item card</em>, and the Rare stock at the stalls that carry it.</td></tr>
+        <tr><td class="k"></td><td style="color:var(--t-vrare)">Very Rare</td><td class="n">5 Sovereigns</td></tr>
       </tbody>
     </table></div>
     <h2>The cards</h2>
-    <p class="sub">Card text as printed. The kind is how the page sorts them, not something printed on the card. The tier is the colour of the frame, and the coins along the bottom are its price at a Peddler. How items are kept, used and sold is in Chapter IX of the manual.</p>
+    <p class="sub">Card text as printed. The kind is how the page sorts them, not something printed on the card. The tier is the colour of the frame, and the coins along the bottom are its price at a Peddler. How items are kept and used is in Chapter IX of the manual.</p>
     <div class="filters" id="ibar"><span class="lbl">Tier</span></div>
     <div class="filters" id="kbar"><span class="lbl">Kind</span></div>
     <p class="sizenote">Cards are shown <b>as they print</b>: mini euro, 44 &times; 68 mm, white face, black frame, the tier above the bottom rule, 10pt throughout.<span class="count"></span></p>
@@ -1112,7 +1110,7 @@
   <header>
     <p class="eyebrow">Investigation deck &middot; first pass &middot; one card a search</p>
     <h1>Investigations</h1>
-    <p class="lede">What turns up when you search a room. The deck is a deck of <strong>outcomes</strong>: anything you can hold comes from the supply or an item deck, and a good share of the time it reaches into the <strong>item decks</strong>. Every card does something: an empty search is gone, and what turns up is a find, a piece of knowledge, or something that turns up <strong>you</strong>.</p>
+    <p class="lede">What turns up when you search a room. The deck is a deck of <strong>outcomes</strong>: anything you can hold comes from the supply or an item deck, and a good share of the time it reaches into the <strong>item decks</strong>. Every card does something: an empty search is gone, and what turns up is a find, a piece of knowledge, or something that turns up <strong>you</strong>. Since nothing can be sold, the deck is also where most of the table's coin comes from.</p>
     <div class="stats" id="searchstats"></div>
   </header>
 
@@ -1120,7 +1118,7 @@
     <h2>How a search works</h2>
     <ol class="steps">
       <li><b>Search</b>Spend 1 Action at an Investigate icon nobody has used. Draw the top card of the Investigation deck and mark the icon done: a room with three icons is three separate searches, for whoever gets to them.</li>
-      <li><b>Resolve</b>Do what the card says. Coin and keys go on your player board; items come from the Common or Rare Item deck, as the card names.</li>
+      <li><b>Resolve</b>Do what the card says. Many finds also pay <strong>1 to 3 Sovereigns</strong> on top, which is what the last line of the card says; a harmful card never pays. Coin and keys go on your player board; items come from the Common or Rare Item deck, as the card names.</li>
       <li><b>Discard</b>The card goes to the Investigation discard pile.</li>
     </ol>
     <div class="tip"><b>The red band</b><p>A harmful card wears a <strong>red band</strong> inside its black frame. Everything else in the deck has the black frame alone, and no card carries an icon: the band is the only mark on it. Harmful items wear the same band.</p></div>
@@ -1141,7 +1139,7 @@
   <header>
     <p class="eyebrow">Haunting deck &middot; first pass &middot; one card at noon, one at night</p>
     <h1>Hauntings</h1>
-    <p class="lede">The house's turn. Six kinds of card, from direct Sanity loss to a gift with a price on it. <strong>Every card does something</strong>: with only thirteen draws in a week, a card that costs the table nothing is a night the house gave away.</p>
+    <p class="lede">The house's turn. Six kinds of card, from direct Sanity loss to a gift with a price on it. <strong>Every card does something</strong>, and prints two arrows, the directions its ghosts move. Copies of a card carry different arrows. With only thirteen draws in a week, a card that costs the table nothing is a night the house gave away.</p>
     <div class="stats" id="nightstats"></div>
   </header>
   <section>
@@ -1181,7 +1179,7 @@
     <h2>Player board</h2>
     <p class="sizenote">One each, 197 &times; 76 mm, with your investigator card on the left, ability side up, and a tracking block on every track. An <u>underlined</u> number is where you start.</p>
     <div class="pboard">
-      <div><h3>Sanity</h3><div class="track" id="strack"></div><p>Start and max at 10. At 0 you're lost to the house.</p></div>
+      <div><h3>Sanity</h3><div class="track" id="strack"></div><p>Start and max at 10. At 0 you play on with 3 Actions, and a ghost joins the house.</p></div>
       <div><h3>Actions</h3><div class="track" id="atrack"></div><p>Five each morning and five each afternoon, one per turn, and moving counts. The five blue boxes hold extra Actions for that half only. At noon and at dawn you go back to five.</p></div>
       <div><h3>Sovereigns</h3><div class="track" id="cotrack"></div><p>Start at the amount on your investigator. Caps at 20.</p></div>
       <div><h3>Iron Keys</h3><div class="track" id="iktrack"></div><p>Caps at 5.</p></div>
@@ -1194,7 +1192,7 @@
       <div class="note"><h3>Light and Power</h3><p>A dark room answers to the generator or to a flame in a hand; a powered machine answers to the generator alone. An investigator who works better in the dark, or who can carry a light for somebody else, has room to exist.</p></div>
       <div class="note"><h3>The Calendar</h3><p>Bending the week: a day bought back, or a stall opened on a day it should be shut.</p></div>
       <div class="note"><h3>Objectives</h3><p>Reading, swapping or scoring them differently, the part of the game nobody at the table can see.</p></div>
-      <div class="note"><h3>Coin</h3><p>Income rather than discounts: a Sovereign a day, or a cut of what the party sells.</p></div>
+      <div class="note"><h3>Coin</h3><p>Income rather than discounts: a Sovereign a day, or a cut of what the party finds.</p></div>
     </div>
   </section>
   <footer>One ability each, anchored in a different system, and twelve people who all knew Cornelius before they walked in.</footer>
@@ -1215,7 +1213,7 @@
       <tbody>
         <tr><td class="k">At setup</td><td>Each player is dealt <strong>3</strong> objective cards, keeps <strong>2</strong> in secret and returns the third to the box. Two cheap cards are insurance. Two dear ones win the house or leave you with nothing.</td></tr>
         <tr><td class="k">During the game</td><td>Nobody has to say what they are doing, and nobody has to tell the truth about it either. Some cards let another player look at yours, or let you trade one for a fresh draw; they say how.</td></tr>
-        <tr><td class="k">When the will is read</td><td>The game ends the moment a player standing in the Last Vigil spends an Action on its Activate icon while both the Left and Right Vigil are on, or the moment only one living player is left. If nobody has ended it when Sunday ends, the house keeps everything. Add the score of every card you completed and subtract the score of every card you did not: <strong>the highest total takes the estate</strong>, equal totals share it, and if no total is above 0 the house keeps everything.</td></tr>
+        <tr><td class="k">When the will is read</td><td>The game ends the moment a player standing in the Last Vigil spends an Action on its Activate icon while both the Left and Right Vigil are on, If nobody has ended it when Sunday ends, the house keeps everything. Add the score of every card you completed and subtract the score of every card you did not: <strong>the highest total takes the estate</strong>, equal totals share it, and if no total is above 0 the house keeps everything.</td></tr>
       </tbody>
     </table></div>
   </section>
@@ -1272,7 +1270,7 @@
       <li><strong>Secret sabotage</strong>The game is built on allies of convenience, and the Objectives decide who wins, but nothing yet <em>rewards</em> a player for quietly wrecking somebody else's week. The openings are all on the board &mdash; the switches at the Boiler and the Generator, the Shift, the Mausoleum, the Iron Horseshoe, the last free bed &mdash; and a set of personal missions is what would give a player a reason to use them against the table.</li>
       <li><strong>Objective cards</strong><b data-count="objCards"></b> exist, and a full table takes three each, so twelve are dealt in a four-player game. The scores are first guesses, and no card yet leans on the Calendar or the Shift.</li>
       <li><strong>What the decks are worth against each other</strong>Every count is set &mdash; <b data-count="interiorTiles"></b> tiles in the Interior deck, <b data-count="exteriorTiles"></b> in the Exterior, <b data-count="commonDeck"></b> cards in the Common Item deck and <b data-count="rareDeck"></b> in the Rare. What no table can tell us yet is whether they are the <em>right</em> counts: whether a tool turns up before its room, and whether the item decks are a deck or a warehouse.</li>
-      <li><strong>Ghosts</strong>Whether the Ritual Chamber makes losing too cheap, since a revived player keeps their Objectives. Whether 3 Actions a half is the right weight, whether Rattle on beds and Stashes bites too hard, and whether two ghosts in a four-player game make the end unwinnable. If they do, two ghosts get 2 Actions each.</li>
+      <li><strong>Ghosts</strong>Whether one ghost, moving 4 spaces a day from The Wake, ever meets anybody, or only the player who stands still. Whether 3 Actions at 0 Sanity is enough of a penalty now that nothing else is lost, and whether four players at 0 (five ghosts) is a spiral or a stalemate. Whether the Ritual Chamber's Sovereigns for Sanity is worth a Golden Key.</li>
       <li><strong>Counter-items</strong>Five cards answer the night, each in a different register: the <em>Jet Brooch</em> ignores a card outright, a <em>Sprig of Yew</em> takes the Sanity out of it, <em>Salt Line</em> shelters a whole room, an <em>Iron Horseshoe</em> hands your loss to somebody else, and a <em>Coffin Nail</em> stops the card being drawn at all. What is unproven is the mix.</li>
     </ul>
   </section>
@@ -1325,7 +1323,7 @@
       <li><strong>A targeted card on the first night</strong>Ties are not broken, so a card that hunts the lowest Sanity hits everyone who is level. On the first night that is the whole table.</li>
       <li><strong>Keys against locks</strong>More than a quarter of the Interior deck needs an Iron Key, so an average house holds about a dozen locked rooms. Four keys sit in the Investigation deck, Silas Crane brings three, and the Locksmith's Counter sells the rest at 2 Sovereigns each. Whether that reads as hard choices or as a house nobody can get into.</li>
       <li><strong>Winding the week</strong>The one Grand Hourglass moves the Calendar a day, forward or back, for whoever carries it into a Vigil. Winding back buys the table a day; winding forward burns one, and a party that wants either has to decide who is trusted to stand at the clock.</li>
-      <li><strong>Coin loops</strong>The Pawnbroker pays full price, the Appraiser Loupe adds a Sovereign to a sale, and Bruce Ashworth buys a Sovereign cheaper. Together they can turn a stall and a counter into income. Whether that is a clever find or a hole.</li>
+      <li><strong>Coin loops</strong>Nothing can be sold now, so coin comes from the Investigation deck, a few rooms and each investigator's purse. The Appraiser Loupe adds a Sovereign to every paying card, and the Counting House pays for each item you hold. Whether a week of searching leaves the table rich or still short is the number the next test should count.</li>
       <li><strong>The chaotic cards</strong><em>Sprung Trap</em> turns the room you are standing in, which may open a way as easily as close one. That is on purpose: the red frame promises trouble, not always the same trouble.</li>
     </ul>
   </section>
@@ -1335,7 +1333,7 @@
 <!-- ============ CHANGELOG ============ -->
 <div class="view" id="v-log" role="tabpanel" aria-labelledby="t-log" hidden>
   <header>
-    <p class="eyebrow">Change history &middot; 1.0 to 2.7</p>
+    <p class="eyebrow">Change history &middot; 1.0 to 2.9</p>
     <h1>Changelog</h1>
     <p class="lede">What has changed in the house, newest first. Every other page describes the game <strong>as it stands today</strong>; this is the only one that remembers what it used to be.</p>
   </header>
@@ -1343,12 +1341,67 @@
   <section class="toprint">
     <h2>To print for the next test</h2>
     <p class="sub">Temporary. Every tile and card that is new or changed since the last print run, so the next test only reprints what it must. Anything not listed stays as printed. Cleared once it has been printed.</p>
-    <p class="sub">Nothing waiting: everything up to version 2.7 is printed.</p>
+    <div class="tpgrid">
+      <div class="tp"><h3>Ghosts and Sanity</h3><ul>
+        <li><b>Haunting cards, all 36</b>: each gets a line of two arrows at the foot, the ghosts' directions. The Dead Stir is reworded</li>
+        <li><b>The board</b>: The Wake in F2 (a new printed room, taking the place of the Interior slot there) and the Ritual Chamber's new text</li>
+        <li><b>Helper cards</b>: A Day at Ashworth, and the Ghost sheet is now The Ghosts / Sanity and Actions</li>
+        <li><b>Items</b>: Mourning Veil, Holy Water, Spirit Bell. <b>Investigation</b>: Restless Dead. <b>Objectives</b>: Last One Standing, None Left Behind. <b>Investigator</b>: Madame Sorrel (back)</li>
+      </ul></div>
+      <div class="tp"><h3>Stalls, no more opening days</h3><ul>
+        <li><b>Reprint without days:</b> Emporium (&times;2 now), Grand Bazaar, Market Stall (&times;2), Trading Post (&times;2, now with an L of doors, left and bottom), and The Gate Lodge on the Exterior sheet</li>
+        <li><b>New tiles:</b> General Store &times;2 (Reveal 2 Common Item cards), Curiosity Shop (Reveal 2 Rare Item cards)</li>
+      </ul></div>
+      <div class="tp"><h3>The board</h3><ul>
+        <li><b>Reprint the board.</b> The Ritual Chamber gains a Rest icon, the Boiler and the Generator lose their Iron-locked doors, and the Foyer's counter no longer buys: it only sells keys</li>
+      </ul></div>
+      <div class="tp"><h3>Room tiles <span>5</span></h3><ul>
+        <li><b>Turning Hall</b> &times;4: both doors open, not Iron-locked (one on the Passage sheet, three on Passage 2)</li>
+        <li><b>The Pawnbroker</b>: lose 2 Sovereigns, take any card from the Item discard pile</li>
+      </ul></div>
+      <div class="tp"><h3>Item cards <span>1</span></h3><ul>
+        <li><b>Appraiser Loupe</b> (Very Rare): when an Investigation card gives you Sovereigns, gain 1 more</li>
+      </ul></div>
+      <div class="tp"><h3>Investigation cards <span>36</span></h3><ul>
+        <li><b>Each now ends with a Gain line.</b> Reprint 3 Sovereigns: Ornate Chest, Locked Cabinet, The Plans. 2 Sovereigns: Family Portrait, Old Map &times;2, A Way Through &times;2, Remembrance &times;2, Hidden Lever &times;2, Servant's Trail, Servant's Notes, A Codicil. 1 Sovereign: Hidden Drawer &times;5, Loose Panel &times;3, Pawn Ticket &times;2, Rag and Bone, Moment's Quiet, Fresh Air, Consecration, Fuse Box &times;2, Water Valve &times;2, Misfiled &times;2, Pocketed</li>
+        <li><b>Take out of the deck</b> and do not reprint: Loose Change &times;3, Coin Bag &times;2, Strongbox. The deck is 64 cards</li>
+      </ul></div>
+    </div>
   </section>
 
   <section>
     <h2>Versions</h2>
     <div class="log">
+
+      <article class="rel">
+        <div><p class="v">2.9</p><p class="vt">Nobody is lost</p></div>
+        <div>
+          <ul>
+          <li><b>Nobody dies any more.</b> At 0 Sanity you keep your items, keys, Sovereigns and Objectives and stay in the game. Players were choosing to die to win as ghosts; there is no ghost to become now, so there is nothing to win by dying.</li>
+          <li><b>Sanity sets your Actions.</b> 6 to 10 Sanity: 5 Actions a half. 3 to 5: 4. 1 or 2: 3. At 0: still 3, but a ghost joins the house.</li>
+          <li><b>Neutral ghosts.</b> One ghost starts in <b>The Wake</b>, a new printed room in F2, and one more arrives for every player at 0 Sanity. After each Haunting card every ghost moves 2 spaces in the directions the card shows, through walls, into slots with no room yet, never into a Sacred room and never onto a garden path; off the board sends it back to The Wake. Entering a room costs everybody in it 1 Sanity, per ghost. That is all a ghost does: the Chill, Rattle, Fright and Drift of player ghosts are gone.</li>
+          <li><b>The Wake.</b> Passage, two open doors left and right, and a Passive: entering here, lose 2 Sanity. It also shortens the way between E2 and G2, for a price.</li>
+          <li><b>The Ritual Chamber now pays Sanity for Sovereigns:</b> lose any number of Sovereigns, gain that much Sanity. It no longer revives anyone, since nobody is lost.</li>
+          <li><b>Every Haunting card prints two arrows.</b> The Dead Stir makes every ghost repeat its move. <b>Restless Dead</b> (Investigation) sends every ghost to the room.</li>
+          <li><b>Objectives:</b> <b>Last One Standing</b> asks you to be the only player with 5 or more Sanity; <b>None Left Behind</b> asks every player to end with 1 or more Sanity.</li>
+          <li><b>Chapters are named and linked.</b> The contents on the left of the manual say which chapter each section is, and every "see Chapter" in the text is a link that takes you there, even from another tab.</li>
+          <li><b>Stalls open every day.</b> The opening-days table and the days on every Peddler tile are gone: a stall simply reveals the stock its tile names. Commerce is drawn more often to match: the <b>Emporium</b>, <b>Market Stall</b> and <b>Trading Post</b> are printed twice (the Trading Post now has its doors on the left and bottom), and two new stalls join, the <b>General Store</b> &times;2 (2 Common cards) and the <b>Curiosity Shop</b> (2 Rare cards).</li>
+          <li><b>Items against ghosts</b> read as "lose Sanity" now: <b>Mourning Veil</b>, <b>Spirit Bell</b>; <b>Holy Water</b> sends a ghost to The Wake; the <b>Iron Horseshoe</b> passes it to "another player", not "another living player". <b>Madame Sorrel</b> cannot be made to lose Sanity by a ghost.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="rel">
+        <div><p class="v">2.8</p><p class="vt">After the second playtest</p></div>
+        <div>
+          <ul>
+          <li><b>Items cannot be sold.</b> An item is worth what it does. No Peddler and not the Foyer's counter buys any more, and the tier table loses its "sells for" column. The <b>Pawnbroker</b> now lets you pay 2 Sovereigns for any card in the Item discard pile, and the <b>Appraiser Loupe</b> adds 1 Sovereign to every Investigation card that pays you.</li>
+          <li><b>Investigation cards pay.</b> Thirty-six of the 64 cards now end with 1, 2 or 3 Sovereigns on top of what they already did, and 3 is rare: <b>Ornate Chest</b>, <b>Locked Cabinet</b> and <b>The Plans</b>. The weakest cards, the ones that only tell you something, pay the most; the cards that already hand you a key, a Rare item or 2 Actions pay nothing, and no harmful card ever pays. <b>Loose Change</b> &times;3, <b>Coin Bag</b> &times;2 and <b>Strongbox</b> leave the deck, because they did nothing else.</li>
+          <li><b>The Boiler, the Generator and the Turning Halls stand open.</b> Their doors lose the Iron Key, and the setup no longer puts locked tokens on them. The walk to the corners is the whole price of the switch.</li>
+          <li><b>The Ritual Chamber has a Rest icon.</b> A living player can spend the night there, behind a Golden Key and where no ghost can enter.</li>
+          </ul>
+        </div>
+      </article>
 
       <article class="rel">
         <div><p class="v">2.7</p><p class="vt">The investigators, again</p></div>
@@ -1588,7 +1641,7 @@
           <li><b>Cards reworked.</b> The <b>Letter Opener</b> shows you both of a player's objectives, as a very rare card should. <b>Metal Detector</b> draws 2 and resolves 1. <b>Appraiser Loupe</b> pays only on uncommon or better. The <b>Ledger</b> reveals three rare cards and gives you one outright, with no Peddler involved. And the <b>power no longer hands out an action a day</b> &mdash; it has rooms of its own to open now, exactly like the water.</li>
           <li><b>Nine more cards that do nothing but sell</b>, three in each of the lower tiers and one rare, plus two more counters: <b>Salt Line</b> shelters a room from tonight's event and a <b>Coffin Nail</b> stops the night from happening at all.</li>
           <li><b>Night events and searches are counted too.</b> The night deck is <b>35 cards from 28 designs</b>, weighted so the categories land where they should rather than any one card being likely. Search counts moved off the card face and under it, and the rare-find chip went with them.</li>
-          <li><b>Two more tables to argue with.</b> The Items tab gained one to match the rooms: every card against the deck it sits in, with its share and how many cards you would turn before one came up. And under the room table there is now a count of <b>every icon in the game</b> &mdash; how many exist in each deck and how many reach the table once 44 rooms are dealt indoors and 8 outside. That last column is the one worth staring at: <b>56 Investigate icons</b> in an average house against an Investigation Deck of 58, seven and a bit beds, six prayers, four Stashes.</li>
+          <li><b>Two more tables to argue with.</b> The Items tab gained one to match the rooms: every card against the deck it sits in, with its share and how many cards you would turn before one came up. And under the room table there is now a count of <b>every icon in the game</b> &mdash; how many exist in each deck and how many reach the table once 41 rooms are dealt indoors and 8 outside. That last column is the one worth staring at: <b>56 Investigate icons</b> in an average house against an Investigation Deck of 58, seven and a bit beds, six prayers, four Stashes.</li>
           <li><b>The item decks are counted, like the tiles.</b> Every card now says how many of it are printed. Staples come thickest &mdash; four Cold Suppers, four Smelling Salts, three Candles, three Wrenches &mdash; tools sit at two or three so they are findable without being certain, the sell-only pieces pad the draw at three apiece, and anything that changes a whole game is the only one of itself: the Master Key, the Pocket Watch, the Coin Purse, the Torn Blueprint. The <b>Common Item Deck</b> is 71 cards, 52 common against 19 uncommon; the <b>Rare Item Deck</b> is 27, 21 against 6. That is the three-to-one the chapter always claimed and never had.</li>
           <li><b>Six cards the box was missing.</b> <b>Sprig of Yew</b> and <b>Iron Horseshoe</b> answer the night: one takes the sanity out of an event for you, the other hands it to any other player at the table. <b>Door Wedge</b> is the answer to somebody else's nightwork &mdash; discard it as they turn or pull a room and the room stays exactly as it was. <b>Bedroll</b> makes the room you are standing in a bed for one night, which is the first answer to a house that may deal its bedrooms anywhere. <b>Prayer Book</b> puts two Shielded charges outside the Sacred line, and <b>Calling Card</b> trades a look at one of your objectives for a look at one of theirs.</li>
           <li><b>The boiler and the generator are printed on the board.</b> They stand at <b>C4</b> and <b>H4</b>, one to a wing, each with a single door facing the house and an <b>Iron Key</b> rather than a Golden one. Drawn from the deck they turned up 41% of the time apiece and both together only 17%, which left the water unreachable in a third of games and stranded the seven rooms that wait on it &mdash; and one game in five had no route to either flag all week. Machinery is the one thing in this house that is bolted to the building, so it no longer shuffles. Dropping them to an Iron Key matters as much as printing them: two guaranteed gold doors would have competed with the Vigil's two, and "always there" would have quietly meant "never opened".</li>
@@ -1766,8 +1819,10 @@ const ic = (id, style) => '<svg class="ico"' + (style ? ' style="' + style + '"'
 /* ---- manual contents ---- */
 const tocEl = document.getElementById("toc");
 const secs = [...document.querySelectorAll("#v-manual .doc section[id]")];
-tocEl.innerHTML = '<b>Contents</b>' + secs.map(s =>
-  '<a href="#' + s.id + '">' + s.querySelector("h3").textContent + '</a>').join("");
+tocEl.innerHTML = '<b>Contents</b>' + secs.map(s => {
+  const k = s.querySelector(".kicker");
+  return '<a href="#' + s.id + '">' + (k ? '<small>' + k.textContent + '</small>' : '') + s.querySelector("h3").textContent + '</a>';
+}).join("");
 const tocLinks = [...tocEl.querySelectorAll("a")];
 /* the chapter you are reading is the last one whose heading has passed the rail */
 function markChapter(i){ tocLinks.forEach((a, k) => a.classList.toggle("on", k === i)); }
@@ -1792,7 +1847,6 @@ window.addEventListener("scroll", () => {
 markChapter(0);
 
 /* ============ DATA ============ */
-const DAYNAMES = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
 const LINES = [
   {key:"passage", name:"Passage", role:"Connectors",
    note:"Pure circulation. Door count climbs from two to four, most hide a single search, and the Long Gallery charges a Sanity for the walk.",
@@ -1874,21 +1928,23 @@ const LINES = [
     {n:"The Rite", c:1, d:"tb", inv:1, act:1, sp:"Lose 1 Sanity: look at the top 2 cards of the Haunting deck, discard 1 of them"},
     {n:"Shrine", c:1, d:"lb", pray:2, req:"key"},
     {n:"Vestry", c:1, d:"b", pray:1, stash:1, req:"key"}]},  {key:"commerce", name:"Commerce", role:"Trading",
-   note:"The Peddler sets up wherever he likes. Each stall trades on its printed days only, and the bigger the stock the tighter the window.",
+   note:"The Peddler sets up wherever he likes. Every stall opens every day; what sets them apart is the stock, from a few Common cards to a table of Rare ones.",
    rooms:[
     {n:"Counting House", c:1, d:"b", inv:1, act:1, sp:"Gain 1 Sovereign for each Item card you hold"},
-    {n:"Emporium", c:1, d:"tb", ped:1, days:[0,0,1,0,0,1,0], com:2, rar:1},
-    {n:"Grand Bazaar", c:1, d:"tlrb", ped:1, days:[0,0,0,1,1,0,0], rar:3},
-    {n:"Market Stall", c:1, d:"b", ped:1, days:[1,1,1,1,1,1,0], com:1},
-    {n:"The Pawnbroker", c:1, d:"b", inv:1, act:1, sp:"Sell Item cards at exactly their full price"},
-    {n:"Trading Post", c:1, d:"tb", ped:1, days:[0,1,1,1,1,0,0], com:3}]},  {key:"exterior", name:"Exterior", role:"The grounds",
+    {n:"Curiosity Shop", c:1, d:"tb", ped:1, shop:1, rar:2},
+    {n:"Emporium", c:2, d:"tb", ped:1, shop:1, com:2, rar:1},
+    {n:"General Store", c:2, d:"b", ped:1, shop:1, com:2},
+    {n:"Grand Bazaar", c:1, d:"tlrb", ped:1, shop:1, rar:3},
+    {n:"Market Stall", c:2, d:"b", ped:1, shop:1, com:1},
+    {n:"The Pawnbroker", c:1, d:"b", inv:1, act:1, sp:"Lose 2 Sovereigns: take any card from the Item discard pile"},
+    {n:"Trading Post", c:2, d:"lb", ped:1, shop:1, com:3}]},  {key:"exterior", name:"Exterior", role:"The grounds",
    note:"Open air: the eight slots of the courtyard at the heart of the house. Drawn from the Exterior deck.",
    rooms:[
     {n:"Carriage House", c:1, d:"lrb", inv:1, stash:1, req:"key"},
     {n:"The Cloister", c:1, d:"tlrb", inv:1},
     {n:"The Dovecote", c:1, d:"tb", inv:1, act:1, sp:"Send any Item cards, keys or Sovereigns to another player"},
     {n:"Garden Shed", c:1, d:"b", inv:2},
-    {n:"The Gate Lodge", c:1, d:"tb", ped:1, days:[1,1,1,1,1,1,1], com:0, rar:1},
+    {n:"The Gate Lodge", c:1, d:"tb", ped:1, shop:1, rar:1},
     {n:"The Graveyard", c:1, d:"tb", inv:1, pray:1, act:1, sp:"Lose 4 Sanity: gain a Golden Key"},
     {n:"Greenhouse", c:1, d:"tb", inv:1, g:{need:"water", act:1}, sp:"Gain 1 Sanity"},
     {n:"Hedge Maze", c:1, d:"tlrb", inv:3, on:"inv", sp:"Investigating here costs 2 Actions instead of 1"},
@@ -1917,7 +1973,7 @@ const KINDS = [["use", "Consumable"], ["tool", "Tool"]];
 const ITEMS = [
   {n:"Cold Supper", r:"common", c:4, k:"use", t:"Discard to gain 2 Actions"},
   {n:"Door Wedge", r:"common", c:2, k:"use", t:"When another player relocates a room, discard this to stop it. The room stays as it was"},
-  {n:"Iron Horseshoe", r:"common", c:2, k:"use", t:"When a Haunting card would take your Sanity, discard this: another living player of your choice loses it instead"},
+  {n:"Iron Horseshoe", r:"common", c:2, k:"use", t:"When a Haunting card would take your Sanity, discard this: another player of your choice loses it instead"},
   {n:"Salt Line", r:"common", c:2, k:"use", t:"When a Haunting card is revealed, discard this. No player in this room is affected by it"},
   {n:"Smelling Salts", r:"common", c:4, k:"use", t:"Discard to gain 1 Sanity, or 2 in a Chamber room"},
   {n:"Sprig of Yew", r:"common", c:3, k:"use", t:"When a Haunting card is revealed, discard this: you lose no Sanity to it"},
@@ -1931,7 +1987,7 @@ const ITEMS = [
   {n:"Pickpocket", r:"common", c:3, k:"use", h:1, t:"Discard: take 2 Sovereigns from a player in your room"},
   {n:"Candle Snuffer", r:"common", c:3, k:"use", h:1, t:"Discard: a player in your room has 2 Actions fewer until the next Haunting card"},
   {n:"Lucky Charm", r:"common", c:2, k:"use", t:"When a harmful Item or Investigation card would affect you, discard this: it has no effect on you"},
-  {n:"Mourning Veil", r:"common", c:2, k:"use", t:"When a ghost would Chill or Fright you, discard this: it has no effect on you"},
+  {n:"Mourning Veil", r:"common", c:2, k:"use", t:"When a ghost would make you lose Sanity, discard this: you lose none"},
   {n:"Rowan Twig", r:"common", c:2, k:"use", t:"Discard: no ghost can enter your room until the next Haunting card"},
   {n:"Trade Card", r:"common", c:2, k:"tool", t:"At a Peddler, discard this to reveal 1 extra Common Item card"},
   {n:"Bedroll", r:"uncommon", c:2, k:"use", t:"Discard as your day ends: you are not moved to the Foyer"},
@@ -1946,13 +2002,13 @@ const ITEMS = [
   {n:"Penny Dreadful", r:"uncommon", c:2, k:"use", h:1, t:"Discard: every other player in your room loses 1 Sanity"},
   {n:"Poison Pen", r:"uncommon", c:2, k:"use", h:1, t:"Discard: name a player anywhere in the mansion. They lose 1 Sanity"},
   {n:"Scrubbing Brush", r:"uncommon", c:1, k:"use", t:"Discard: take the spent token off a Rest or Stash icon in your room"},
-  {n:"Holy Water", r:"uncommon", c:1, k:"use", t:"Discard in a room with a ghost: send the ghost to the Foyer"},
+  {n:"Holy Water", r:"uncommon", c:1, k:"use", t:"Discard in a room with a ghost: send the ghost to The Wake"},
   {n:"Fuse", r:"uncommon", c:2, k:"tool", t:"Discard: one room has Power until the end of the day"},
   {n:"Gardener's Map", r:"uncommon", c:1, k:"tool", t:"Discard in an Exterior room: draw 1 Rare Item card"},
   {n:"Lantern", r:"uncommon", c:2, k:"tool", t:"Enter any room that needs Light while the Power is off"},
   {n:"Laudanum", r:"uncommon", c:1, k:"use", t:"Discard to gain 2 Sanity, or in a Chamber room every player there gains 1"},
   {n:"Preserving Jar", r:"uncommon", c:2, k:"tool", t:"Discard in a Storage room: draw 2 Common Item cards and keep 1"},
-  {n:"Appraiser Loupe", r:"vrare", c:1, k:"use", t:"Gain 1 more Sovereign for each Item card sold of at least Uncommon quality"},
+  {n:"Appraiser Loupe", r:"vrare", c:1, k:"use", t:"When an Investigation card gives you Sovereigns, gain 1 more"},
   {n:"Coffin Nail", r:"rare", c:1, k:"use", t:"Discard before a Haunting card is drawn: none is drawn"},
   {n:"Floor Plan", r:"rare", c:1, k:"use", t:"Discard: move to any revealed Passage room in the mansion"},
   {n:"Metal Detector", r:"vrare", c:1, k:"use", t:"When you Investigate, draw 2 cards, resolve 1 and discard the other"},
@@ -1970,7 +2026,7 @@ const ITEMS = [
   {n:"The Deed", r:"vrare", c:1, k:"use", t:"Take the starting player marker. While you hold this, it never passes at dawn"},
   {n:"Hagstone", r:"vrare", c:1, k:"use", t:"Harmful Item and Investigation cards cannot affect you, for the rest of the game"},
   {n:"Lazarus Bell", r:"vrare", c:1, k:"use", t:"When you reach 0 Sanity, discard this: you are not lost. Move to the Foyer with 3 Sanity"},
-  {n:"Spirit Bell", r:"vrare", c:1, k:"use", t:"While you hold this, ghosts cannot Chill or Fright any player in your room"},
+  {n:"Spirit Bell", r:"vrare", c:1, k:"use", t:"While you hold this, ghosts cannot make any player in your room lose Sanity"},
   {n:"Master Key", r:"vrare", c:1, k:"tool", t:"Opens any room that asks for an Iron Key"},
 ];
 ITEMS.sort(az);
@@ -2015,7 +2071,7 @@ const CAST = [
    ab:"Once a day, spend 1 Action to move between any revealed Exterior room and any travel marker"},
   {n:"Madame Sorrel", coin:3, occ:"Medium", start:"Salt Line",
    bio:"Held a séance for him every winter. Since the funeral, he has started answering.",
-   ab:"Ghosts cannot Chill or Fright you. You may use the Ritual Chamber's Activate from any Sacred room"},
+   ab:"Ghosts cannot make you lose Sanity. You may use the Ritual Chamber's Activate from any Sacred room"},
   {n:"Mr. Cobb", coin:2, occ:"Engineer", start:"Fuse",
    bio:"Kept the boilers and the wiring running for him, and never found where half the pipes went.",
    ab:"Once a day, in any Utility room, spend 1 Action to turn the Water or the Power on or off"},
@@ -2049,16 +2105,7 @@ track("cotrack", 20, () => "");
 track("iktrack", 5, i => "k" + (i === 0 ? " b" : ""));
 track("gktrack", 2, i => "s" + (i === 0 ? " b" : ""));
 
-/* ============ CALENDAR (manual) ============ */
-/* every room that keeps opening days, wherever its line sits */
-const COMM = [{n:"Foyer", days:[1,1,1,1,1,1,1], keys:1}].concat(LINES.flatMap(l => l.rooms).filter(r => r.days));
-const DAYFULL = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
-const dayText = d => {
-  const on = d.map((v, i) => v ? i : -1).filter(i => i >= 0);
-  const run = on.every((v, i) => i === 0 || v === on[i - 1] + 1);
-  return (run && on.length > 2) ? DAYFULL[on[0]] + " to " + DAYFULL[on[on.length - 1]]
-    : on.map(i => DAYFULL[i]).join(on.length === 2 ? " and " : ", ");
-};
+/* ============ STALLS ============ */
 const stockText = r => {
   const p = [];
   if (r.com) p.push(r.com + " Common");
@@ -2066,19 +2113,13 @@ const stockText = r => {
   /* the plural follows the last group: "2 Common and 1 Rare card" */
   return p.join(" and ") + " Item card" + ((r.rar || r.com) === 1 ? "" : "s");
 };
-const stock = r => r.keys ? "keys only" : [r.com && r.com + " Common", r.rar && r.rar + " Rare"].filter(Boolean).join(" + ");
-document.getElementById("caltable").innerHTML =
-  '<thead><tr><th>Room</th><th>Stock</th>' + DAYNAMES.map(d => '<th class="c">' + d + '</th>').join("") + '</tr></thead><tbody>' +
-  COMM.map(r => '<tr><td class="k">' + r.n + '</td><td class="n">' + stock(r) + '</td>' +
-    r.days.map((o, i) => '<td class="c"><i class="' + (o ? "on" : "") + '" title="' + DAYNAMES[i] + (o ? " open" : " closed") + '"></i></td>').join("") + '</tr>').join("") +
-  '</tbody>';
 
 /* ============ MANSION ============ */
 const svg = document.getElementById("mansion");
 /* The board as printed: an 11 x 7 grid, 100 units to a 70 mm cell. The Vigils fill D1 to H1, the
    Turning Halls B3, J3, C5 and I5, the plant rooms A7 and K7, the courtyard E3 to G5 with the Ritual
    Chamber at its heart in F4, and the Foyer E7 to G7; every other cell that holds a tile is an Interior slot. */
-const ROWS = [[0,10],[0,1,2,3,4,5,6,7,8,9,10],[0,2,3,7,8,10],[0,1,2,3,7,8,9,10],[1,3,7,9],[1,2,3,4,5,6,7,8,9],[3,7]];
+const ROWS = [[0,10],[0,1,2,3,4,6,7,8,9,10],[0,2,3,7,8,10],[0,1,2,3,7,8,9,10],[1,3,7,9],[1,2,3,4,5,6,7,8,9],[3,7]];
 const COLS = "ABCDEFGHIJK";
 let s = "";
 /* garden paths, drawn first so the cells sit on top; the markers sit in the cells they cross */
@@ -2131,7 +2172,7 @@ s += '<rect class="ptile vigil" data-t="vigil" x="402" y="2" width="296" height=
        '<path class="parrow" d="M' + (cx - 1.8) + ' 47h3.6v4h2.7l-4.5 5.5-4.5-5.5h2.7z"/>' +
        ["Turn the " + name, "on or off"].map((l, i) => '<text class="ptx" x="' + cx + '" y="' + (66 + i * 9) + '">' + l + '</text>').join("");
 });
-/* the plant rooms in the bottom corners, each with two Iron-locked doors, one onto each path that reaches it */
+/* the plant rooms in the bottom corners, each with two open doors, one onto each path that reaches it */
 [[2, "Boiler", ["Turn the Water on or off", "in the mansion"], "boiler", "tr"],
  [1002, "Generator", ["Turn the Power and Lights", "on or off in the mansion"], "generator", "tl"]].forEach(([x, name, lines, id, sides]) => {
   const cx = x + 48;
@@ -2142,9 +2183,9 @@ s += '<rect class="ptile vigil" data-t="vigil" x="402" y="2" width="296" height=
        '<path class="parrow" d="M' + (cx - 2) + ' 653h4v5h3l-5 6-5-6h3z"/>' +
        '<text class="ptx" x="' + cx + '" y="675">' + lines[0] + '</text>' +
        '<text class="ptx" x="' + cx + '" y="685">' + lines[1] + '</text>' +
-       [...sides].map(sd => '<rect class="doorbar iron" ' + ({t: 'x="' + (x + 33) + '" y="603" width="30" height="5"', l: 'x="' + (x + 1) + '" y="635" width="5" height="30"', r: 'x="' + (x + 90) + '" y="635" width="5" height="30"'})[sd] + '/>').join("");
+       [...sides].map(sd => '<rect class="doorbar" ' + ({t: 'x="' + (x + 33) + '" y="603" width="30" height="5"', l: 'x="' + (x + 1) + '" y="635" width="5" height="30"', r: 'x="' + (x + 90) + '" y="635" width="5" height="30"'})[sd] + '/>').join("");
 });
-/* the four Turning Halls, placed at setup in B3, J3, C5 and I5, Iron Keys at their L of doors */
+/* the four Turning Halls, placed at setup in B3, J3, C5 and I5, an L of open doors */
 [[102, 202, "tl", "B3"], [902, 202, "tr", "J3"], [202, 402, "lb", "C5"], [802, 402, "rb", "I5"]].forEach(([x, y, sides, id]) => {
   const cx = x + 48;
   s += '<rect class="ptile hall" data-t="hall" data-id="' + id + '" x="' + x + '" y="' + y + '" width="96" height="96" rx="5"/>' +
@@ -2153,7 +2194,7 @@ s += '<rect class="ptile vigil" data-t="vigil" x="402" y="2" width="296" height=
        '<use class="pico" href="#i-boon" x="' + (cx - 6) + '" y="' + (y + 28) + '" width="12" height="12"/>' +
        '<path class="parrow" d="M' + (cx - 1.8) + ' ' + (y + 45) + 'h3.6v4h2.7l-4.5 5.5-4.5-5.5h2.7z"/>' +
        ["The Shift cannot", "relocate this room.", "After every Shift,", "turn this clockwise"].map((t, i) => '<text class="ptx" x="' + cx + '" y="' + (y + 62 + i * 8.5) + '">' + t + '</text>').join("");
-  for (const sd of sides) s += '<rect class="doorbar iron" ' + ({t: 'x="' + (x + 33) + '" y="' + (y + 1) + '" width="30" height="5"', b: 'x="' + (x + 33) + '" y="' + (y + 90) + '" width="30" height="5"',
+  for (const sd of sides) s += '<rect class="doorbar" ' + ({t: 'x="' + (x + 33) + '" y="' + (y + 1) + '" width="30" height="5"', b: 'x="' + (x + 33) + '" y="' + (y + 90) + '" width="30" height="5"',
     l: 'x="' + (x + 1) + '" y="' + (y + 33) + '" width="5" height="30"', r: 'x="' + (x + 90) + '" y="' + (y + 33) + '" width="5" height="30"'})[sd] + '/>';
 });
 /* the Foyer — columns E–G, row 7, one tile deep across the front of the house */
@@ -2165,19 +2206,30 @@ s += '<rect class="ptile foyer" data-t="foyer" x="402" y="602" width="296" heigh
 s += '<rect class="pbox" x="541" y="628" width="18" height="18" rx="1"/>' +
      '<use class="pico" href="#i-stash" x="544" y="631" width="12" height="12"/>';
 [[451, "#i-boon", ["At dawn: every", "player who did not", "Rest is moved here"]],
- [649, "#i-boon",  ["Sell items. Gain", "an Iron Key for", "2 Sovereigns or", "a Golden Key for 5"]]].forEach(([cx, icon, lines]) => {
+ [649, "#i-boon",  ["Gain an Iron Key", "for 2 Sovereigns or", "a Golden Key for 5"]]].forEach(([cx, icon, lines]) => {
   s += '<rect class="pbox" x="' + (cx - 9) + '" y="628" width="18" height="18" rx="1"/>' +
        '<use class="pico" href="' + icon + '" x="' + (cx - 6) + '" y="631" width="12" height="12"/>' +
        '<path class="parrow" d="M' + (cx - 1.8) + ' 648h3.6v4h2.7l-4.5 5.5-4.5-5.5h2.7z"/>' +
        lines.map((t, i) => '<text class="ptx" x="' + cx + '" y="' + (664 + i * 9) + '">' + t + '</text>').join("");
 });
+/* The Wake, printed in F2 between the Last Vigil's two stairs: a Passage room, two open doors, and where every ghost starts */
+s += '<rect class="ptile foyer" data-t="wake" x="502" y="102" width="96" height="96" rx="5"/>' +
+     '<text class="ptname" x="550" y="121">The Wake</text>' +
+     '<rect class="pbox" x="541" y="127" width="18" height="18" rx="1"/>' +
+     '<use class="pico" href="#i-boon" x="544" y="130" width="12" height="12"/>' +
+     '<path class="parrow" d="M548.2 147h3.6v4h2.7l-4.5 5.5-4.5-5.5h2.7z"/>' +
+     ["Entering here:", "lose 2 Sanity"].map((t, i) => '<text class="ptx" x="550" y="' + (166 + i * 9) + '">' + t + '</text>').join("") +
+     '<rect class="doorbar" x="503" y="135" width="5" height="30"/>' +
+     '<rect class="doorbar" x="592" y="135" width="5" height="30"/>';
 /* the Ritual Chamber, printed at the heart of the courtyard: Sacred, a door on every side, a Golden Key to open it */
 s += '<rect class="ptile vigil" data-t="ritual" x="502" y="302" width="96" height="96" rx="5"/>' +
      '<text class="ptname" x="550" y="321">Ritual Chamber</text>' +
-     '<rect class="pbox" x="541" y="327" width="18" height="18" rx="1"/>' +
-     '<use class="pico" href="#i-act" x="544" y="330" width="12" height="12"/>' +
-     '<path class="parrow" d="M548.2 347h3.6v4h2.7l-4.5 5.5-4.5-5.5h2.7z"/>' +
-     ["Lose X Sanity:", "a ghost returns here", "with X Sanity"].map((t, i) => '<text class="ptx" x="550" y="' + (366 + i * 9) + '">' + t + '</text>').join("");
+     '<rect class="pbox" x="530" y="327" width="18" height="18" rx="1"/>' +
+     '<use class="pico" href="#i-rest" x="533" y="330" width="12" height="12"/>' +
+     '<rect class="pbox" x="552" y="327" width="18" height="18" rx="1"/>' +
+     '<use class="pico" href="#i-act" x="555" y="330" width="12" height="12"/>' +
+     '<path class="parrow" d="M559.2 347h3.6v4h2.7l-4.5 5.5-4.5-5.5h2.7z"/>' +
+     ["Lose X Sovereigns:", "gain X Sanity"].map((t, i) => '<text class="ptx" x="550" y="' + (366 + i * 9) + '">' + t + '</text>').join("");
 [[535,303,30,5],[535,392,30,5],[503,335,5,30],[592,335,5,30]].forEach(([x,y,w,h]) =>
   s += '<rect class="doorbar gold" x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '"/>');
 /* the Calendar, above the west back path: a box for each day, and a morning and an afternoon under it */
@@ -2208,12 +2260,13 @@ const DESC = {
   sidevigil:"<b>Left or Right Vigil</b> — printed at the end of a back path · one door, a Golden Key at it · its Activate turns it on or off; mark which in The Mansion box",
   vigil:"<b>The Last Vigil</b> — printed across E1 to G1 · entered from E2 and G2, an Iron Key at each door · its Activate ends the game while both the Left and Right Vigil are on",
   flags:"<b>The Mansion</b> — printed on the board · Water, Power, the Left Vigil and the Right Vigil, each On or Off · everything starts Off",
-  boiler:"<b>Boiler</b> — printed in the bottom-left corner, A7 · two doors, onto the west side path and the west lawn · an Iron Key at it · its Activate turns the Water on, and off again",
-  generator:"<b>Generator</b> — printed in the bottom-right corner, K7 · two doors, onto the east side path and the east lawn · an Iron Key at it · its Activate turns the Power and the Lights on, and off again",
+  boiler:"<b>Boiler</b> — printed in the bottom-left corner, A7 · two open doors, onto the west side path and the west lawn · its Activate turns the Water on, and off again",
+  generator:"<b>Generator</b> — printed in the bottom-right corner, K7 · two open doors, onto the east side path and the east lawn · its Activate turns the Power and the Lights on, and off again",
   garden:"<b>Inner garden</b> — a grounds slot walled in by the house · revealed from the Exterior deck, reached through its own doors like any room",
   calendar:"<b>The Calendar</b> — printed on the board · Monday to Sunday, a morning and an afternoon each · the marker moves to the afternoon at noon and on to the next morning at night",
-  hall:"<b>Turning Hall</b> — a loose tile placed here at setup · Passage · Iron Keys at its two doors · the Shift cannot relocate it; after every Shift it turns a quarter turn clockwise",
-  ritual:"<b>Ritual Chamber</b> — printed at the heart of the courtyard, F4 · Sacred: no ghost can enter · a door on every side, a Golden Key to open it · its Activate: lose any number of Sanity, and a ghost returns to life here with that much",
+  hall:"<b>Turning Hall</b> — a loose tile placed here at setup · Passage · two open doors · the Shift cannot relocate it; after every Shift it turns a quarter turn clockwise",
+  ritual:"<b>Ritual Chamber</b> — printed at the heart of the courtyard, F4 · Sacred: no ghost can enter · a door on every side, a Golden Key to open it · a Rest icon · its Activate: lose any number of Sovereigns, and gain that much Sanity",
+  wake:"<b>The Wake</b> — printed in F2, between E2 and G2 under the Last Vigil · Passage · two open doors, left and right · entering here, lose 2 Sanity · every ghost starts here, and returns here if it is thrown off the board",
   foyer:"<b>Foyer</b> — printed start, three slots wide · a Passage room · 4 doors: two on the top edge, one to each side · the bottom edge is the front door · a Stash in the middle, everyone who did not Rest wakes here, and the Locksmith's Counter sells keys"
 };
 svg.querySelectorAll("[data-t]").forEach(el => {
@@ -2235,7 +2288,7 @@ document.getElementById("tLabels").addEventListener("click", e => {
 /* which deck each line goes into: everything indoors shares one, the grounds keep their own */
 const DECK_OF = {passage:"house", commerce:"house", storage:"house", utility:"house", chamber:"house", sacred:"house", exterior:"grounds"};
 const DECKS = [
-  ["house", "Interior", "var(--accent)", "Everything indoors, one shuffle.", "36"],
+  ["house", "Interior", "var(--accent)", "Everything indoors, one shuffle.", "41"],
   ["grounds", "Exterior", "var(--r-exterior)", "The courtyard, E3 to G5.", "8"]
 ];
 function wingTag(l){
@@ -2286,10 +2339,12 @@ const TILE_LINES = {
   "Dining Hall": ["Every player here","gains 3 Actions"],
   "Dry Cistern": ["This room can only","be entered if","the Water is on"],
   "Dumbwaiter": ["Move to any other","revealed Storage room"],
-  "Emporium": ["On Wednesday and","Saturday: reveal 2 Common","and 1 Rare Item card"],
+  "Emporium": ["Reveal 2 Common and","1 Rare Item card"],
   "Flooded Cellar": ["This room can only","be entered if","the Water is off"],
   "Furnace Room": ["Lose 2 Actions: no Sanity","drain tonight. The Haunting","card still applies"],
-  "Grand Bazaar": ["On Thursday and","Friday: reveal","3 Rare Item cards"],
+  "Curiosity Shop": ["Reveal 2 Rare","Item cards"],
+  "General Store": ["Reveal 2 Common","Item cards"],
+  "Grand Bazaar": ["Reveal 3 Rare","Item cards"],
   "Grand Staircase": ["The Shift cannot","relocate this room"],
   "Greenhouse": ["Gain 1 Sanity"],
   "Hedge Maze": ["Investigating here","costs 2 Actions","instead of 1"],
@@ -2298,7 +2353,7 @@ const TILE_LINES = {
   "Kitchen": ["Entering here:","you gain 2 Actions"],
   "Long Gallery": ["Entering here:","lose 1 Sanity"],
   "Lumber Room": ["Draw 3 Common Item cards instead of an Investigation","card and keep 1"],
-  "Market Stall": ["On Monday to","Saturday: reveal 1","Common Item card"],
+  "Market Stall": ["Reveal 1 Common","Item card"],
   "Mausoleum": ["Draw 2 Haunting cards and","resolve them. Neither","affects you"],
   "Muniment Room": ["Look at the top 3 rooms","of the Interior deck and","put them back in any order"],
   "Music Room": ["Every other player here","gains 2 Sanity. You lose","1 Sanity for each"],
@@ -2318,7 +2373,7 @@ const TILE_LINES = {
   "The Chapel": ["Gain 1 extra Sanity"],
   "The Deadfall": ["Entering here: draw 3","Investigation cards, and","resolve the harmful ones"],
   "The Dovecote": ["Send any Item cards, keys or","Sovereigns to another player"],
-  "The Gate Lodge": ["Every day: reveal","1 Rare Item card"],
+  "The Gate Lodge": ["Reveal 1 Rare","Item card"],
   "The Graveyard": ["Lose 4 Sanity:","gain a Golden Key"],
   "The Hydraulic Lift": ["Move to any other","revealed Interior room"],
   "The Lamp Room": ["Until tomorrow:","Interior rooms have no","Light requirements"],
@@ -2327,7 +2382,7 @@ const TILE_LINES = {
   "The Master Suite": ["Gain 1 Sanity"],
   "The Nursery": ["Lose 1 Sanity"],
   "The Ossuary": ["Praying here costs","1 Sovereign and gives","2 Sanity instead of 1"],
-  "The Pawnbroker": ["Sell Item cards at","exactly their full price"],
+  "The Pawnbroker": ["Lose 2 Sovereigns:","take any card from the","Item discard pile"],
   "The Rat Larder": ["Entering here: discard 1","Item card of your choice","or lose 1 Sanity"],
   "The Rite": ["Lose 1 Sanity: look at the","top 2 cards of the Haunting","deck, discard 1 of them"],
   "The Rose Bed": ["Another player of your","choice gains 1 Sanity"],
@@ -2335,7 +2390,7 @@ const TILE_LINES = {
   "The Sickroom": ["Every player here with","3 Sanity or less","gains 1"],
   "The Storeroom": ["Draw 2 Common Item","cards instead of an","Investigation card"],
   "The Workshop": ["Discard 3 Common or","Uncommon Items: draw 1","from the Rare Item deck"],
-  "Trading Post": ["On Tuesday to","Friday: reveal 3","Common Item cards"],
+  "Trading Post": ["Reveal 3 Common","Item cards"],
   "Turning Hall": ["The Shift cannot","relocate this room.","After every Shift,","turn this clockwise"],
   "Wishing Well": ["Lose 3 Sovereigns: either","draw 2 Common Item cards","or 1 Rare Item card"]
 };
@@ -2345,7 +2400,7 @@ function tileHTML(r){
     '<i class="db ' + sd + (roomLocked(r) ? (gold ? " gl" : " lk") : "") + '"></i>').join("");
   /* the printed tile repeats the box rather than counting it, and the arrow to the
      rule below hangs under every box the rule is triggered by */
-  const trig = (r.sp || r.days) ? (r.on || ((r.act || (r.g && r.g.act)) ? "act" : "boon")) : null;
+  const trig = (r.sp || r.shop) ? (r.on || ((r.act || (r.g && r.g.act)) ? "act" : "boon")) : null;
   const col = (k, lab, arrow) => '<span class="icol"><span class="ik" title="' + lab + '">' + ic(k) + '</span>' +
     (arrow ? ARROW_DOWN : "") + '</span>';
   /* onSkip leaves the first boxes of the triggering kind bare, so a row can read
@@ -2362,7 +2417,7 @@ function tileHTML(r){
     '</span></span>').join("") + ARROW_RIGHT + iconRow(r.g) : "");
 
   let extra = "";
-  const sentence = r.days ? (r.days.every(Boolean) ? "Every day" : "On " + dayText(r.days)) + ": reveal " + stockText(r) : r.sp;
+  const sentence = r.shop ? "Reveal " + stockText(r) : r.sp;
   if (sentence) extra += TILE_LINES[r.n] ? '<p class="sp fixed">' + TILE_LINES[r.n].join("<br>") + '</p>' : '<p class="sp">' + sentence + '</p>';
 
   return '<div class="rtile">' + doors +
@@ -2381,7 +2436,7 @@ document.getElementById("lines").innerHTML = LINES.map(l =>
   }).join("") + '</div></div>').join("");
 
 /* how often a room actually reaches the table: the deck is bigger than the house */
-const DECKSLOTS = {house:44, grounds:8};
+const DECKSLOTS = {house:41, grounds:8};
 const deckSize = d => ALL.reduce((n, r) => n + (DECK_OF[r.line.key] === d ? r.c : 0), 0);
 const DECKSIZE = {house:deckSize("house"), grounds:deckSize("grounds")};
 /* chance none of a room's copies are dealt, drawing n of N */
@@ -2544,7 +2599,7 @@ function renderItems(){
     if (!list.length) return "";
     return '<div class="igroup" style="--tier:var(--t-' + k + ')">' +
       '<div class="ghead"><h3>' + TIERS[k][0] + '</h3>' +
-      '<p class="gm">' + deckOf(k) + ' &middot; costs ' + TIERS[k][1] + ', sells for ' + (TIERS[k][1] - 1) + '</p>' +
+      '<p class="gm">' + deckOf(k) + ' &middot; costs ' + TIERS[k][1] + '</p>' +
       '<span class="gct">' + list.reduce((n, it) => n + it.c, 0) + ' cards &middot; ' + list.length + ' designs</span></div>' +
       '<div class="ideck">' + list.map(it =>
         '<div class="icell">' + itemCard(it) +
@@ -2619,19 +2674,18 @@ const ITEMROWS = ITEMS.map(it => {
   const deck = (it.r === "common" || it.r === "uncommon") ? COMMONDECK : RAREDECK;
   const share = 100 * it.c / deck;
   return {
-    keys: [it.n, KINDNAME[it.k], TIERS[it.r][0], deckOf(it.r), it.v, it.v - 1, it.c, share, Math.round(deck / it.c)],
+    keys: [it.n, KINDNAME[it.k], TIERS[it.r][0], deckOf(it.r), it.v, it.c, share, Math.round(deck / it.c)],
     html: '<td class="nm">' + it.n + '</td>' +
       '<td class="dim">' + KINDNAME[it.k] + '</td>' +
       '<td class="dim" style="--tc:var(--t-' + it.r + ')"><span class="dot"></span>' + TIERS[it.r][0] + '</td>' +
       '<td class="dim">' + (deck === COMMONDECK ? "Common" : "Rare") + '</td>' +
       '<td class="num">' + it.v + '</td>' +
-      '<td class="num">' + (it.v - 1) + '</td>' +
       '<td class="num">' + it.c + '</td>' +
       '<td class="num">' + share.toFixed(1) + '%</td>' +
       '<td class="num">' + Math.round(deck / it.c) + '</td>'
   };
 });
-sortableTable("itemtbl", ["Item", "Kind", "Tier", "Deck", "Costs", "Sells", "Copies", "Share", "1 in"], ITEMROWS, 4);
+sortableTable("itemtbl", ["Item", "Kind", "Tier", "Deck", "Costs", "Copies", "Share", "1 in"], ITEMROWS, 4);
 
 VIEWS.forEach(k => document.getElementById("t-" + k).addEventListener("click", () => setTimeout(sizeCheck, 0)));
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(sizeCheck);
@@ -2649,7 +2703,7 @@ const CATS = [
    the printed card carries the title and the rule, nothing else. */
 const NIGHT = [
   ["Cold Spot", "Sanity", "Global", "All players", "Every player loses 1 Sanity", 2],
-  ["The Dead Stir", "Tempo", "Global", "The ghosts", "Every ghost has 2 extra Actions until the next Haunting card is drawn. If there are no ghosts, every player loses 1 Sanity", 1],
+  ["The Dead Stir", "Environmental", "Global", "The ghosts", "Every ghost makes this card's move a second time", 1],
   ["Whispers", "Sanity", "Targeted", "Lowest Sanity player", "The player with the lowest Sanity loses 2 Sanity", 2],
   ["Restless", "Sanity", "Targeted", "Highest Sanity player", "The player with the highest Sanity loses 2 Sanity", 2],
   ["Endless Halls", "Sanity", "Targeted", "Players in a Passage room", "Every player in a Passage room loses 1 Sanity", 1],
@@ -2717,37 +2771,34 @@ renderNight();
 /* [name, kind, copies, effect]. The kind only sorts the page (nothing, find, know, player,
    harm); the card face carries no icon and no colour but the red frame a harmful card wears */
 const SEARCH = [
-  ["Loose Change", "find", 3, "Gain 1 Sovereign"],
-  ["Coin Bag", "find", 2, "Gain 2 Sovereigns"],
   ["Key on a Nail", "find", 4, "Gain 1 Iron Key"],
-  ["Hidden Drawer", "find", 5, "Draw 1 Common Item card"],
-  ["Loose Panel", "find", 3, "Draw 2 from the Common Item deck. Keep 1 and put the other on the bottom"],
+  ["Hidden Drawer", "find", 5, "Draw 1 Common Item card. Gain 1 Sovereign"],
+  ["Loose Panel", "find", 3, "Draw 2 from the Common Item deck. Keep 1 and put the other on the bottom. Gain 1 Sovereign"],
   ["Lost Parcel", "find", 2, "Draw 2 Common Item cards"],
   ["Velvet Case", "find", 2, "Draw 1 Rare Item card"],
-  ["Pawn Ticket", "find", 2, "Discard 1 Item card: draw 1 Rare Item card"],
+  ["Pawn Ticket", "find", 2, "Discard 1 Item card: draw 1 Rare Item card. Gain 1 Sovereign"],
   ["Hand-Me-Down", "player", 2, "Draw 2 Common Item cards. Keep 1 and give the other to another player in this room, or discard it"],
-  ["Rag and Bone", "find", 1, "Take 1 card of your choice from the Item discard pile"],
+  ["Rag and Bone", "find", 1, "Take 1 card of your choice from the Item discard pile. Gain 1 Sovereign"],
   ["Cold Pie", "find", 3, "Gain 2 Actions"],
-  ["Family Portrait", "find", 1, "Gain 1 Sanity"],
-  ["Moment's Quiet", "find", 1, "Gain 1 Sanity"],
-  ["Ornate Chest", "find", 1, "Draw 2 from the Rare Item deck. Keep 1 and put the other on the bottom"],
-  ["Strongbox", "find", 1, "Gain 4 Sovereigns"],
+  ["Family Portrait", "find", 1, "Gain 1 Sanity. Gain 2 Sovereigns"],
+  ["Moment's Quiet", "find", 1, "Gain 1 Sanity. Gain 1 Sovereign"],
+  ["Ornate Chest", "find", 1, "Draw 2 from the Rare Item deck. Keep 1 and put the other on the bottom. Gain 3 Sovereigns"],
   ["Golden Key", "find", 1, "Gain 1 Golden Key"],
-  ["Locked Cabinet", "find", 1, "Spend 1 Iron Key: draw 1 Rare Item card"],
-  ["Fresh Air", "find", 1, "Gain 1 Sanity, or 2 if you are in an Exterior room"],
-  ["Consecration", "find", 1, "Gain 1 Sanity, or 2 if you are in a Sacred room"],
-  ["Fuse Box", "find", 2, "You may turn the Power on or off"],
-  ["Water Valve", "find", 2, "You may turn the Water on or off"],
-  ["Misfiled", "find", 2, "Draw 1 Common Item card, or 2 if you are in a Storage room"],
-  ["Old Map", "know", 2, "Look at the top 3 rooms of either deck and put them back in any order"],
-  ["A Way Through", "know", 2, "You may draft a room adjacent to this one"],
-  ["Remembrance", "know", 2, "Shuffle the Investigation discard pile into the deck, then draw 2 and resolve whichever you prefer"],
-  ["Hidden Lever", "know", 2, "You may turn this room to face any way you like. It must end up valid"],
-  ["Servant's Trail", "know", 1, "You may move to any other revealed room of the same type as this one that is not locked"],
-  ["Servant's Notes", "know", 1, "Look at the top card of the Haunting deck, then put it back"],
-  ["The Plans", "know", 1, "You may draft up to 3 rooms and place them in any empty slots in the mansion, each one valid"],
-  ["A Codicil", "know", 1, "Draw 1 Objective card. You may swap it for one of yours"],
-  ["Pocketed", "player", 1, "You may take 1 Item card from the Stash"],
+  ["Locked Cabinet", "find", 1, "Spend 1 Iron Key: draw 1 Rare Item card. Gain 3 Sovereigns"],
+  ["Fresh Air", "find", 1, "Gain 1 Sanity, or 2 if you are in an Exterior room. Gain 1 Sovereign"],
+  ["Consecration", "find", 1, "Gain 1 Sanity, or 2 if you are in a Sacred room. Gain 1 Sovereign"],
+  ["Fuse Box", "find", 2, "You may turn the Power on or off. Gain 1 Sovereign"],
+  ["Water Valve", "find", 2, "You may turn the Water on or off. Gain 1 Sovereign"],
+  ["Misfiled", "find", 2, "Draw 1 Common Item card, or 2 if you are in a Storage room. Gain 1 Sovereign"],
+  ["Old Map", "know", 2, "Look at the top 3 rooms of either deck and put them back in any order. Gain 2 Sovereigns"],
+  ["A Way Through", "know", 2, "You may draft a room adjacent to this one. Gain 2 Sovereigns"],
+  ["Remembrance", "know", 2, "Shuffle the Investigation discard pile into the deck, then draw 2 and resolve whichever you prefer. Gain 2 Sovereigns"],
+  ["Hidden Lever", "know", 2, "You may turn this room to face any way you like. It must end up valid. Gain 2 Sovereigns"],
+  ["Servant's Trail", "know", 1, "You may move to any other revealed room of the same type as this one that is not locked. Gain 2 Sovereigns"],
+  ["Servant's Notes", "know", 1, "Look at the top card of the Haunting deck, then put it back. Gain 2 Sovereigns"],
+  ["The Plans", "know", 1, "You may draft up to 3 rooms and place them in any empty slots in the mansion, each one valid. Gain 3 Sovereigns"],
+  ["A Codicil", "know", 1, "Draw 1 Objective card. You may swap it for one of yours. Gain 2 Sovereigns"],
+  ["Pocketed", "player", 1, "You may take 1 Item card from the Stash. Gain 1 Sovereign"],
   ["Shared Out", "player", 2, "Every player draws 1 Common Item card"],
   ["Rotten Remains", "harm", 1, "Lose 1 Sanity"],
   ["Watched", "harm", 2, "Lose 1 Sanity, or 2 if no other player is in this room"],
@@ -2757,7 +2808,7 @@ const SEARCH = [
   ["The Heir's Price", "harm", 1, "Lose 2 Sanity"],
   ["Lights Out", "harm", 1, "If the Power is on, turn it off. Otherwise lose 1 Sanity"],
   ["Lost Hours", "harm", 1, "Lose 3 Actions"],
-  ["Restless Dead", "harm", 1, "Every ghost in the mansion may move to this room"],
+  ["Restless Dead", "harm", 1, "Every ghost in the mansion moves to this room"],
   ["Cold Draught", "harm", 2, "Lose 1 Action and 1 Sanity"]
 ];
 
@@ -2816,7 +2867,7 @@ const OBJ = [
   ["The Richest of Us", 4, "duel", "You hold more Sovereigns than any other player"],
   ["Keyholder", 5, "coin", "You hold a Golden Key and 3 Iron Keys"],
   ["Clear-Headed", 4, "duel", "You have more Sanity than any other player"],
-  ["Last One Standing", 5, "duel", "Every other player has been lost to the house"],
+  ["Last One Standing", 5, "duel", "You are the only player with 5 or more Sanity when the game ends"],
   ["Gatekeeper", 4, "ending", "You are standing in the Left or Right Vigil when the game ends"],
   ["Small Economies", 2, "coin", "You hold 4 or more Sovereigns"],
   ["Well Provisioned", 3, "nerve", "You hold 5 Item cards"],
@@ -2834,7 +2885,7 @@ const OBJ = [
   ["The Last Word", 3, "ending", "You hold the starting player marker when the game ends"],
   ["By a Thread", 4, "nerve", "You end the game with exactly 1 Sanity"],
   ["Unshaken", 5, "nerve", "You end the game with 9 or more Sanity"],
-  ["None Left Behind", 4, "ending", "No player is a ghost when the game ends"],
+  ["None Left Behind", 4, "ending", "Every player has 1 or more Sanity when the game ends"],
   ["Make Haste", 4, "house", "The Last Vigil is activated before Friday"],
   ["Walked Away", 3, "nerve", "You are in the Foyer when the game ends, holding no Item cards, keys or Sovereigns"]
 ];
@@ -2882,11 +2933,11 @@ const HELP = [
       "Open a lock", "Unlock a room with a key, and step in for free if you like.", "",
       "Wait", "Do nothing, but stay in the round."]}]},
   {name: "A Day at Ashworth", copies: "&times;1 &middot; for the starting player", frame: "#14120f", sides: [
-    {title: "A Day at Ashworth", lines: ["Morning", "5 Actions each, 1 per turn", "", "Noon", "Draw a Haunting card", "Shift the board", "Move the Calendar 1 step forward", "", "Afternoon", "5 Actions each, 1 per turn", "", "Night", "Draw a Haunting card", "Shift the board", "Lose 1 Sanity", "Move the Calendar 1 step forward", "", "Dawn", "Wake in the Foyer unless rested", "markers clear, pass this card clockwise"]},
+    {title: "A Day at Ashworth", lines: ["Morning", "3 to 5 Actions each (by Sanity)", "", "Noon", "Haunting card, ghosts move", "Shift the board", "Move the Calendar 1 step forward", "", "Afternoon", "3 to 5 Actions each (by Sanity)", "", "Night", "Haunting card, ghosts move", "Shift the board", "Lose 1 Sanity", "Move the Calendar 1 step forward", "", "Dawn", "Wake in the Foyer unless rested", "markers clear, pass this card clockwise"]},
     {title: "The Shift", lines: ["At noon and at night, after", "the Haunting card, the holder", "of this card may:", "", "Relocate a room: 1 Sanity", "Turn it, or put it in another", "empty slot. It must end up valid", "", "Do nothing: free", "", "Never relocate a room:", "With a player in it", "A printed or Exterior room", "A room a card protects", "", "The next day starts in the mansion", "with the new holder going first"]}]},
-  {name: "The Ghost", copies: "&times;1 &middot; for a player lost to the house", frame: "#14120f", sides: [
-    {title: "The Ghost", lines: ["At 0 Sanity you return as a", "ghost where you were lost.", "You win if the house wins", "", "3 Actions each morning and", "afternoon. Each act costs 1:", "", "Drift: to an adjacent slot,", "revealed or not", "", "Chill: every living player", "here loses 1 Action", "", "Rattle: spend an Investigate,", "Rest or Stash icon here", "", "Fright: every living player", "here loses 1 Sanity"]},
-    {title: "The Living", lines: ["A ghost cannot enter a", "Sacred room or a Vigil", "", "A spent Rest or Stash", "icon cannot be used again", "", "A ghost holds nothing", "and never holds the", "starting player marker", "", "A living player in the", "Ritual Chamber can", "bring you back"]}]}
+  {name: "The Ghosts", copies: "&times;1 &middot; shared by the table", frame: "#14120f", sides: [
+    {title: "The Ghosts", lines: ["Start in The Wake, F2.", "One at setup, and one more", "for each player at 0 Sanity.", "", "After every Haunting card,", "each ghost moves 2 spaces,", "one per arrow, straight or", "diagonal, through anything.", "", "Sacred room: it stops.", "Off the board: back to The Wake.", "", "Entering a room: every player", "there loses 1 Sanity, per ghost."]},
+    {title: "Sanity and Actions", lines: ["Set your Actions each half:", "", "6 to 10 Sanity: 5 Actions", "3 to 5 Sanity: 4 Actions", "1 or 2 Sanity: 3 Actions", "0 Sanity: 3 Actions, and a", "ghost joins the house", "", "Nobody is ever lost.", "Sanity never goes below 0."]}]}
 ];
 document.querySelector("#v-help .pcols").innerHTML = PCOLS.map(([n, c]) => '<i style="background:' + c + '"></i>' + n).join(", ");
 document.getElementById("hdeck").innerHTML = HELP.map(card =>
@@ -2944,6 +2995,46 @@ const REACHROWS = REACH.map(([label, re, col]) => {
 });
 sortableTable("reachtbl", ["Target", ...CORPORA.map(c => c[0]), "Total"], REACHROWS, 1);
 
+/* ============ chapter references ============ */
+/* "Chapter IX" in the prose is a link: it opens the manual if you are elsewhere and scrolls to that chapter */
+(function(){
+  const num = {};
+  secs.forEach((s, i) => { const k = s.querySelector(".kicker"); if (k) num[k.textContent.replace(/^Chapter\s+/i, "").trim()] = i; });
+  const re = /\bChapter ([IVXL]+)\b/g;
+  const skip = el => el.closest(".kicker, #v-log, #toc, a, button, script, style");
+  const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  const hits = [];
+  for (let n = w.nextNode(); n; n = w.nextNode()) {
+    if (!n.parentElement || skip(n.parentElement)) continue;
+    re.lastIndex = 0;
+    if (re.test(n.nodeValue)) hits.push(n);
+  }
+  hits.forEach(n => {
+    const frag = document.createDocumentFragment();
+    let last = 0, m;
+    re.lastIndex = 0;
+    while ((m = re.exec(n.nodeValue))) {
+      if (!(m[1] in num)) continue;
+      frag.appendChild(document.createTextNode(n.nodeValue.slice(last, m.index)));
+      const a = document.createElement("a");
+      a.className = "xref"; a.href = "#" + secs[num[m[1]]].id; a.dataset.ch = num[m[1]];
+      a.textContent = m[0];
+      frag.appendChild(a);
+      last = m.index + m[0].length;
+    }
+    frag.appendChild(document.createTextNode(n.nodeValue.slice(last)));
+    n.parentNode.replaceChild(frag, n);
+  });
+  document.addEventListener("click", e => {
+    const a = e.target.closest && e.target.closest("a.xref");
+    if (!a) return;
+    e.preventDefault();
+    const i = +a.dataset.ch;
+    if (document.getElementById("v-manual").hidden) show("manual");
+    setTimeout(() => { markChapter(i); secs[i].scrollIntoView({behavior: "smooth", block: "start"}); }, 30);
+  });
+})();
+
 </script>
-</body>
-</html>
+
+</body></html>
